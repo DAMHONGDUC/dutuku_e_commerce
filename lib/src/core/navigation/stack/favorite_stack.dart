@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 class FavoriteStack {
   static final List<GoRoute> routes = [
     GoRoute(
-      path: AppRoutes.favorite.fullPath,
+      path: AppRoutes.favorite.path,
       name: AppRoutes.favorite.name,
       builder: (BuildContext context, GoRouterState state) {
         return const FavoriteScreen();

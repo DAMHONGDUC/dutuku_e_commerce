@@ -1,62 +1,94 @@
+import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
+final GlobalKey<NavigatorState> kRootNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'root',
+);
+
+final GlobalKey<NavigatorState> kHomeTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'homeTabNav');
+final GlobalKey<NavigatorState> kMyOrderTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'myOrderTabNav');
+final GlobalKey<NavigatorState> kFavoriteTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'favoriteTabNav');
+final GlobalKey<NavigatorState> kProfileTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'profileTabNav');
+
 class AppRoutes {
-  // Splash
   static const SdRouter splash = SdRouter(
     name: 'splash',
-    path: 'splash',
+    path: '/splash',
     fullPath: '/splash',
   );
 
-  // Tutorial
   static const SdRouter tutorial = SdRouter(
     name: 'tutorial',
-    path: 'tutorial',
+    path: '/tutorial',
     fullPath: '/tutorial',
   );
 
-  // Auth Stack
+  // Login stack
   static const SdRouter login = SdRouter(
     name: 'login',
-    path: 'login',
-    fullPath: '/auth/login',
+    path: '/login',
+    fullPath: '/login',
   );
+  static final SdRouter loginOtp = SdRouter(
+    name: 'login-otp',
+    path: 'login-otp',
+    fullPath: '${login.fullPath}/login-otp',
+  );
+
+  // Register stack
   static const SdRouter register = SdRouter(
     name: 'register',
-    path: 'register',
-    fullPath: '/auth/register',
-  );
-  static const SdRouter loginOtp = SdRouter(
-    name: 'loginOtp',
-    path: 'loginOtp',
-    fullPath: '/auth/login/otp',
-  );
-  static const SdRouter registerOtp = SdRouter(
-    name: 'registerOtp',
-    path: 'registerOtp',
-    fullPath: '/auth/register/otp',
+    path: '/register',
+    fullPath: '/register',
   );
 
-  // Base Screen Tabs
+  static final SdRouter registerOtp = SdRouter(
+    name: 'register-otp',
+    path: 'register-otp',
+    fullPath: '${register.fullPath}/register-otp',
+  );
+
+  // Home stack
   static const SdRouter home = SdRouter(
     name: 'home',
-    path: 'home',
-    fullPath: '/base/home',
+    path: '/home',
+    fullPath: '/home',
   );
 
-  static const SdRouter myOrder = SdRouter(
-    name: 'myOrder',
-    path: 'my-order',
-    fullPath: '/base/my-order',
+  static final SdRouter search = SdRouter(
+    name: 'search',
+    path: 'search',
+    fullPath: '${home.fullPath}/search',
   );
+
+  // My order stack
+  static const SdRouter myOrder = SdRouter(
+    name: 'my-order',
+    path: '/my-order',
+    fullPath: '/my-order',
+  );
+
+  static final SdRouter myOrderDetail = SdRouter(
+    name: 'myOrderDetail',
+    path: 'my-order-detail',
+    fullPath: '${myOrder.fullPath}/my-order-detail',
+  );
+
+  // Favorite stack
   static const SdRouter favorite = SdRouter(
     name: 'favorite',
-    path: 'favorite',
-    fullPath: '/base/favorite',
+    path: '/favorite',
+    fullPath: '/favorite',
   );
+
+  // Profile stack
   static const SdRouter profile = SdRouter(
     name: 'profile',
-    path: 'profile',
-    fullPath: '/base/profile',
+    path: '/profile',
+    fullPath: '/profile',
   );
 }

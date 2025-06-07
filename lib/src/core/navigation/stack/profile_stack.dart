@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 class ProfileStack {
   static final List<GoRoute> routes = [
     GoRoute(
-      path: AppRoutes.profile.fullPath,
+      path: AppRoutes.profile.path,
       name: AppRoutes.profile.name,
       builder: (BuildContext context, GoRouterState state) {
         return const ProfileScreen();
