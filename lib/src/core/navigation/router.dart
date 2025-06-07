@@ -15,6 +15,17 @@ final GlobalKey<NavigatorState> kRootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'root',
 );
 
+// Define global keys for each branch's navigator if you need to access them programmatically
+// This is good practice for clarity, though not strictly required by StatefulShellRoute for basic usage
+final GlobalKey<NavigatorState> kHomeTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'homeTabNav');
+final GlobalKey<NavigatorState> kMyOrderTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'myOrderTabNav');
+final GlobalKey<NavigatorState> kFavoriteTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'favoriteTabNav');
+final GlobalKey<NavigatorState> kProfileTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'profileTabNav');
+
 final GoRouter kAppRouter = GoRouter(
   observers: [],
   navigatorKey: kRootNavigatorKey,
@@ -37,16 +48,38 @@ final GoRouter kAppRouter = GoRouter(
     ),
     // Auth stack
     ...AuthStack.routes,
-    // Base Screen Tabs
-    ShellRoute(
-      builder: (BuildContext context, GoRouterState state, Widget child) {
-        return BaseScreen(child: child);
-      },
-      routes: <RouteBase>[
-        ...HomeStack.routes,
-        ...MyOrderStack.routes,
-        ...FavoriteStack.routes,
-        ...ProfileStack.routes,
+    // Base Screen Tabs using StatefulShellRoute
+    StatefulShellRoute.indexedStack(
+      builder:
+          (
+            BuildContext context,
+            GoRouterState state,
+            StatefulNavigationShell navigationShell,
+          ) {
+            // Pass the StatefulNavigationShell to BaseScreen so it can manage tabs
+            return BaseScreen(navigationShell: navigationShell);
+          },
+      branches: <StatefulShellBranch>[
+        // Home Tab Branch
+        StatefulShellBranch(
+          navigatorKey: kHomeTabNavigatorKey,
+          routes: <RouteBase>[...HomeStack.routes],
+        ),
+        // My Order Tab Branch
+        StatefulShellBranch(
+          navigatorKey: kMyOrderTabNavigatorKey,
+          routes: <RouteBase>[...MyOrderStack.routes],
+        ),
+        // Favorite Tab Branch
+        StatefulShellBranch(
+          navigatorKey: kFavoriteTabNavigatorKey,
+          routes: <RouteBase>[...FavoriteStack.routes],
+        ),
+        // Profile Tab Branch
+        StatefulShellBranch(
+          navigatorKey: kProfileTabNavigatorKey,
+          routes: <RouteBase>[...ProfileStack.routes],
+        ),
       ],
     ),
   ],
