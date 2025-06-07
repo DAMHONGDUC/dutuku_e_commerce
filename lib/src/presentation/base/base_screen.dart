@@ -12,14 +12,30 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   int _currentIndex = 0;
+  late final GoRouterDelegate _routerDelegate;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
+    _routerDelegate = GoRouter.of(context).routerDelegate;
+    _routerDelegate.addListener(_onRouterChange);
     _updateSelectedIndex();
   }
 
-  // Updates the selected index of the BottomNavigationBar based on the current route
+  @override
+  void dispose() {
+    _routerDelegate.removeListener(_onRouterChange);
+    super.dispose();
+  }
+
+  void _onRouterChange() {
+    final oldIndex = _currentIndex;
+    _updateSelectedIndex();
+    if (oldIndex != _currentIndex) {
+      setState(() {});
+    }
+  }
+
   void _updateSelectedIndex() {
     final location = GoRouter.of(
       context,
@@ -36,47 +52,64 @@ class _BaseScreenState extends State<BaseScreen> {
     }
   }
 
-  // Handles tapping on BottomNavigationBar items
   void _onItemTapped(int index) {
-    switch (index) {
-      case 0:
-        context.go(AppRoutes.home.fullPath);
-        break;
-      case 1:
-        context.go(AppRoutes.myOrder.fullPath);
-        break;
-      case 2:
-        context.go(AppRoutes.favorite.fullPath);
-        break;
-      case 3:
-        context.go(AppRoutes.profile.fullPath);
-        break;
+    if (_currentIndex != index) {
+      switch (index) {
+        case 0:
+          context.go(AppRoutes.home.fullPath);
+          break;
+        case 1:
+          context.go(AppRoutes.myOrder.fullPath);
+          break;
+        case 2:
+          context.go(AppRoutes.favorite.fullPath);
+          break;
+        case 3:
+          context.go(AppRoutes.profile.fullPath);
+          break;
+      }
     }
-    // No need to call setState here, GoRouter handles rebuilding and
-    // didChangeDependencies will update _currentIndex.
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child, // This widget displays the content of the active tab
+      body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed, // Ensures all items are visible
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        type: BottomNavigationBarType.fixed,
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
+            icon: Icon(
+              Icons.home,
+              color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_bag,
+              color: _currentIndex == 1 ? Colors.blue : Colors.grey,
+            ),
             label: 'My Order',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(
+              Icons.favorite,
+              color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+            ),
             label: 'Favorite',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: _currentIndex == 3 ? Colors.blue : Colors.grey,
+            ),
+            label: 'Profile',
+          ),
         ],
       ),
     );
