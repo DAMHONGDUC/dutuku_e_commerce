@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,8 +9,9 @@ import 'main_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialisation();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
-  runApp(MainApp());
+  runApp(MainApp(savedThemeMode: savedThemeMode));
 }
 
 Future<void> initialisation() async {

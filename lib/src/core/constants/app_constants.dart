@@ -1,3 +1,3 @@
 class AppConstants {
-  static const fontFamily = 'Inter';
+  static const appName = 'Dutuku';
 }

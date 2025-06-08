@@ -10,7 +10,7 @@ packages:
     source: hosted
     version: "82.0.0"
   adaptive_theme:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: adaptive_theme
       sha256: caa49b4c73b681bf12a641dff77aa1383262a00cf38b9d1a25b180e275ba5ab9
