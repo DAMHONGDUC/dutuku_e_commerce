@@ -1,6 +1,7 @@
 import 'package:dutuku_e_commerce/src/core/navigation/config.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:system_design_flutter/index.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Home Content'),
+            Text('Home Content', style: SdTextStyle.body18()),
             ElevatedButton(
               onPressed: () {
                 GoRouter.of(context).push(AppRoutes.search.fullPath);
