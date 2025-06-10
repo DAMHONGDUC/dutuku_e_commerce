@@ -3,6 +3,7 @@ import 'package:dutuku_e_commerce/src/presentation/splash/splash_controller.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:system_design_flutter/index.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -30,8 +31,23 @@ class _SplashView extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Splash Screen')),
-        body: const Center(child: CircularProgressIndicator()),
+        backgroundColor: AppColors.primary,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                context.loc.app_name,
+                style: SdTextStyle.heading32().whiteText(),
+              ),
+              SdVerticalSpacing(xRatio: 0.5),
+              Text(
+                context.loc.splash_description,
+                style: SdTextStyle.body14().whiteText(),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

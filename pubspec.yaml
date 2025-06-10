@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter
+  intl: ^0.20.2
   system_design_flutter:
     path: packages/system_design_flutter
   cupertino_icons: ^1.0.8
@@ -32,6 +35,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
   assets:
     - assets/google_fonts/
 

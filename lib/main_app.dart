@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/core/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
@@ -19,7 +20,8 @@ class MainApp extends StatelessWidget {
           darkTheme: darkTheme,
           routerConfig: kAppRouter,
           debugShowCheckedModeBanner: false,
-          title: AppConstants.appName,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
         ),
       ),
     );
