@@ -40,11 +40,30 @@ class _HomeScreenState extends State<HomeScreen>
 }
 
 class _HomeTab extends StatelessWidget {
+  final ScrollController? scrollController;
+
   const _HomeTab();
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Home Tab Content', style: SdTextStyle.body18()));
+    return ListView.builder(
+      controller: scrollController,
+      padding: const EdgeInsets.all(16),
+      itemCount: 30,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text('Item $index', style: SdTextStyle.body18()),
+          ),
+        );
+      },
+    );
   }
 }
 

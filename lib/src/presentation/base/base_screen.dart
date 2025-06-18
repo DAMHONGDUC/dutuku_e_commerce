@@ -9,13 +9,16 @@ class BaseScreen extends StatelessWidget {
   const BaseScreen({super.key, required this.navigationShell});
   @override
   Widget build(BuildContext context) {
+    final iconPadding = EdgeInsets.only(
+      top: SdSpacing.s4,
+      bottom: SdSpacing.s2,
+    );
+
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: SdColors.black54, blurRadius: SdSpacing.s1),
-          ],
+          boxShadow: [BoxShadow(color: SdColors.black54, blurRadius: 0.5)],
         ),
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,
@@ -25,45 +28,57 @@ class BaseScreen extends StatelessWidget {
             color: AppColors.grey,
           ),
           backgroundColor: context.appThemeColor.bgPrimary,
-          elevation: SdSpacing.s1,
+          elevation: 0.5,
           selectedItemColor: AppColors.primary,
           unselectedItemColor: AppColors.grey,
           type: BottomNavigationBarType.fixed,
           iconSize: SdSpacing.s20,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: navigationShell.currentIndex == 0
-                    ? AppColors.primary
-                    : AppColors.grey,
+              icon: Padding(
+                padding: iconPadding,
+                child: Icon(
+                  Icons.home,
+                  color: navigationShell.currentIndex == 0
+                      ? AppColors.primary
+                      : AppColors.grey,
+                ),
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.shopping_bag,
-                color: navigationShell.currentIndex == 1
-                    ? AppColors.primary
-                    : AppColors.grey,
+              icon: Padding(
+                padding: iconPadding,
+                child: Icon(
+                  Icons.shopping_bag,
+                  color: navigationShell.currentIndex == 1
+                      ? AppColors.primary
+                      : AppColors.grey,
+                ),
               ),
               label: 'My Order',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-                color: navigationShell.currentIndex == 2
-                    ? AppColors.primary
-                    : AppColors.grey,
+              icon: Padding(
+                padding: iconPadding,
+                child: Icon(
+                  Icons.favorite,
+                  color: navigationShell.currentIndex == 2
+                      ? AppColors.primary
+                      : AppColors.grey,
+                ),
               ),
               label: 'Favorite',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: navigationShell.currentIndex == 3
-                    ? AppColors.primary
-                    : AppColors.grey,
+              icon: Padding(
+                padding: iconPadding,
+                child: Icon(
+                  Icons.person,
+                  color: navigationShell.currentIndex == 3
+                      ? AppColors.primary
+                      : AppColors.grey,
+                ),
               ),
               label: 'Profile',
             ),
