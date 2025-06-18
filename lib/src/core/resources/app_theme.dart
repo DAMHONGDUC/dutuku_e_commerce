@@ -48,15 +48,9 @@ class AppTheme {
       bodyMedium: SdBaseTextStyle.base(fontSize: 14.sp).wColor(color),
       bodySmall: SdBaseTextStyle.base(fontSize: 12.sp).wColor(color),
 
-      labelLarge: SdBaseTextStyle.base(
-        fontSize: 14.sp,
-      ).wSemiBold().wColor(color),
-      labelMedium: SdBaseTextStyle.base(
-        fontSize: 12.sp,
-      ).wSemiBold().wColor(color),
-      labelSmall: SdBaseTextStyle.base(
-        fontSize: 11.sp,
-      ).wSemiBold().wColor(color),
+      labelLarge: SdBaseTextStyle.base(fontSize: 14.sp).wColor(color),
+      labelMedium: SdBaseTextStyle.base(fontSize: 12.sp).wColor(color),
+      labelSmall: SdBaseTextStyle.base(fontSize: 11.sp).wColor(color),
     );
   }
 }

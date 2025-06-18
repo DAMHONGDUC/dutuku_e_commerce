@@ -1,17 +1,30 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
 class BaseScreen extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   const BaseScreen({super.key, required this.navigationShell});
+
+  Widget _buildIcon({
+    required bool isSelected,
+    required IconData iconSelected,
+    required IconData icon,
+  }) {
+    return SdIcon(
+      iconData: isSelected ? iconSelected : icon,
+      color: isSelected ? AppColors.primary : AppColors.grey,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final iconPadding = EdgeInsets.only(
       top: SdSpacing.s4,
-      bottom: SdSpacing.s2,
+      bottom: SdSpacing.s4,
     );
 
     return Scaffold(
@@ -23,8 +36,8 @@ class BaseScreen extends StatelessWidget {
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,
           onTap: (int index) => _onItemTapped(context, index),
-          selectedLabelStyle: context.appTextTheme.labelMedium,
-          unselectedLabelStyle: context.appTextTheme.bodySmall?.copyWith(
+          selectedLabelStyle: context.appTextTheme.labelSmall,
+          unselectedLabelStyle: context.appTextTheme.labelSmall?.copyWith(
             color: AppColors.grey,
           ),
           backgroundColor: context.appThemeColor.bgPrimary,
@@ -37,11 +50,10 @@ class BaseScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Padding(
                 padding: iconPadding,
-                child: Icon(
-                  Icons.home,
-                  color: navigationShell.currentIndex == 0
-                      ? AppColors.primary
-                      : AppColors.grey,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 0,
+                  icon: Ionicons.home_outline,
+                  iconSelected: Ionicons.home,
                 ),
               ),
               label: 'Home',
@@ -49,11 +61,10 @@ class BaseScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Padding(
                 padding: iconPadding,
-                child: Icon(
-                  Icons.shopping_bag,
-                  color: navigationShell.currentIndex == 1
-                      ? AppColors.primary
-                      : AppColors.grey,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 1,
+                  icon: Icons.local_shipping_outlined,
+                  iconSelected: Icons.local_shipping,
                 ),
               ),
               label: 'My Order',
@@ -61,11 +72,10 @@ class BaseScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Padding(
                 padding: iconPadding,
-                child: Icon(
-                  Icons.favorite,
-                  color: navigationShell.currentIndex == 2
-                      ? AppColors.primary
-                      : AppColors.grey,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 2,
+                  icon: Ionicons.heart_outline,
+                  iconSelected: Ionicons.heart,
                 ),
               ),
               label: 'Favorite',
@@ -73,11 +83,10 @@ class BaseScreen extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Padding(
                 padding: iconPadding,
-                child: Icon(
-                  Icons.person,
-                  color: navigationShell.currentIndex == 3
-                      ? AppColors.primary
-                      : AppColors.grey,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 3,
+                  icon: Ionicons.person_outline,
+                  iconSelected: Ionicons.person,
                 ),
               ),
               label: 'Profile',
