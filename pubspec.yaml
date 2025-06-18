@@ -38,6 +38,7 @@ flutter:
   generate: true
   assets:
     - assets/google_fonts/
+    - assets/images/
 
 lint_staged:
   "lib/**.dart": dart format && dart fix --apply
