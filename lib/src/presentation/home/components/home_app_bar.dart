@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
+final homeTabbarSpacing = SdSpacing.s10;
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
 
@@ -28,18 +30,27 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      bottom: TabBar(
-        controller: tabController,
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(width: SdSpacing.s2, color: AppColors.primary),
-          insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(kTextTabBarHeight + homeTabbarSpacing),
+        child: Padding(
+          padding: EdgeInsets.only(top: homeTabbarSpacing),
+          child: TabBar(
+            controller: tabController,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(
+                width: SdSpacing.s2,
+                color: AppColors.primary,
+              ),
+              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
+            ),
+            dividerColor: Colors.transparent,
+            tabs: [
+              Tab(child: Text('Home', style: SdTextStyle.heading12())),
+              Tab(child: Text('Category', style: SdTextStyle.heading12())),
+            ],
+          ),
         ),
-        dividerColor: Colors.transparent,
-        tabs: [
-          Tab(child: Text('Home', style: SdTextStyle.heading12())),
-          Tab(child: Text('Category', style: SdTextStyle.heading12())),
-        ],
       ),
       noElevation: true,
       actions: [
@@ -59,5 +70,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(kToolbarHeight + kTextTabBarHeight);
+      Size.fromHeight(kToolbarHeight + kTextTabBarHeight + homeTabbarSpacing);
 }
