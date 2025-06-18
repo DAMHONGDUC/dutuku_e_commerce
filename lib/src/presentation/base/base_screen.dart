@@ -1,5 +1,7 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:system_design_flutter/index.dart';
 
 class BaseScreen extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -9,64 +11,71 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: navigationShell.currentIndex,
-        onTap: (int index) => _onItemTapped(context, index),
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: navigationShell.currentIndex == 0
-                  ? Colors.blue
-                  : Colors.grey,
-            ),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(color: SdColors.black54, blurRadius: SdSpacing.s1),
+          ],
+        ),
+        child: BottomNavigationBar(
+          currentIndex: navigationShell.currentIndex,
+          onTap: (int index) => _onItemTapped(context, index),
+          selectedLabelStyle: context.appTextTheme.labelMedium,
+          unselectedLabelStyle: context.appTextTheme.bodySmall?.copyWith(
+            color: AppColors.grey,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag,
-              color: navigationShell.currentIndex == 1
-                  ? Colors.blue
-                  : Colors.grey,
+          backgroundColor: context.appThemeColor.bgPrimary,
+          elevation: SdSpacing.s1,
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.grey,
+          type: BottomNavigationBarType.fixed,
+          iconSize: SdSpacing.s20,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: navigationShell.currentIndex == 0
+                    ? AppColors.primary
+                    : AppColors.grey,
+              ),
+              label: 'Home',
             ),
-            label: 'My Order',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: navigationShell.currentIndex == 2
-                  ? Colors.blue
-                  : Colors.grey,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_bag,
+                color: navigationShell.currentIndex == 1
+                    ? AppColors.primary
+                    : AppColors.grey,
+              ),
+              label: 'My Order',
             ),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: navigationShell.currentIndex == 3
-                  ? Colors.blue
-                  : Colors.grey,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite,
+                color: navigationShell.currentIndex == 2
+                    ? AppColors.primary
+                    : AppColors.grey,
+              ),
+              label: 'Favorite',
             ),
-            label: 'Profile',
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                color: navigationShell.currentIndex == 3
+                    ? AppColors.primary
+                    : AppColors.grey,
+              ),
+              label: 'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }
 
   void _onItemTapped(BuildContext context, int index) {
-    // When navigating to a new branch, it's recommended to use the goBranch
-    // method, as doing so makes sure the last navigation state of the
-    // Navigator for the branch is restored.
     navigationShell.goBranch(
       index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
       initialLocation: index == navigationShell.currentIndex,
     );
   }

@@ -9,4 +9,6 @@ class AppColors {
   static const Color bgSecondaryDark = Color(0xFF1c232b);
 
   static const primary = Color(0xFF504eb7);
+
+  static const grey = SdColors.grey;
 }

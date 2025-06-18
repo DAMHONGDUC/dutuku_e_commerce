@@ -1,3 +1,4 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(tabController: _tabController),
+      backgroundColor: context.appThemeColor.bgPrimary,
       body: TabBarView(
         controller: _tabController,
         children: const [_HomeTab(), _CategoryTab()],

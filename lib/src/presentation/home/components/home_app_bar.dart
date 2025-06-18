@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
-final homeTabbarSpacing = SdSpacing.s10;
+final _kHomeTabbarSpacing = SdSpacing.s10;
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
@@ -24,16 +24,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hi, Duc', style: SdTextStyle.heading14()),
-              Text('Let go shopping', style: SdTextStyle.body12()),
+              Text('Hi, Duc', style: context.appTextTheme.titleSmall),
+              Text('Let go shopping', style: context.appTextTheme.bodySmall),
             ],
           ),
         ],
       ),
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(kTextTabBarHeight + homeTabbarSpacing),
+        preferredSize: Size.fromHeight(kTextTabBarHeight + _kHomeTabbarSpacing),
         child: Padding(
-          padding: EdgeInsets.only(top: homeTabbarSpacing),
+          padding: EdgeInsets.only(top: _kHomeTabbarSpacing),
           child: TabBar(
             controller: tabController,
             indicatorSize: TabBarIndicatorSize.tab,
@@ -46,8 +46,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             dividerColor: Colors.transparent,
             tabs: [
-              Tab(child: Text('Home', style: SdTextStyle.heading12())),
-              Tab(child: Text('Category', style: SdTextStyle.heading12())),
+              Tab(child: Text('Home', style: context.appTextTheme.titleSmall)),
+              Tab(
+                child: Text('Category', style: context.appTextTheme.titleSmall),
+              ),
             ],
           ),
         ),
@@ -70,5 +72,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight + kTextTabBarHeight + homeTabbarSpacing);
+      Size.fromHeight(kToolbarHeight + kTextTabBarHeight + _kHomeTabbarSpacing);
 }

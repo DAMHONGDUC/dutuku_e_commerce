@@ -38,12 +38,14 @@ class _SplashView extends StatelessWidget {
             children: [
               Text(
                 context.loc.app_name,
-                style: SdTextStyle.heading32().whiteText(),
+                style: context.appTextTheme.displayMedium
+                    ?.wSemiBold()
+                    .whiteText(),
               ),
               SdVerticalSpacing(xRatio: 0.5),
               Text(
                 context.loc.splash_description,
-                style: SdTextStyle.body14().whiteText(),
+                style: context.appTextTheme.bodyMedium?.whiteText(),
               ),
             ],
           ),
