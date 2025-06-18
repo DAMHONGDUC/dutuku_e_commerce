@@ -8,6 +8,7 @@ import 'package:dutuku_e_commerce/src/presentation/splash/splash_screen.dart';
 import 'package:dutuku_e_commerce/src/presentation/tutorial/tutorial_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:system_design_flutter/index.dart';
 
 import 'app_routes.dart';
 import 'stack/register_stack.dart';
@@ -18,14 +19,14 @@ final GoRouter kAppRouter = GoRouter(
   initialLocation: AppRoutes.splash.path,
   debugLogDiagnostics: true,
   routes: <RouteBase>[
-    GoRoute(
+    SdGoRoute(
       path: AppRoutes.splash.path,
       name: AppRoutes.splash.name,
       builder: (BuildContext context, GoRouterState state) {
         return const SplashScreen();
       },
     ),
-    GoRoute(
+    SdGoRoute(
       path: AppRoutes.tutorial.path,
       name: AppRoutes.tutorial.name,
       builder: (BuildContext context, GoRouterState state) {
