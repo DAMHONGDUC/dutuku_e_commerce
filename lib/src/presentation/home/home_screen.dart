@@ -3,6 +3,8 @@ import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
+import 'home_tab/home_tab.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -33,36 +35,8 @@ class _HomeScreenState extends State<HomeScreen>
       backgroundColor: context.appThemeColor.bgPrimary,
       body: TabBarView(
         controller: _tabController,
-        children: const [_HomeTab(), _CategoryTab()],
+        children: [HomeTab(), _CategoryTab()],
       ),
-    );
-  }
-}
-
-class _HomeTab extends StatelessWidget {
-  final ScrollController? scrollController;
-
-  const _HomeTab();
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: scrollController,
-      padding: const EdgeInsets.all(16),
-      itemCount: 30,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text('Item $index', style: SdTextStyle.body18()),
-          ),
-        );
-      },
     );
   }
 }

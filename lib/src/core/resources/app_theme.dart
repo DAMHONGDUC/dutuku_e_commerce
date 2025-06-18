@@ -36,7 +36,9 @@ class AppTheme {
       headlineMedium: SdBaseTextStyle.base(fontSize: 28.sp).wColor(color),
       headlineSmall: SdBaseTextStyle.base(fontSize: 24.sp).wColor(color),
 
-      titleLarge: SdBaseTextStyle.base(fontSize: 22.sp).wColor(color),
+      titleLarge: SdBaseTextStyle.base(
+        fontSize: 22.sp,
+      ).wColor(color).wSemiBold(),
       titleMedium: SdBaseTextStyle.base(
         fontSize: 16.sp,
       ).wSemiBold().wColor(color),

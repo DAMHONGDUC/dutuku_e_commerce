@@ -24,6 +24,8 @@ dependencies:
   google_fonts: ^6.2.1
   adaptive_theme: ^3.7.0
   ionicons: ^0.2.2
+  carousel_slider: ^5.1.1
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

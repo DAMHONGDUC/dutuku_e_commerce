@@ -9,3 +9,6 @@ export './resources/resources.dart';
 
 // l10n
 export './l10n/l10n.dart';
+
+// enums
+export './enums/enums.dart';
