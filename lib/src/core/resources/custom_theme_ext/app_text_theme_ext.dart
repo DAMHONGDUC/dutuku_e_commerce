@@ -1,3 +1,4 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:system_design_flutter/index.dart';
@@ -90,7 +91,7 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
 
   // Light theme
   static AppTextThemeExt light() {
-    final lightTextColor = SdColors.black;
+    final lightTextColor = AppColors.textTitleLight;
 
     return AppTextThemeExt(
       // Body styles
@@ -134,7 +135,7 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
 
   // Dark theme
   static AppTextThemeExt dark() {
-    final darkTextColor = SdColors.white;
+    final darkTextColor = AppColors.textSubTitleDark;
 
     return AppTextThemeExt(
       // Body styles

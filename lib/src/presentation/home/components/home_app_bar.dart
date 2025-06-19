@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
-final _kHomeTabbarSpacing = SdSpacing.s10;
+final _kHomeTabbarSpacing = SdSpacing.s4;
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
@@ -25,8 +25,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hi, Duc', style: context.textTheme.heading12),
-              Text('Let go shopping', style: context.textTheme.body12),
+              Text('Hi, Duc', style: context.textTheme.heading12.wBold()),
+              Text(
+                'Let go shopping',
+                style: context.textTheme.heading10.wColor(
+                  context.colorTheme.textSubTitle,
+                ),
+              ),
             ],
           ),
         ],
@@ -43,12 +48,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 width: SdSpacing.s2,
                 color: AppColors.primary,
               ),
-              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s28),
+              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
             ),
-            dividerColor: Colors.transparent,
-            tabs: [
-              Tab(child: Text('Dashboard', style: context.textTheme.heading14)),
-              Tab(child: Text('Category', style: context.textTheme.heading14)),
+            dividerColor: SdColors.transparent,
+            labelColor: AppColors.primary,
+            unselectedLabelColor: context.colorTheme.textSubTitle,
+            labelStyle: context.textTheme.heading14,
+            unselectedLabelStyle: context.textTheme.heading14,
+            tabs: const [
+              Tab(text: 'Dashboard'),
+              Tab(text: 'Category'),
             ],
           ),
         ),
@@ -59,11 +68,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             GoRouter.of(context).push(AppRoutes.search.fullPath);
           },
-          icon: SdIcon(iconData: Ionicons.search),
+          icon: SdIcon(
+            iconData: Ionicons.search,
+            color: context.colorTheme.iconPrimary,
+          ),
         ),
         IconButton(
           onPressed: () {},
-          icon: SdIcon(iconData: Ionicons.notifications_outline),
+          icon: SdIcon(
+            iconData: Ionicons.notifications_outline,
+            color: context.colorTheme.iconPrimary,
+          ),
         ),
       ],
     );
