@@ -14,7 +14,7 @@ class BannerCarouselController extends Cubit<BannerCarouselState> {
   Future getData() async {
     emit(BannerCarouselLoading());
 
-    await SdHelper.delay(milliseconds: 1000);
+    await SdHelper.delayLoading();
 
     emit(BannerCarouselSuccess(banners: MockData.banners));
   }

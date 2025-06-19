@@ -9,6 +9,7 @@ import 'package:system_design_flutter/index.dart';
 import 'cubit/banner_carousel_controller.dart';
 
 final kBannerHeight = 150.sp;
+final kBannerBorderRadius = SdSpacing.s12;
 
 class BannerCarousel extends StatelessWidget {
   const BannerCarousel({super.key});
@@ -43,7 +44,10 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
           current is BannerCarouselLoading || current is BannerCarouselSuccess,
       builder: (context, state) {
         if (state is BannerCarouselLoading) {
-          return SdSkeleton(height: kBannerHeight);
+          return SdSkeleton(
+            height: kBannerHeight,
+            borderRadius: kBannerBorderRadius,
+          );
         } else if (state is BannerCarouselSuccess) {
           return Column(
             children: [
@@ -57,7 +61,9 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
                   return Stack(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(SdSpacing.s12),
+                        borderRadius: BorderRadius.circular(
+                          kBannerBorderRadius,
+                        ),
                         child: Image.asset(
                           banner.imageUrl,
                           fit: BoxFit.cover,
