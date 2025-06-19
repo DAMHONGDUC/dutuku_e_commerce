@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(tabController: _tabController),
-      backgroundColor: context.appThemeColor.bgPrimary,
+      backgroundColor: context.colorTheme.bgPrimary,
       body: TabBarView(
         controller: _tabController,
         children: [DashboardTab(), _CategoryTab()],

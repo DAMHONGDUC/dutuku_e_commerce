@@ -59,30 +59,26 @@ class _BannerCarouselState extends State<BannerCarousel> {
                         alignment: Alignment.center,
                         child: Text(
                           banner.tag,
-                          style: context.appTextTheme.labelMedium
-                              ?.whiteText()
+                          style: context.textTheme.body10
+                              .whiteText()
                               .wSemiBold(),
                         ),
                       ),
                       SdVerticalSpacing(),
                       Text(
                         banner.title,
-                        style: context.appTextTheme.labelLarge
-                            ?.wSemiBold()
-                            .wColor(contentColor),
+                        style: context.textTheme.body10.wSemiBold().wColor(
+                          contentColor,
+                        ),
                       ),
                       Text(
                         banner.subtitle,
-                        style: context.appTextTheme.labelMedium?.wColor(
-                          contentColor,
-                        ),
+                        style: context.textTheme.body10.wColor(contentColor),
                       ),
                       SdVerticalSpacing(),
                       Text(
                         banner.price,
-                        style: context.appTextTheme.titleMedium?.wColor(
-                          contentColor,
-                        ),
+                        style: context.textTheme.body10.wColor(contentColor),
                       ),
                     ],
                   ),

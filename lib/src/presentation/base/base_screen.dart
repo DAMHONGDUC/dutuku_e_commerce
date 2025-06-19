@@ -36,11 +36,11 @@ class BaseScreen extends StatelessWidget {
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,
           onTap: (int index) => _onItemTapped(context, index),
-          selectedLabelStyle: context.appTextTheme.labelSmall,
-          unselectedLabelStyle: context.appTextTheme.labelSmall?.copyWith(
+          selectedLabelStyle: context.textTheme.body10,
+          unselectedLabelStyle: context.textTheme.body10.copyWith(
             color: AppColors.grey,
           ),
-          backgroundColor: context.appThemeColor.bgPrimary,
+          backgroundColor: context.colorTheme.bgPrimary,
           elevation: 0.5,
           selectedItemColor: AppColors.primary,
           unselectedItemColor: AppColors.grey,
