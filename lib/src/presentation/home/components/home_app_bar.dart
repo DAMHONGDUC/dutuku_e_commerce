@@ -24,7 +24,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hi, Duc', style: context.textTheme.body10),
+              Text('Hi, Duc', style: context.textTheme.heading12),
               Text('Let go shopping', style: context.textTheme.body10),
             ],
           ),
@@ -42,12 +42,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 width: SdSpacing.s2,
                 color: AppColors.primary,
               ),
-              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
+              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s28),
             ),
             dividerColor: Colors.transparent,
             tabs: [
-              Tab(child: Text('Dashboard', style: context.textTheme.body10)),
-              Tab(child: Text('Category', style: context.textTheme.body10)),
+              Tab(child: Text('Dashboard', style: context.textTheme.heading14)),
+              Tab(child: Text('Category', style: context.textTheme.heading14)),
             ],
           ),
         ),

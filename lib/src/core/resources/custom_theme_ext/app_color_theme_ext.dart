@@ -24,8 +24,8 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   }
 
   @override
-  ThemeExtension<AppColorThemeExt> copyWith() {
-    return this;
+  ThemeExtension<AppColorThemeExt> copyWith({Color? bgPrimary}) {
+    return AppColorThemeExt(bgPrimary: bgPrimary ?? this.bgPrimary);
   }
 
   @override
@@ -33,6 +33,10 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     covariant ThemeExtension<AppColorThemeExt>? other,
     double t,
   ) {
-    return this;
+    if (other is! AppColorThemeExt) return this;
+
+    return AppColorThemeExt(
+      bgPrimary: Color.lerp(bgPrimary, other.bgPrimary, t) ?? bgPrimary,
+    );
   }
 }

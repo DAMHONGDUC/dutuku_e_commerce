@@ -51,7 +51,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                           horizontal: SdSpacing.s8,
                           vertical: SdSpacing.s4,
                         ),
-                        width: 70.sp,
+                        width: 80.sp,
                         decoration: BoxDecoration(
                           color: banner.tagType.color,
                           borderRadius: BorderRadius.circular(SdSpacing.s12),
@@ -59,17 +59,13 @@ class _BannerCarouselState extends State<BannerCarousel> {
                         alignment: Alignment.center,
                         child: Text(
                           banner.tag,
-                          style: context.textTheme.body10
-                              .whiteText()
-                              .wSemiBold(),
+                          style: context.textTheme.heading12.whiteText(),
                         ),
                       ),
                       SdVerticalSpacing(),
                       Text(
                         banner.title,
-                        style: context.textTheme.body10.wSemiBold().wColor(
-                          contentColor,
-                        ),
+                        style: context.textTheme.heading14.wColor(contentColor),
                       ),
                       Text(
                         banner.subtitle,
@@ -78,7 +74,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                       SdVerticalSpacing(),
                       Text(
                         banner.price,
-                        style: context.textTheme.body10.wColor(contentColor),
+                        style: context.textTheme.heading14.wColor(contentColor),
                       ),
                     ],
                   ),

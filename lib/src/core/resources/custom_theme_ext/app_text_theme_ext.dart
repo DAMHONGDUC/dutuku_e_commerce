@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:system_design_flutter/index.dart';
 
 class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
@@ -58,7 +59,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
     required this.body56,
     required this.body64,
     required this.body72,
-
     // Heading styles
     required this.heading6,
     required this.heading8,
@@ -80,89 +80,99 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
     required this.heading72,
   });
 
-  // Light theme text styles
-  static AppTextThemeExt light() {
-    return AppTextThemeExt(
-      // Body styles
-      body6: SdTextStyle.body6(),
-      body8: SdTextStyle.body8(),
-      body9: SdTextStyle.body9(),
-      body10: SdTextStyle.body10(),
-      body12: SdTextStyle.body12(),
-      body14: SdTextStyle.body14(),
-      body16: SdTextStyle.body16(),
-      body18: SdTextStyle.body18(),
-      body20: SdTextStyle.body20(),
-      body24: SdTextStyle.body24(),
-      body32: SdTextStyle.body32(),
-      body40: SdTextStyle.body40(),
-      body48: SdTextStyle.body48(),
-      body56: SdTextStyle.body56(),
-      body64: SdTextStyle.body64(),
-      body72: SdTextStyle.body72(),
-
-      // Heading styles
-      heading6: SdTextStyle.heading6(),
-      heading8: SdTextStyle.heading8(),
-      heading9: SdTextStyle.heading9(),
-      heading10: SdTextStyle.heading10(),
-      heading12: SdTextStyle.heading12(),
-      heading13: SdTextStyle.heading13(),
-      heading14: SdTextStyle.heading14(),
-      heading16: SdTextStyle.heading16(),
-      heading18: SdTextStyle.heading18(),
-      heading20: SdTextStyle.heading20(),
-      heading24: SdTextStyle.heading24(),
-      heading28: SdTextStyle.heading28(),
-      heading32: SdTextStyle.heading32(),
-      heading40: SdTextStyle.heading40(),
-      heading48: SdTextStyle.heading48(),
-      heading56: SdTextStyle.heading56(),
-      heading64: SdTextStyle.heading64(),
-      heading72: SdTextStyle.heading72(),
+  static TextStyle _applyFont(TextStyle style) {
+    return GoogleFonts.lato(
+      fontSize: style.fontSize,
+      fontWeight: style.fontWeight,
+      color: style.color,
     );
   }
 
-  // Dark theme text styles (with adjusted colors for dark theme)
-  static AppTextThemeExt dark() {
+  // Light theme
+  static AppTextThemeExt light() {
+    final lightTextColor = SdColors.black;
+
     return AppTextThemeExt(
       // Body styles
-      body6: SdTextStyle.body6().wColor(SdColors.white),
-      body8: SdTextStyle.body8().wColor(SdColors.white),
-      body9: SdTextStyle.body9().wColor(SdColors.white),
-      body10: SdTextStyle.body10().wColor(SdColors.white),
-      body12: SdTextStyle.body12().wColor(SdColors.white),
-      body14: SdTextStyle.body14().wColor(SdColors.white),
-      body16: SdTextStyle.body16().wColor(SdColors.white),
-      body18: SdTextStyle.body18().wColor(SdColors.white),
-      body20: SdTextStyle.body20().wColor(SdColors.white),
-      body24: SdTextStyle.body24().wColor(SdColors.white),
-      body32: SdTextStyle.body32().wColor(SdColors.white),
-      body40: SdTextStyle.body40().wColor(SdColors.white),
-      body48: SdTextStyle.body48().wColor(SdColors.white),
-      body56: SdTextStyle.body56().wColor(SdColors.white),
-      body64: SdTextStyle.body64().wColor(SdColors.white),
-      body72: SdTextStyle.body72().wColor(SdColors.white),
-
+      body6: _applyFont(SdTextStyle.body6().wColor(lightTextColor)),
+      body8: _applyFont(SdTextStyle.body8().wColor(lightTextColor)),
+      body9: _applyFont(SdTextStyle.body9().wColor(lightTextColor)),
+      body10: _applyFont(SdTextStyle.body10().wColor(lightTextColor)),
+      body12: _applyFont(SdTextStyle.body12().wColor(lightTextColor)),
+      body14: _applyFont(SdTextStyle.body14().wColor(lightTextColor)),
+      body16: _applyFont(SdTextStyle.body16().wColor(lightTextColor)),
+      body18: _applyFont(SdTextStyle.body18().wColor(lightTextColor)),
+      body20: _applyFont(SdTextStyle.body20().wColor(lightTextColor)),
+      body24: _applyFont(SdTextStyle.body24().wColor(lightTextColor)),
+      body32: _applyFont(SdTextStyle.body32().wColor(lightTextColor)),
+      body40: _applyFont(SdTextStyle.body40().wColor(lightTextColor)),
+      body48: _applyFont(SdTextStyle.body48().wColor(lightTextColor)),
+      body56: _applyFont(SdTextStyle.body56().wColor(lightTextColor)),
+      body64: _applyFont(SdTextStyle.body64().wColor(lightTextColor)),
+      body72: _applyFont(SdTextStyle.body72().wColor(lightTextColor)),
       // Heading styles
-      heading6: SdTextStyle.heading6().wColor(SdColors.white),
-      heading8: SdTextStyle.heading8().wColor(SdColors.white),
-      heading9: SdTextStyle.heading9().wColor(SdColors.white),
-      heading10: SdTextStyle.heading10().wColor(SdColors.white),
-      heading12: SdTextStyle.heading12().wColor(SdColors.white),
-      heading13: SdTextStyle.heading13().wColor(SdColors.white),
-      heading14: SdTextStyle.heading14().wColor(SdColors.white),
-      heading16: SdTextStyle.heading16().wColor(SdColors.white),
-      heading18: SdTextStyle.heading18().wColor(SdColors.white),
-      heading20: SdTextStyle.heading20().wColor(SdColors.white),
-      heading24: SdTextStyle.heading24().wColor(SdColors.white),
-      heading28: SdTextStyle.heading28().wColor(SdColors.white),
-      heading32: SdTextStyle.heading32().wColor(SdColors.white),
-      heading40: SdTextStyle.heading40().wColor(SdColors.white),
-      heading48: SdTextStyle.heading48().wColor(SdColors.white),
-      heading56: SdTextStyle.heading56().wColor(SdColors.white),
-      heading64: SdTextStyle.heading64().wColor(SdColors.white),
-      heading72: SdTextStyle.heading72().wColor(SdColors.white),
+      heading6: _applyFont(SdTextStyle.heading6().wColor(lightTextColor)),
+      heading8: _applyFont(SdTextStyle.heading8().wColor(lightTextColor)),
+      heading9: _applyFont(SdTextStyle.heading9().wColor(lightTextColor)),
+      heading10: _applyFont(SdTextStyle.heading10().wColor(lightTextColor)),
+      heading12: _applyFont(SdTextStyle.heading12().wColor(lightTextColor)),
+      heading13: _applyFont(SdTextStyle.heading13().wColor(lightTextColor)),
+      heading14: _applyFont(SdTextStyle.heading14().wColor(lightTextColor)),
+      heading16: _applyFont(SdTextStyle.heading16().wColor(lightTextColor)),
+      heading18: _applyFont(SdTextStyle.heading18().wColor(lightTextColor)),
+      heading20: _applyFont(SdTextStyle.heading20().wColor(lightTextColor)),
+      heading24: _applyFont(SdTextStyle.heading24().wColor(lightTextColor)),
+      heading28: _applyFont(SdTextStyle.heading28().wColor(lightTextColor)),
+      heading32: _applyFont(SdTextStyle.heading32().wColor(lightTextColor)),
+      heading40: _applyFont(SdTextStyle.heading40().wColor(lightTextColor)),
+      heading48: _applyFont(SdTextStyle.heading48().wColor(lightTextColor)),
+      heading56: _applyFont(SdTextStyle.heading56().wColor(lightTextColor)),
+      heading64: _applyFont(SdTextStyle.heading64().wColor(lightTextColor)),
+      heading72: _applyFont(SdTextStyle.heading72().wColor(lightTextColor)),
+    );
+  }
+
+  // Dark theme
+  static AppTextThemeExt dark() {
+    final darkTextColor = SdColors.white;
+
+    return AppTextThemeExt(
+      // Body styles
+      body6: _applyFont(SdTextStyle.body6().wColor(darkTextColor)),
+      body8: _applyFont(SdTextStyle.body8().wColor(darkTextColor)),
+      body9: _applyFont(SdTextStyle.body9().wColor(darkTextColor)),
+      body10: _applyFont(SdTextStyle.body10().wColor(darkTextColor)),
+      body12: _applyFont(SdTextStyle.body12().wColor(darkTextColor)),
+      body14: _applyFont(SdTextStyle.body14().wColor(darkTextColor)),
+      body16: _applyFont(SdTextStyle.body16().wColor(darkTextColor)),
+      body18: _applyFont(SdTextStyle.body18().wColor(darkTextColor)),
+      body20: _applyFont(SdTextStyle.body20().wColor(darkTextColor)),
+      body24: _applyFont(SdTextStyle.body24().wColor(darkTextColor)),
+      body32: _applyFont(SdTextStyle.body32().wColor(darkTextColor)),
+      body40: _applyFont(SdTextStyle.body40().wColor(darkTextColor)),
+      body48: _applyFont(SdTextStyle.body48().wColor(darkTextColor)),
+      body56: _applyFont(SdTextStyle.body56().wColor(darkTextColor)),
+      body64: _applyFont(SdTextStyle.body64().wColor(darkTextColor)),
+      body72: _applyFont(SdTextStyle.body72().wColor(darkTextColor)),
+      // Heading styles
+      heading6: _applyFont(SdTextStyle.heading6().wColor(darkTextColor)),
+      heading8: _applyFont(SdTextStyle.heading8().wColor(darkTextColor)),
+      heading9: _applyFont(SdTextStyle.heading9().wColor(darkTextColor)),
+      heading10: _applyFont(SdTextStyle.heading10().wColor(darkTextColor)),
+      heading12: _applyFont(SdTextStyle.heading12().wColor(darkTextColor)),
+      heading13: _applyFont(SdTextStyle.heading13().wColor(darkTextColor)),
+      heading14: _applyFont(SdTextStyle.heading14().wColor(darkTextColor)),
+      heading16: _applyFont(SdTextStyle.heading16().wColor(darkTextColor)),
+      heading18: _applyFont(SdTextStyle.heading18().wColor(darkTextColor)),
+      heading20: _applyFont(SdTextStyle.heading20().wColor(darkTextColor)),
+      heading24: _applyFont(SdTextStyle.heading24().wColor(darkTextColor)),
+      heading28: _applyFont(SdTextStyle.heading28().wColor(darkTextColor)),
+      heading32: _applyFont(SdTextStyle.heading32().wColor(darkTextColor)),
+      heading40: _applyFont(SdTextStyle.heading40().wColor(darkTextColor)),
+      heading48: _applyFont(SdTextStyle.heading48().wColor(darkTextColor)),
+      heading56: _applyFont(SdTextStyle.heading56().wColor(darkTextColor)),
+      heading64: _applyFont(SdTextStyle.heading64().wColor(darkTextColor)),
+      heading72: _applyFont(SdTextStyle.heading72().wColor(darkTextColor)),
     );
   }
 
@@ -185,7 +195,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
     TextStyle? body56,
     TextStyle? body64,
     TextStyle? body72,
-
     // Heading styles
     TextStyle? heading6,
     TextStyle? heading8,
@@ -224,7 +233,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       body56: body56 ?? this.body56,
       body64: body64 ?? this.body64,
       body72: body72 ?? this.body72,
-
       // Heading styles
       heading6: heading6 ?? this.heading6,
       heading8: heading8 ?? this.heading8,
@@ -272,7 +280,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       body56: TextStyle.lerp(body56, other.body56, t)!,
       body64: TextStyle.lerp(body64, other.body64, t)!,
       body72: TextStyle.lerp(body72, other.body72, t)!,
-
       // Heading styles
       heading6: TextStyle.lerp(heading6, other.heading6, t)!,
       heading8: TextStyle.lerp(heading8, other.heading8, t)!,
