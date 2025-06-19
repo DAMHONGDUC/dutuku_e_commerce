@@ -12,3 +12,6 @@ export './l10n/l10n.dart';
 
 // enums
 export './enums/enums.dart';
+
+// mock
+export './mock/mock_data.dart';
