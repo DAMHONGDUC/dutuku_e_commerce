@@ -3,8 +3,8 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:dutuku_e_commerce/src/presentation/home/banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
 
-class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+class DashboardTab extends StatelessWidget {
+  DashboardTab({super.key});
 
   final List<BannerItem> banners = [
     BannerItem(

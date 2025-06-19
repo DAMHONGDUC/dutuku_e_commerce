@@ -46,7 +46,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             dividerColor: Colors.transparent,
             tabs: [
-              Tab(child: Text('Home', style: context.appTextTheme.titleSmall)),
+              Tab(
+                child: Text(
+                  'Dashboard',
+                  style: context.appTextTheme.titleSmall,
+                ),
+              ),
               Tab(
                 child: Text('Category', style: context.appTextTheme.titleSmall),
               ),

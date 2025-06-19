@@ -3,7 +3,7 @@ import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
-import 'home_tab/home_tab.dart';
+import 'dashboard_tab/dashboard_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen>
       backgroundColor: context.appThemeColor.bgPrimary,
       body: TabBarView(
         controller: _tabController,
-        children: [HomeTab(), _CategoryTab()],
+        children: [DashboardTab(), _CategoryTab()],
       ),
     );
   }

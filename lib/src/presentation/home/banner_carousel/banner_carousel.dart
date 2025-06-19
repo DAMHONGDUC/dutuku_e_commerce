@@ -110,8 +110,8 @@ class _BannerCarouselState extends State<BannerCarousel> {
             return GestureDetector(
               onTap: () => _controller.animateToPage(entry.key),
               child: Container(
-                width: SdSpacing.s7,
-                height: SdSpacing.s7,
+                width: SdSpacing.s6,
+                height: SdSpacing.s6,
                 margin: EdgeInsets.symmetric(horizontal: SdSpacing.s4),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
