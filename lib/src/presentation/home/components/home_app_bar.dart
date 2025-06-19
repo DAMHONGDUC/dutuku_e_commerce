@@ -1,6 +1,7 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
 final _kHomeTabbarSpacing = SdSpacing.s10;
@@ -25,7 +26,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Hi, Duc', style: context.textTheme.heading12),
-              Text('Let go shopping', style: context.textTheme.body10),
+              Text('Let go shopping', style: context.textTheme.body12),
             ],
           ),
         ],
@@ -58,11 +59,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             GoRouter.of(context).push(AppRoutes.search.fullPath);
           },
-          icon: SdIcon(iconData: Icons.search),
+          icon: SdIcon(iconData: Ionicons.search),
         ),
         IconButton(
           onPressed: () {},
-          icon: SdIcon(iconData: Icons.notifications),
+          icon: SdIcon(iconData: Ionicons.notifications_outline),
         ),
       ],
     );

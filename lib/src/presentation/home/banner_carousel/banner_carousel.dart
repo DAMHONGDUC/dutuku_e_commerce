@@ -65,7 +65,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                       SdVerticalSpacing(),
                       Text(
                         banner.title,
-                        style: context.textTheme.heading14.wColor(contentColor),
+                        style: context.textTheme.heading12.wColor(contentColor),
                       ),
                       Text(
                         banner.subtitle,
@@ -74,7 +74,9 @@ class _BannerCarouselState extends State<BannerCarousel> {
                       SdVerticalSpacing(),
                       Text(
                         banner.price,
-                        style: context.textTheme.heading14.wColor(contentColor),
+                        style: context.textTheme.heading14
+                            .wColor(contentColor)
+                            .wBold(),
                       ),
                     ],
                   ),
