@@ -2,6 +2,8 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:system_design_flutter/index.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'product_grid_controller.dart';
 
@@ -20,16 +22,13 @@ class ProductGrid extends StatelessWidget {
           if (state is ProductGridLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ProductGridLoaded) {
-            return GridView.builder(
+            return MasonryGridView.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: SdSpacing.s16,
+              crossAxisSpacing: SdSpacing.s16,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: state.products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.7,
-              ),
               itemBuilder: (context, index) {
                 final product = state.products[index];
                 return ProductCard(product: product);

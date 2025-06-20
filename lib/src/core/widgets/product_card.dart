@@ -1,5 +1,10 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:system_design_flutter/index.dart';
+
+final kImageSize = 150.sp;
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -8,32 +13,91 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      decoration: BoxDecoration(
+        color: context.colorTheme.bgPrimary,
+        borderRadius: BorderRadius.circular(SdSpacing.s12),
+        boxShadow: [
+          BoxShadow(
+            color: SdColors.black12,
+            blurRadius: SdSpacing.s12,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: kImageSize,
+            child: _CardImageView(imageUrl: product.imageUrl),
+          ),
+          // Dynamic content area
+          Container(
+            padding: EdgeInsets.all(SdSpacing.s10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(product.name, style: context.textTheme.heading12),
+                SizedBox(height: SdSpacing.s2),
+                Text(
+                  product.brand,
+                  style: context.textTheme.body10.wColor(
+                    context.colorTheme.textSubTitle,
+                  ),
+                ),
+                SizedBox(height: SdSpacing.s6),
+                Text(
+                  '\$${product.price.toStringAsFixed(2)}',
+                  style: context.textTheme.heading12.wBold(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CardImageView extends StatelessWidget {
+  const _CardImageView({required this.imageUrl});
+
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: [
-        Stack(
-          children: [
-            AspectRatio(
-              aspectRatio: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(product.imageUrl, fit: BoxFit.cover),
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(SdSpacing.s12),
+            image: DecorationImage(
+              image: AssetImage(imageUrl),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 8,
+          right: 8,
+          child: Container(
+            decoration: BoxDecoration(
+              color: SdColors.grey900,
+              borderRadius: BorderRadius.all(Radius.circular(SdSpacing.s100)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(SdSpacing.s6),
+              child: SdIcon(
+                iconData: Icons.favorite_border,
+                color: SdColors.white,
+                iconSize: SdSpacing.s16,
               ),
             ),
-            Positioned(
-              top: 8,
-              right: 8,
-              child: Icon(Icons.favorite_border, color: Colors.grey.shade600),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-        Text(product.brand, style: const TextStyle(color: Colors.grey)),
-        const SizedBox(height: 4),
-        Text(
-          '\$${product.price.toStringAsFixed(2)}',
-          style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );

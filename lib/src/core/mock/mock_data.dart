@@ -54,5 +54,29 @@ class MockData {
       price: 143.45,
       imageUrl: 'assets/images/banner_4.png',
     ),
+    Product(
+      name: 'The Mirac Jiz',
+      brand: 'Lisa Robber',
+      price: 195.00,
+      imageUrl: 'assets/images/banner_4.png',
+    ),
+    Product(
+      name: 'Meriza Kiles',
+      brand: 'Gazuna Resika',
+      price: 143.45,
+      imageUrl: 'assets/images/banner_4.png',
+    ),
+    Product(
+      name: 'The Mirac Jiz',
+      brand: 'Lisa Robber',
+      price: 195.00,
+      imageUrl: 'assets/images/banner_4.png',
+    ),
+    Product(
+      name: 'Meriza Kiles',
+      brand: 'Gazuna Resika',
+      price: 143.45,
+      imageUrl: 'assets/images/banner_4.png',
+    ),
   ];
 }

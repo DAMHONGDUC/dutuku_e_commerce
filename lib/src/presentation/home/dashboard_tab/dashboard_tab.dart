@@ -10,15 +10,27 @@ class DashboardTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-      children: [
-        BannerCarousel(),
-        SdVerticalSpacing(),
-        const SectionHeader(title: 'New Arrivals 🔥', actionText: 'See All'),
-        SdVerticalSpacing(),
-        ProductGrid(),
-      ],
+    return Container(
+      padding: EdgeInsets.only(
+        left: SdSpacing.s12,
+        right: SdSpacing.s12,
+        top: SdSpacing.s16,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            BannerCarousel(),
+            SdVerticalSpacing(),
+            const SectionHeader(
+              title: 'New Arrivals 🔥',
+              actionText: 'See All',
+            ),
+            SdVerticalSpacing(),
+            ProductGrid(),
+            SdVerticalSpacing(),
+          ],
+        ),
+      ),
     );
   }
 }

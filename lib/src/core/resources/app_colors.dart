@@ -13,8 +13,8 @@ class AppColors {
   static const Color primary = Color(0xFF504EB7);
 
   // Text
-  static const Color textTitleLight = Color(0xFF1A1A1A);
-  static final Color textSubTitleLight = SdColors.grey800;
+  static const Color textTitleLight = Color(0xFF000000);
+  static final Color textSubTitleLight = Color(0xFFa7a9af);
   static final Color textTitleDark = SdColors.grey100;
   static final Color textSubTitleDark = SdColors.grey200;
 

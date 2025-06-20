@@ -1,4 +1,6 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -17,13 +19,13 @@ class SectionHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
+        Text(title, style: context.textTheme.heading14),
         GestureDetector(
           onTap: onActionTap,
-          child: Text(actionText, style: const TextStyle(color: Colors.blue)),
+          child: Text(
+            actionText,
+            style: context.textTheme.heading10.wColor(AppColors.primary),
+          ),
         ),
       ],
     );
