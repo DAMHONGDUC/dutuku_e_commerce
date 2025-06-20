@@ -1,9 +1,9 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/dashboard_tab/banner_carousel/banner_carousel.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/dashboard_tab/banner_carousel_section/banner_carousel_section.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
-import 'product_grid/product_grid.dart';
+import 'product_grid_section/product_grid_section.dart';
 
 class DashboardTab extends StatelessWidget {
   const DashboardTab({super.key});
@@ -19,14 +19,17 @@ class DashboardTab extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            BannerCarousel(),
+            // banner section
+            BannerCarouselSection(),
             SdVerticalSpacing(),
+
+            // product section
             const SectionHeader(
               title: 'New Arrivals 🔥',
               actionText: 'See All',
             ),
             SdVerticalSpacing(),
-            ProductGrid(),
+            ProductGridSection(),
             SdVerticalSpacing(),
           ],
         ),

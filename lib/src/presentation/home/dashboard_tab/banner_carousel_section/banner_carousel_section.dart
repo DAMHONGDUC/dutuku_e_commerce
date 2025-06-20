@@ -11,8 +11,8 @@ import 'banner_carousel_controller.dart';
 final kBannerHeight = 150.sp;
 final kBannerBorderRadius = SdSpacing.s12;
 
-class BannerCarousel extends StatelessWidget {
-  const BannerCarousel({super.key});
+class BannerCarouselSection extends StatelessWidget {
+  const BannerCarouselSection({super.key});
 
   @override
   Widget build(BuildContext context) {

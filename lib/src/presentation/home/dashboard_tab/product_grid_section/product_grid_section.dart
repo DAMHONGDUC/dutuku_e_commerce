@@ -7,8 +7,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'product_grid_controller.dart';
 
-class ProductGrid extends StatelessWidget {
-  const ProductGrid({super.key});
+class ProductGridSection extends StatelessWidget {
+  const ProductGridSection({super.key});
 
   @override
   Widget build(BuildContext context) {
