@@ -5,11 +5,22 @@ import 'package:system_design_flutter/index.dart';
 import 'banner_carousel_section/banner_carousel_section.dart';
 import 'product_grid_section/product_grid_section.dart';
 
-class DashboardTab extends StatelessWidget {
+class DashboardTab extends StatefulWidget {
   const DashboardTab({super.key});
 
   @override
+  State<DashboardTab> createState() => _DashboardTabState();
+}
+
+class _DashboardTabState extends State<DashboardTab>
+    with AutomaticKeepAliveClientMixin<DashboardTab> {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Container(
       padding: EdgeInsets.only(
         left: SdSpacing.s12,
