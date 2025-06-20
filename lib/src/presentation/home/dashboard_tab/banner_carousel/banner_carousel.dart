@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:system_design_flutter/index.dart';
 
-import 'cubit/banner_carousel_controller.dart';
+import 'banner_carousel_controller.dart';
 
 final kBannerHeight = 150.sp;
 final kBannerBorderRadius = SdSpacing.s12;

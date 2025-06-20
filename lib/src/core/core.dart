@@ -15,3 +15,6 @@ export './enums/enums.dart';
 
 // mock
 export './mock/mock_data.dart';
+
+// widgets
+export './widgets/widgets.dart';
