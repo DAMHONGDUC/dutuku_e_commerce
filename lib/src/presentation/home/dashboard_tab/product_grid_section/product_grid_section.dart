@@ -16,11 +16,11 @@ class ProductGridSection extends StatelessWidget {
       create: (context) => getIt<ProductGridController>()..fetchProducts(),
       child: BlocConsumer<ProductGridController, ProductGridState>(
         listener: (context, state) {
-          // TODO: implement listener
+          // TODO: implement listener if need
         },
         builder: (context, state) {
           if (state is ProductGridLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return _ProductGridSkeleton();
           } else if (state is ProductGridLoaded) {
             return MasonryGridView.count(
               crossAxisCount: 2,
@@ -39,6 +39,28 @@ class ProductGridSection extends StatelessWidget {
           return const SizedBox.shrink();
         },
       ),
+    );
+  }
+}
+
+class _ProductGridSkeleton extends StatelessWidget {
+  const _ProductGridSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 4,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        childAspectRatio: 0.7,
+      ),
+      itemBuilder: (context, index) {
+        return const ProductCardSkeleton();
+      },
     );
   }
 }

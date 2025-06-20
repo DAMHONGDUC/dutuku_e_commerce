@@ -38,16 +38,13 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
   Widget build(BuildContext context) {
     return BlocConsumer<BannerCarouselController, BannerCarouselState>(
       listener: (context, state) {
-        // TODO: implement listener
+        // TODO: implement listener if need
       },
       buildWhen: (previous, current) =>
           current is BannerCarouselLoading || current is BannerCarouselSuccess,
       builder: (context, state) {
         if (state is BannerCarouselLoading) {
-          return SdSkeleton(
-            height: kBannerHeight,
-            borderRadius: kBannerBorderRadius,
-          );
+          return _BannerSkeleton();
         } else if (state is BannerCarouselSuccess) {
           return Column(
             children: [
@@ -135,24 +132,15 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
                 ),
               ),
               const SdVerticalSpacing(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: state.banners.asMap().entries.map((entry) {
-                  return GestureDetector(
-                    onTap: () => _controller.animateToPage(entry.key),
-                    child: Container(
-                      width: SdSpacing.s6,
-                      height: SdSpacing.s6,
-                      margin: EdgeInsets.symmetric(horizontal: SdSpacing.s4),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _current == entry.key
-                            ? AppColors.primary
-                            : AppColors.grey,
-                      ),
-                    ),
-                  );
-                }).toList(),
+              _BannerIndicator(
+                length: state.banners.length,
+                onTap: (index) => _controller.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                ),
+                colorBuilder: (index) =>
+                    index == _current ? AppColors.primary : AppColors.grey,
               ),
             ],
           );
@@ -160,6 +148,54 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
 
         return SizedBox.shrink();
       },
+    );
+  }
+}
+
+class _BannerIndicator extends StatelessWidget {
+  final int length;
+  final void Function(int index)? onTap;
+  final Color Function(int index)? colorBuilder;
+
+  const _BannerIndicator({
+    required this.length,
+    this.onTap,
+    this.colorBuilder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(length, (index) {
+        return GestureDetector(
+          onTap: () => onTap?.call(index),
+          child: Container(
+            width: SdSpacing.s6,
+            height: SdSpacing.s6,
+            margin: EdgeInsets.symmetric(horizontal: SdSpacing.s4),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: colorBuilder?.call(index),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+class _BannerSkeleton extends StatelessWidget {
+  const _BannerSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SdSkeleton(height: kBannerHeight, borderRadius: kBannerBorderRadius),
+        const SdVerticalSpacing(),
+        _BannerIndicator(length: 4, colorBuilder: (index) => AppColors.grey),
+      ],
     );
   }
 }

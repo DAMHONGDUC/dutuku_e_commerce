@@ -14,6 +14,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(SdSpacing.s8),
       decoration: BoxDecoration(
         color: context.colorTheme.bgPrimary,
         borderRadius: BorderRadius.circular(SdSpacing.s12),
@@ -29,31 +30,30 @@ class ProductCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // image
           SizedBox(
             height: kImageSize,
             child: _CardImageView(imageUrl: product.imageUrl),
           ),
-          // Dynamic content area
-          Container(
-            padding: EdgeInsets.all(SdSpacing.s10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(product.name, style: context.textTheme.heading12),
-                SizedBox(height: SdSpacing.s2),
-                Text(
-                  product.brand,
-                  style: context.textTheme.body10.wColor(
-                    context.colorTheme.textSubTitle,
-                  ),
-                ),
-                SizedBox(height: SdSpacing.s6),
-                Text(
-                  '\$${product.price.toStringAsFixed(2)}',
-                  style: context.textTheme.heading12.wBold(),
-                ),
-              ],
+          SizedBox(height: SdSpacing.s8),
+
+          // name
+          Text(product.name, style: context.textTheme.heading12),
+          SizedBox(height: SdSpacing.s2),
+
+          // band
+          Text(
+            product.brand,
+            style: context.textTheme.body10.wColor(
+              context.colorTheme.textSubTitle,
             ),
+          ),
+          SizedBox(height: SdSpacing.s6),
+
+          // price
+          Text(
+            '\$${product.price.toStringAsFixed(2)}',
+            style: context.textTheme.heading12.wBold(),
           ),
         ],
       ),
@@ -74,7 +74,7 @@ class _CardImageView extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SdSpacing.s12),
+            borderRadius: BorderRadius.circular(SdSpacing.s8),
             image: DecorationImage(
               image: AssetImage(imageUrl),
               fit: BoxFit.cover,

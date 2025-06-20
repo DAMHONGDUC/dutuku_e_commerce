@@ -17,6 +17,8 @@ class DashboardTab extends StatelessWidget {
         top: SdSpacing.s16,
       ),
       child: SingleChildScrollView(
+        // use this bacause we lost shadow of the product card
+        clipBehavior: Clip.none,
         child: Column(
           children: [
             // banner section

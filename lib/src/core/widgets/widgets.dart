@@ -1,3 +1,6 @@
-export './section_header.dart';
+// product card
+export 'product_card/product_card.dart';
+export './product_card/product_card_skeleton.dart';
 
-export './product_card.dart';
+// misc
+export 'misc/section_header.dart';

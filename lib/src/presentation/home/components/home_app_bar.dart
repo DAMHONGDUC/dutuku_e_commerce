@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
-final _kHomeTabbarSpacing = SdSpacing.s4;
-
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
 
@@ -36,31 +34,22 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(kTextTabBarHeight + _kHomeTabbarSpacing),
-        child: Padding(
-          padding: EdgeInsets.only(top: _kHomeTabbarSpacing),
-          child: TabBar(
-            controller: tabController,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(
-                width: SdSpacing.s2,
-                color: AppColors.primary,
-              ),
-              insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
-            ),
-            dividerColor: SdColors.transparent,
-            labelColor: AppColors.primary,
-            unselectedLabelColor: context.colorTheme.textSubTitle,
-            labelStyle: context.textTheme.heading14,
-            unselectedLabelStyle: context.textTheme.heading14,
-            tabs: const [
-              Tab(text: 'Dashboard'),
-              Tab(text: 'Category'),
-            ],
-          ),
+      bottom: TabBar(
+        controller: tabController,
+        indicatorSize: TabBarIndicatorSize.tab,
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(width: SdSpacing.s2, color: AppColors.primary),
+          insets: EdgeInsets.symmetric(horizontal: SdSpacing.s32),
         ),
+        dividerColor: SdColors.transparent,
+        labelColor: AppColors.primary,
+        unselectedLabelColor: context.colorTheme.textSubTitle,
+        labelStyle: context.textTheme.heading14,
+        unselectedLabelStyle: context.textTheme.heading14,
+        tabs: const [
+          Tab(text: 'Dashboard'),
+          Tab(text: 'Category'),
+        ],
       ),
       noElevation: true,
       actions: [
@@ -85,6 +74,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight + kTextTabBarHeight + _kHomeTabbarSpacing);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + kTextTabBarHeight);
 }
