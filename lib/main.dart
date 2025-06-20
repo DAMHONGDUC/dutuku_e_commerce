@@ -11,7 +11,7 @@ void main() async {
   await initialisation();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
-  runApp(MainApp(savedThemeMode: savedThemeMode));
+  runApp(SdScreenUtil(child: MainApp(savedThemeMode: savedThemeMode)));
 }
 
 Future<void> initialisation() async {

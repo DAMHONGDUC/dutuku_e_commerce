@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'app_theme_color.dart';
+import 'custom_theme_ext/app_color_theme_ext.dart';
+import 'custom_theme_ext/app_text_theme_ext.dart';
 
 class AppTheme {
   static ThemeData buildLightTheme() {
-    var baseTheme = ThemeData(brightness: Brightness.light);
+    final baseTheme = ThemeData(brightness: Brightness.light);
 
     return baseTheme.copyWith(
       textTheme: GoogleFonts.latoTextTheme(baseTheme.textTheme),
-      extensions: [AppThemeColor.light()],
+      extensions: [AppColorThemeExt.light(), AppTextThemeExt.light()],
     );
   }
 
   static ThemeData buildDarkTheme() {
-    var baseTheme = ThemeData(brightness: Brightness.dark);
+    final baseTheme = ThemeData(brightness: Brightness.dark);
 
     return baseTheme.copyWith(
       textTheme: GoogleFonts.latoTextTheme(baseTheme.textTheme),
-      extensions: [AppThemeColor.dark()],
+      extensions: [AppColorThemeExt.dark(), AppTextThemeExt.dark()],
     );
   }
 }

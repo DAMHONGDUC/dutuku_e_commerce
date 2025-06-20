@@ -1,72 +1,105 @@
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:system_design_flutter/index.dart';
 
 class BaseScreen extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   const BaseScreen({super.key, required this.navigationShell});
+
+  Widget _buildIcon({
+    required bool isSelected,
+    required IconData iconSelected,
+    required IconData icon,
+  }) {
+    return SdIcon(
+      iconData: isSelected ? iconSelected : icon,
+      color: isSelected ? AppColors.primary : AppColors.grey,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final iconPadding = EdgeInsets.only(
+      top: SdSpacing.s4,
+      bottom: SdSpacing.s4,
+    );
+
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: navigationShell.currentIndex,
-        onTap: (int index) => _onItemTapped(context, index),
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: navigationShell.currentIndex == 0
-                  ? Colors.blue
-                  : Colors.grey,
-            ),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [BoxShadow(color: SdColors.black54, blurRadius: 0.5)],
+        ),
+        child: BottomNavigationBar(
+          currentIndex: navigationShell.currentIndex,
+          onTap: (int index) => _onItemTapped(context, index),
+          selectedLabelStyle: context.textTheme.body10,
+          unselectedLabelStyle: context.textTheme.body10.copyWith(
+            color: AppColors.grey,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag,
-              color: navigationShell.currentIndex == 1
-                  ? Colors.blue
-                  : Colors.grey,
+          backgroundColor: context.colorTheme.bgPrimary,
+          elevation: 0.5,
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.grey,
+          type: BottomNavigationBarType.fixed,
+          iconSize: SdSpacing.s20,
+          items: [
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: iconPadding,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 0,
+                  icon: Ionicons.home_outline,
+                  iconSelected: Ionicons.home,
+                ),
+              ),
+              label: 'Home',
             ),
-            label: 'My Order',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: navigationShell.currentIndex == 2
-                  ? Colors.blue
-                  : Colors.grey,
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: iconPadding,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 1,
+                  icon: Icons.local_shipping_outlined,
+                  iconSelected: Icons.local_shipping,
+                ),
+              ),
+              label: 'My Order',
             ),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: navigationShell.currentIndex == 3
-                  ? Colors.blue
-                  : Colors.grey,
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: iconPadding,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 2,
+                  icon: Ionicons.heart_outline,
+                  iconSelected: Ionicons.heart,
+                ),
+              ),
+              label: 'Favorite',
             ),
-            label: 'Profile',
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: iconPadding,
+                child: _buildIcon(
+                  isSelected: navigationShell.currentIndex == 3,
+                  icon: Ionicons.person_outline,
+                  iconSelected: Ionicons.person,
+                ),
+              ),
+              label: 'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }
 
   void _onItemTapped(BuildContext context, int index) {
-    // When navigating to a new branch, it's recommended to use the goBranch
-    // method, as doing so makes sure the last navigation state of the
-    // Navigator for the branch is restored.
     navigationShell.goBranch(
       index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
       initialLocation: index == navigationShell.currentIndex,
     );
   }
