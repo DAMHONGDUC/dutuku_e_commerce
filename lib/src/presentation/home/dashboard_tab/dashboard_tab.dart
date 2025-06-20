@@ -1,8 +1,8 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/dashboard_tab/banner_carousel_section/banner_carousel_section.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
+import 'banner_carousel_section/banner_carousel_section.dart';
 import 'product_grid_section/product_grid_section.dart';
 
 class DashboardTab extends StatelessWidget {
