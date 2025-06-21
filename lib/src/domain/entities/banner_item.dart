@@ -10,6 +10,7 @@ class BannerItem extends Equatable {
   final String subtitle;
   final String price;
   final String contentColor;
+  final int id;
 
   const BannerItem({
     required this.imageUrl,
@@ -19,6 +20,7 @@ class BannerItem extends Equatable {
     required this.subtitle,
     required this.price,
     required this.contentColor,
+    required this.id,
   });
 
   @override
@@ -30,5 +32,6 @@ class BannerItem extends Equatable {
     subtitle,
     price,
     contentColor,
+    id,
   ];
 }

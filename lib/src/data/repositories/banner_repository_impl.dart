@@ -12,6 +12,6 @@ class BannerRepositoryImpl implements BannerRepository {
   Future<Either<ConfigFailure, List<BannerItem>>> getBanners() async {
     await SdHelper.delayLoading();
 
-    return Right(MockData.banners);
+    return Right(List.of(MockData.banners)..shuffle());
   }
 }
