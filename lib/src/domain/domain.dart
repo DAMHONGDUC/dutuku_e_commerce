@@ -2,7 +2,7 @@
 export './entities/entities.dart';
 
 // repositories
-export './repositories/product_repository.dart';
+export './repositories/repositories.dart';
 
 // usecases
 export './usecases/usecases.dart';
