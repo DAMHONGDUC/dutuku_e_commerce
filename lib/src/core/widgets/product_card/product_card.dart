@@ -38,7 +38,7 @@ class ProductCard extends StatelessWidget {
           SizedBox(height: SdSpacing.s8),
 
           // name
-          Text(product.name, style: context.textTheme.heading12),
+          Text(product.name, style: context.textTheme.body12),
           SizedBox(height: SdSpacing.s2),
 
           // band
@@ -53,9 +53,7 @@ class ProductCard extends StatelessWidget {
           // price
           Text(
             '\$${product.price.toStringAsFixed(2)}',
-            style: context.textTheme.heading14.wBold().wColor(
-              AppColors.primary,
-            ),
+            style: context.textTheme.heading14.wBold(),
           ),
         ],
       ),

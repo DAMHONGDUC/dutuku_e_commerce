@@ -12,6 +12,6 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<Either<ConfigFailure, List<Product>>> getRecommendProducts() async {
     await SdHelper.delayLoading();
 
-    return Right(MockData.products);
+    return Right(List.of(MockData.products)..shuffle());
   }
 }

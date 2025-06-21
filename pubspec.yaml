@@ -45,6 +45,7 @@ flutter:
     - assets/google_fonts/
     - assets/images/
     - assets/images/banner/
+    - assets/images/product/
 
 lint_staged:
   "lib/**.dart": dart format && dart fix --apply
