@@ -1,6 +1,8 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 
-class BannerItem {
+import 'package:equatable/equatable.dart';
+
+class BannerItem extends Equatable {
   final String imageUrl;
   final String tag;
   final BannerTagTypeEnum tagType;
@@ -9,7 +11,7 @@ class BannerItem {
   final String price;
   final String contentColor;
 
-  BannerItem({
+  const BannerItem({
     required this.imageUrl,
     required this.tag,
     required this.tagType,
@@ -18,4 +20,15 @@ class BannerItem {
     required this.price,
     required this.contentColor,
   });
+
+  @override
+  List<Object?> get props => [
+    imageUrl,
+    tag,
+    tagType,
+    title,
+    subtitle,
+    price,
+    contentColor,
+  ];
 }

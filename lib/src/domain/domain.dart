@@ -1,5 +1,8 @@
-// dashboard
-export 'banner/banner_item.dart';
+// entities
+export './entities/entities.dart';
 
-// product
-export './product/product.dart';
+// repositories
+export './repositories/product_repository.dart';
+
+// usecases
+export './usecases/usecases.dart';

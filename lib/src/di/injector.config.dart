@@ -12,6 +12,9 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../data/repositories/product_repository_impl.dart' as _i839;
+import '../domain/domain.dart' as _i515;
+import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
 import '../presentation/home/dashboard_tab/banner_carousel_section/banner_carousel_controller.dart'
     as _i692;
 import '../presentation/home/dashboard_tab/product_grid_section/product_grid_controller.dart'
@@ -28,10 +31,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i692.BannerCarouselController>(
       () => _i692.BannerCarouselController(),
     );
-    gh.factory<_i684.ProductGridController>(
-      () => _i684.ProductGridController(),
-    );
     gh.factory<_i509.TutorialController>(() => _i509.TutorialController());
+    gh.factory<_i515.ProductRepository>(
+      () => const _i839.ProductRepositoryImpl(),
+    );
+    gh.factory<_i243.GetRecommendProductUsecase>(
+      () => _i243.GetRecommendProductUsecase(gh<_i515.ProductRepository>()),
+    );
+    gh.factory<_i684.ProductGridController>(
+      () => _i684.ProductGridController(gh<_i515.GetRecommendProductUsecase>()),
+    );
     return this;
   }
 }

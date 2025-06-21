@@ -18,3 +18,9 @@ export './mock/mock_data.dart';
 
 // widgets
 export './widgets/widgets.dart';
+
+// error
+export './error/config_failures.dart';
+
+// usecase
+export './usecase/usecase.dart';

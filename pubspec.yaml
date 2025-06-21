@@ -13,6 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
+  dartz: ^0.10.1
   system_design_flutter:
     path: packages/system_design_flutter
   cupertino_icons: ^1.0.8
