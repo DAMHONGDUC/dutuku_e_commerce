@@ -6,10 +6,17 @@ import 'package:system_design_flutter/index.dart';
 
 final kImageSize = 150.sp;
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final Product product;
 
   const ProductCard({super.key, required this.product});
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  int selectedColorIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +40,35 @@ class ProductCard extends StatelessWidget {
           // image
           SizedBox(
             height: kImageSize,
-            child: _CardImageView(imageUrl: product.imageUrl),
+            child: _CardImageView(
+              imageUrl: widget.product.productColors.isNotEmpty
+                  ? widget.product.productColors[selectedColorIndex].imageUrl
+                  : widget.product.imageUrl,
+            ),
           ),
           SizedBox(height: SdSpacing.s8),
 
+          // color selection
+          if (widget.product.productColors.isNotEmpty)
+            _ColorSelector(
+              colors: widget.product.productColors,
+              selectedIndex: selectedColorIndex,
+              onColorSelected: (index) {
+                setState(() {
+                  selectedColorIndex = index;
+                });
+              },
+            ),
+          if (widget.product.productColors.isNotEmpty)
+            SizedBox(height: SdSpacing.s8),
+
           // name
-          Text(product.name, style: context.textTheme.body12),
+          Text(widget.product.name, style: context.textTheme.body12),
           SizedBox(height: SdSpacing.s2),
 
-          // band
+          // brand
           Text(
-            product.brand,
+            widget.product.brand,
             style: context.textTheme.body10.wColor(
               context.colorTheme.textSubTitle,
             ),
@@ -52,11 +77,63 @@ class ProductCard extends StatelessWidget {
 
           // price
           Text(
-            '\$${product.price.toStringAsFixed(2)}',
+            '\$${widget.product.price.toStringAsFixed(2)}',
             style: context.textTheme.heading14.wBold(),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ColorSelector extends StatelessWidget {
+  final List<ProductColor> colors;
+  final int selectedIndex;
+  final ValueChanged<int> onColorSelected;
+
+  const _ColorSelector({
+    required this.colors,
+    required this.selectedIndex,
+    required this.onColorSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: colors.asMap().entries.map((entry) {
+        final index = entry.key;
+        final color = entry.value;
+        final isSelected = index == selectedIndex;
+
+        return Padding(
+          padding: EdgeInsets.only(
+            right: index < colors.length - 1 ? SdSpacing.s6 : 0,
+          ),
+          child: GestureDetector(
+            onTap: () => onColorSelected(index),
+            child: Container(
+              width: SdSpacing.s20,
+              height: SdSpacing.s20,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: SdColorHelper.getColorFromHex(color.colorCode),
+              ),
+              child: isSelected
+                  ? Center(
+                      child: Container(
+                        width: SdSpacing.s8,
+                        height: SdSpacing.s8,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: SdColors.white,
+                        ),
+                      ),
+                    )
+                  : null,
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }

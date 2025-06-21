@@ -97,18 +97,22 @@ class MockData {
       imageUrl: '${kMockProductPath}p1_1.png',
       productColors: [
         ProductColor(
+          colorCode: '#2C2C2C',
           colorName: 'Onyx',
           imageUrl: '${kMockProductPath}p1_1.png',
         ),
         ProductColor(
+          colorCode: '#DAA520',
           colorName: 'Orche',
           imageUrl: '${kMockProductPath}p1_2.png',
         ),
         ProductColor(
+          colorCode: '#000000',
           colorName: 'Noir',
           imageUrl: '${kMockProductPath}p1_3.png',
         ),
         ProductColor(
+          colorCode: '#8B4513',
           colorName: 'Mocha',
           imageUrl: '${kMockProductPath}p1_4.png',
         ),
@@ -122,18 +126,22 @@ class MockData {
       imageUrl: '${kMockProductPath}p2_2.png',
       productColors: [
         ProductColor(
+          colorCode: '#2C2C2C',
           colorName: 'Onyx',
           imageUrl: '${kMockProductPath}p2_1.png',
         ),
         ProductColor(
+          colorCode: '#DAA520',
           colorName: 'Orche',
           imageUrl: '${kMockProductPath}p2_2.png',
         ),
         ProductColor(
+          colorCode: '#000000',
           colorName: 'Noir',
           imageUrl: '${kMockProductPath}p2_3.png',
         ),
         ProductColor(
+          colorCode: '#8B4513',
           colorName: 'Mocha',
           imageUrl: '${kMockProductPath}p2_4.png',
         ),
@@ -154,19 +162,27 @@ class MockData {
       imageUrl: '${kMockProductPath}p4_3.png',
       productColors: [
         ProductColor(
+          colorCode: '#2C2C2C',
           colorName: 'Onyx',
           imageUrl: '${kMockProductPath}p4_3.png',
         ),
         ProductColor(
+          colorCode: '#800020',
           colorName: 'Burgundy',
           imageUrl: '${kMockProductPath}p4_2.png',
         ),
         ProductColor(
+          colorCode: '#1F2937',
           colorName: 'Navy',
           imageUrl: '${kMockProductPath}p4_3.png',
         ),
-        ProductColor(colorName: 'Ash', imageUrl: '${kMockProductPath}p4_4.png'),
         ProductColor(
+          colorCode: '#9CA3AF',
+          colorName: 'Ash',
+          imageUrl: '${kMockProductPath}p4_4.png',
+        ),
+        ProductColor(
+          colorCode: '#F5F5DC',
           colorName: 'Cream',
           imageUrl: '${kMockProductPath}p4_5.png',
         ),
@@ -187,10 +203,12 @@ class MockData {
       imageUrl: '${kMockProductPath}p6_1.png',
       productColors: [
         ProductColor(
+          colorCode: '#8B4513',
           colorName: 'Brown',
           imageUrl: '${kMockProductPath}p6_1.png',
         ),
         ProductColor(
+          colorCode: '#D2B48C',
           colorName: 'Light Brown',
           imageUrl: '${kMockProductPath}p6_2.png',
         ),

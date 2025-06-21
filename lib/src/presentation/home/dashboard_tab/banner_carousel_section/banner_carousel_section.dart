@@ -37,9 +37,8 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
             children: [
               CarouselSlider(
                 items: state.banners.map((banner) {
-                  final hex = banner.contentColor.replaceAll('#', '');
-                  final contentColor = Color(
-                    int.parse(hex.length == 6 ? 'FF$hex' : hex, radix: 16),
+                  final contentColor = SdColorHelper.getColorFromHex(
+                    banner.contentColor,
                   );
 
                   return Stack(
