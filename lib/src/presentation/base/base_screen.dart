@@ -17,6 +17,7 @@ class BaseScreen extends StatelessWidget {
     return SdIcon(
       iconData: isSelected ? iconSelected : icon,
       color: isSelected ? AppColors.primary : AppColors.grey,
+      iconSize: SdSpacing.s18,
     );
   }
 
@@ -30,9 +31,6 @@ class BaseScreen extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [BoxShadow(color: SdColors.black54, blurRadius: 0.5)],
-        ),
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,
           onTap: (int index) => _onItemTapped(context, index),
@@ -45,7 +43,7 @@ class BaseScreen extends StatelessWidget {
           selectedItemColor: AppColors.primary,
           unselectedItemColor: AppColors.grey,
           type: BottomNavigationBarType.fixed,
-          iconSize: SdSpacing.s20,
+          iconSize: SdSpacing.s18,
           items: [
             BottomNavigationBarItem(
               icon: Padding(

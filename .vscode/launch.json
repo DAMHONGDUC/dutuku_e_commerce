@@ -17,6 +17,13 @@
       "type": "dart",
       "program": "lib/main.dart",
       "deviceId": "emulator-5554"
+    },
+    {
+      "name": "android-real",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "d506b9d5"
     }
   ]
 }
