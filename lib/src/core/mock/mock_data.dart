@@ -219,6 +219,12 @@ class MockData {
 
   static final List<Category> categories = [
     Category(
+      id: 0,
+      name: 'Sales',
+      imageUrl: '${kMockCategoryPath}c0.png',
+      numOfProduct: 120,
+    ),
+    Category(
       id: 1,
       name: 'New Arrivals',
       imageUrl: '${kMockCategoryPath}c1.png',
@@ -226,33 +232,27 @@ class MockData {
     ),
     Category(
       id: 2,
-      name: 'Clothes',
-      imageUrl: '${kMockCategoryPath}c1.png',
+      name: 'Men',
+      imageUrl: '${kMockCategoryPath}c2.png',
       numOfProduct: 150,
     ),
     Category(
       id: 3,
-      name: 'Shoes',
-      imageUrl: '${kMockCategoryPath}c1.png',
-      numOfProduct: 90,
+      name: 'Women',
+      imageUrl: '${kMockCategoryPath}c3.png',
+      numOfProduct: 150,
     ),
     Category(
       id: 4,
-      name: 'Bags',
-      imageUrl: '${kMockCategoryPath}c1.png',
-      numOfProduct: 70,
+      name: 'T-shirts',
+      imageUrl: '${kMockCategoryPath}c4.png',
+      numOfProduct: 90,
     ),
     Category(
       id: 5,
-      name: 'Shoese',
-      imageUrl: '${kMockCategoryPath}c1.png',
-      numOfProduct: 60,
-    ),
-    Category(
-      id: 6,
-      name: 'Electronincs',
-      imageUrl: '${kMockCategoryPath}c1.png',
-      numOfProduct: 40,
+      name: 'Polo Shirts',
+      imageUrl: '${kMockCategoryPath}c5.png',
+      numOfProduct: 70,
     ),
   ];
 }

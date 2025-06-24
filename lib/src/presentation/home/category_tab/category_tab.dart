@@ -4,7 +4,7 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:system_design_flutter/index.dart';
 
-final kImageHeight = 120.sp;
+final kImageWidth = 100.sp;
 
 class CategoryTab extends StatelessWidget {
   const CategoryTab({super.key});
@@ -36,51 +36,41 @@ class _CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: Color(0xffebebeb),
         borderRadius: BorderRadius.circular(SdSpacing.s12),
         boxShadow: [
           BoxShadow(
-            color: context.colorTheme.boxShadowDefault,
+            color: SdColors.black.withValues(alpha: 0.05),
             blurRadius: SdSpacing.s12,
             offset: Offset(0, 4),
           ),
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(SdSpacing.s12),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Image.asset(
-              category.imageUrl,
-              width: double.infinity,
-              height: kImageHeight,
-              fit: BoxFit.cover,
+      child: isEven
+          ? Row(
+              children: [
+                _Content(
+                  name: category.name,
+                  numOfProduct: category.numOfProduct,
+                  alignment: CrossAxisAlignment.start,
+                ),
+                const Spacer(),
+                SdImage(imagePath: category.imageUrl, width: kImageWidth),
+                SdHorizontalSpacing(),
+              ],
+            )
+          : Row(
+              children: [
+                SdHorizontalSpacing(),
+                SdImage(imagePath: category.imageUrl, width: kImageWidth),
+                const Spacer(),
+                _Content(
+                  name: category.name,
+                  numOfProduct: category.numOfProduct,
+                  alignment: CrossAxisAlignment.end,
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: SdSpacing.s20),
-              child: Row(
-                children: isEven
-                    ? [
-                        _Content(
-                          name: category.name,
-                          numOfProduct: category.numOfProduct,
-                          alignment: CrossAxisAlignment.start,
-                        ),
-                        const Spacer(),
-                      ]
-                    : [
-                        const Spacer(),
-                        _Content(
-                          name: category.name,
-                          numOfProduct: category.numOfProduct,
-                          alignment: CrossAxisAlignment.end,
-                        ),
-                      ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -98,14 +88,17 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: alignment,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(name, style: context.textTheme.heading14),
-        SdVerticalSpacing(xRatio: 0.25),
-        Text('$numOfProduct Product', style: context.textTheme.body12),
-      ],
+    return Container(
+      padding: EdgeInsets.all(SdSpacing.s20),
+      child: Column(
+        crossAxisAlignment: alignment,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(name, style: context.textTheme.heading14),
+          SdVerticalSpacing(xRatio: 0.25),
+          Text('$numOfProduct Product', style: context.textTheme.body12),
+        ],
+      ),
     );
   }
 }
