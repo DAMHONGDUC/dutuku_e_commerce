@@ -18,7 +18,10 @@ import '../domain/domain.dart' as _i515;
 import '../domain/repositories/banner_repository.dart' as _i455;
 import '../domain/repositories/product_repository.dart' as _i747;
 import '../domain/usecases/get_banners_usecase.dart' as _i638;
+import '../domain/usecases/get_categories_usecase.dart' as _i350;
 import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
+import '../presentation/home/category_tab/list_category/list_category_controller.dart'
+    as _i686;
 import '../presentation/home/dashboard_tab/banner_carousel_section/banner_carousel_controller.dart'
     as _i692;
 import '../presentation/home/dashboard_tab/product_grid_section/product_grid_controller.dart'
@@ -42,8 +45,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i243.GetRecommendProductUsecase>(
       () => _i243.GetRecommendProductUsecase(gh<_i747.ProductRepository>()),
     );
+    gh.factory<_i350.GetCategoriesUsecase>(
+      () => _i350.GetCategoriesUsecase(gh<_i515.ProductRepository>()),
+    );
     gh.factory<_i638.GetBannersUsecase>(
       () => _i638.GetBannersUsecase(gh<_i455.BannerRepository>()),
+    );
+    gh.factory<_i686.ListCategoryController>(
+      () => _i686.ListCategoryController(gh<_i515.GetCategoriesUsecase>()),
     );
     gh.factory<_i692.BannerCarouselController>(
       () => _i692.BannerCarouselController(gh<_i515.GetBannersUsecase>()),
