@@ -6,7 +6,7 @@ import 'category_tab/category_tab.dart';
 import 'dashboard_tab/dashboard_tab.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key}){super.key};
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
