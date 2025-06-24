@@ -59,14 +59,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: SdIcon(
             iconData: Ionicons.search,
-            color: context.colorTheme.iconPrimary,
+            color: context.colorTheme.iconDefault,
           ),
         ),
         IconButton(
           onPressed: () {},
           icon: SdIcon(
             iconData: Ionicons.notifications_outline,
-            color: context.colorTheme.iconPrimary,
+            color: context.colorTheme.iconDefault,
           ),
         ),
       ],

@@ -16,11 +16,11 @@ class ProductCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(SdSpacing.s8),
       decoration: BoxDecoration(
-        color: context.colorTheme.bgPrimary,
+        color: context.colorTheme.pageDefault,
         borderRadius: BorderRadius.circular(SdSpacing.s12),
         boxShadow: [
           BoxShadow(
-            color: SdColors.black12,
+            color: context.colorTheme.boxShadowDefault,
             blurRadius: SdSpacing.s12,
             offset: Offset(0, 4),
           ),

@@ -46,6 +46,7 @@ flutter:
     - assets/images/
     - assets/images/banner/
     - assets/images/product/
+    - assets/images/category/
 
 lint_staged:
   "lib/**.dart": dart format && dart fix --apply

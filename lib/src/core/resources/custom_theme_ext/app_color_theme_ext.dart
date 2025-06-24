@@ -1,45 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 import '../app_colors.dart';
 
 class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
-  final Color bgPrimary;
-  final Color textTitle;
-  final Color iconPrimary;
+  final Color pageDefault;
+  final Color textDefault;
+  final Color iconDefault;
   final Color textSubTitle;
-  final Color cardBg;
-  final Color cardShadow;
+  final Color cardDefault;
+  final Color boxShadowDefault;
 
   const AppColorThemeExt({
-    required this.bgPrimary,
-    required this.textTitle,
-    required this.iconPrimary,
+    required this.pageDefault,
+    required this.textDefault,
+    required this.iconDefault,
     required this.textSubTitle,
-    required this.cardBg,
-    required this.cardShadow,
+    required this.cardDefault,
+    required this.boxShadowDefault,
   });
 
   // Light theme
   static AppColorThemeExt light() {
     return AppColorThemeExt(
-      bgPrimary: AppColors.bgPrimaryLight,
-      textTitle: AppColors.textTitleLight,
-      iconPrimary: AppColors.iconPrimaryLight,
+      pageDefault: AppColors.pageDefaultLight,
+      textDefault: AppColors.textDefaultLight,
+      iconDefault: AppColors.iconDefaultLight,
       textSubTitle: AppColors.textSubTitleLight,
-      cardBg: AppColors.cardBgLight,
-      cardShadow: AppColors.cardShadowLight,
+      cardDefault: AppColors.cardDefaultLight,
+      boxShadowDefault: SdColors.black.withValues(alpha: 0.2),
     );
   }
 
   // Dark theme
+  // TODO: create color for dark theme
+  // for now it's have same value with light
   static AppColorThemeExt dark() {
     return AppColorThemeExt(
-      bgPrimary: AppColors.bgPrimaryDark,
-      textTitle: AppColors.textTitleDark,
-      iconPrimary: AppColors.iconPrimaryDark,
-      textSubTitle: AppColors.textSubTitleDark,
-      cardBg: AppColors.cardBgDark,
-      cardShadow: AppColors.cardShadowDark,
+      pageDefault: AppColors.pageDefaultLight,
+      textDefault: AppColors.textDefaultLight,
+      iconDefault: AppColors.iconDefaultLight,
+      textSubTitle: AppColors.textSubTitleLight,
+      cardDefault: AppColors.cardDefaultLight,
+      boxShadowDefault: SdColors.black.withValues(alpha: 0.3),
     );
   }
 
@@ -50,15 +53,15 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     Color? iconPrimary,
     Color? textSubTitle,
     Color? cardBg,
-    Color? cardShadow,
+    Color? boxShadowDefault,
   }) {
     return AppColorThemeExt(
-      bgPrimary: bgPrimary ?? this.bgPrimary,
-      textTitle: textTitle ?? this.textTitle,
-      iconPrimary: iconPrimary ?? this.iconPrimary,
+      pageDefault: bgPrimary ?? pageDefault,
+      textDefault: textTitle ?? textDefault,
+      iconDefault: iconPrimary ?? iconDefault,
       textSubTitle: textSubTitle ?? this.textSubTitle,
-      cardBg: cardBg ?? this.cardBg,
-      cardShadow: cardShadow ?? this.cardShadow,
+      cardDefault: cardBg ?? cardDefault,
+      boxShadowDefault: boxShadowDefault ?? this.boxShadowDefault,
     );
   }
 
@@ -70,13 +73,15 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     if (other is! AppColorThemeExt) return this;
 
     return AppColorThemeExt(
-      bgPrimary: Color.lerp(bgPrimary, other.bgPrimary, t) ?? bgPrimary,
-      textTitle: Color.lerp(textTitle, other.textTitle, t) ?? textTitle,
-      iconPrimary: Color.lerp(iconPrimary, other.iconPrimary, t) ?? iconPrimary,
+      pageDefault: Color.lerp(pageDefault, other.pageDefault, t) ?? pageDefault,
+      textDefault: Color.lerp(textDefault, other.textDefault, t) ?? textDefault,
+      iconDefault: Color.lerp(iconDefault, other.iconDefault, t) ?? iconDefault,
       textSubTitle:
           Color.lerp(textSubTitle, other.textSubTitle, t) ?? textSubTitle,
-      cardBg: Color.lerp(cardBg, other.cardBg, t) ?? cardBg,
-      cardShadow: Color.lerp(cardShadow, other.cardShadow, t) ?? cardShadow,
+      cardDefault: Color.lerp(cardDefault, other.cardDefault, t) ?? cardDefault,
+      boxShadowDefault:
+          Color.lerp(boxShadowDefault, other.boxShadowDefault, t) ??
+          boxShadowDefault,
     );
   }
 }

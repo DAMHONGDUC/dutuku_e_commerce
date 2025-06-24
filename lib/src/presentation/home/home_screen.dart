@@ -3,8 +3,8 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:system_design_flutter/index.dart';
 
+import 'category_tab/category_tab.dart';
 import 'dashboard_tab/banner_carousel_section/banner_carousel_controller.dart';
 import 'dashboard_tab/dashboard_tab.dart';
 import 'dashboard_tab/product_grid_section/product_grid_controller.dart';
@@ -55,22 +55,11 @@ class _HomeViewState extends State<_HomeView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(tabController: _tabController),
-      backgroundColor: context.colorTheme.bgPrimary,
+      backgroundColor: context.colorTheme.pageDefault,
       body: TabBarView(
         controller: _tabController,
-        children: [DashboardTab(), _CategoryTab()],
+        children: [DashboardTab(), CategoryTab()],
       ),
-    );
-  }
-}
-
-class _CategoryTab extends StatelessWidget {
-  const _CategoryTab();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Category Tab Content', style: SdTextStyle.body18()),
     );
   }
 }

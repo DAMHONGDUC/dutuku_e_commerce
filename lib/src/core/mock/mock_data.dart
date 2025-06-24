@@ -3,6 +3,7 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 
 final kMockBannerPath = 'assets/images/banner/';
 final kMockProductPath = 'assets/images/product/';
+final kMockCategoryPath = 'assets/images/category/';
 
 class MockData {
   static final List<BannerItem> banners = [
@@ -213,6 +214,45 @@ class MockData {
           imageUrl: '${kMockProductPath}p6_2.png',
         ),
       ],
+    ),
+  ];
+
+  static final List<Category> categories = [
+    Category(
+      id: 1,
+      name: 'New Arrivals',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 120,
+    ),
+    Category(
+      id: 2,
+      name: 'Clothes',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 150,
+    ),
+    Category(
+      id: 3,
+      name: 'Shoes',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 90,
+    ),
+    Category(
+      id: 4,
+      name: 'Bags',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 70,
+    ),
+    Category(
+      id: 5,
+      name: 'Shoese',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 60,
+    ),
+    Category(
+      id: 6,
+      name: 'Electronincs',
+      imageUrl: '${kMockCategoryPath}c1.png',
+      numOfProduct: 40,
     ),
   ];
 }

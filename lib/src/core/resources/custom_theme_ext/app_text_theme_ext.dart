@@ -91,7 +91,7 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
 
   // Light theme
   static AppTextThemeExt light() {
-    final lightTextColor = AppColors.textTitleLight;
+    final lightTextColor = AppColors.textDefaultLight;
 
     return AppTextThemeExt(
       // Body styles
@@ -135,7 +135,7 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
 
   // Dark theme
   static AppTextThemeExt dark() {
-    final darkTextColor = AppColors.textSubTitleDark;
+    final darkTextColor = AppColors.textDefaultDark;
 
     return AppTextThemeExt(
       // Body styles

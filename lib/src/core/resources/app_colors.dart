@@ -12,25 +12,15 @@ class AppColors {
   // Primary Brand
   static const Color primary = Color(0xFF504EB7);
 
-  // Text
-  static const Color textTitleLight = Color(0xFF000000);
+  // Light
+  static const Color textDefaultLight = Color(0xFF000000);
   static final Color textSubTitleLight = Color(0xFFa7a9af);
-  static final Color textTitleDark = SdColors.grey100;
-  static final Color textSubTitleDark = SdColors.grey200;
+  static const Color cardDefaultLight = snowWhite;
+  static const Color pageDefaultLight = snowWhite;
+  static const Color pageSecondaryLight = snowMist;
+  static final Color iconDefaultLight = const Color(0xFF434750);
 
-  // Icon
-  static final Color iconPrimaryLight = const Color(0xFF434750);
-  static final Color iconPrimaryDark = Color(0xFF60A5FA);
-
-  // Card
-  static const Color cardBgLight = snowWhite;
-  static final Color cardBgDark = SdColors.grey800;
-  static const Color cardShadowLight = Color.fromRGBO(0, 0, 0, 0.05);
-  static const Color cardShadowDark = Color.fromRGBO(0, 0, 0, 0.3);
-
-  // Background
-  static const Color bgPrimaryLight = snowWhite;
-  static const Color bgSecondaryLight = snowMist;
-  static final Color bgPrimaryDark = SdColors.grey900;
-  static const Color bgSecondaryDark = Color(0xFF1C232B);
+  // Dark
+  // TODO: create color for dark theme
+  static final Color textDefaultDark = SdColors.grey100;
 }

@@ -14,4 +14,11 @@ class ProductRepositoryImpl implements ProductRepository {
 
     return Right(List.of(MockData.products)..shuffle());
   }
+
+  @override
+  Future<Either<ConfigFailure, List<Category>>> getCategories() async {
+    await SdHelper.delayLoading();
+
+    return Right(MockData.categories);
+  }
 }
