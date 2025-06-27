@@ -20,7 +20,7 @@ import '../domain/repositories/product_repository.dart' as _i747;
 import '../domain/usecases/get_banners_usecase.dart' as _i638;
 import '../domain/usecases/get_categories_usecase.dart' as _i350;
 import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
-import '../presentation/home/list_category/categories_section_controller.dart'
+import '../presentation/home/categories_section/categories_section_controller.dart'
     as _i686;
 import '../presentation/home/banner_carousel_section/banner_carousel_controller.dart'
     as _i692;

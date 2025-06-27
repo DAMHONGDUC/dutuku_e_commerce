@@ -1,5 +1,5 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/list_category/categories_section.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/categories_section/categories_section.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
@@ -33,12 +33,12 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: HomeAppBar(tabController: _tabController),
       backgroundColor: context.colorTheme.pageDefault,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(SdSpacing.s8),
           child: SingleChildScrollView(
+            clipBehavior: Clip.none,
             child: Column(
               children: [
                 // user info section
