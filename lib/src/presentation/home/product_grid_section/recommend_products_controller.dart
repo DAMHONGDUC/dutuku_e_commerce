@@ -3,17 +3,17 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-part 'product_grid_state.dart';
+part 'recommend_products_state.dart';
 
 @injectable
-class ProductGridController extends Cubit<ProductGridState> {
+class RecommendProductsController extends Cubit<RecommendProductsState> {
   final GetRecommendProductUsecase _getRecommendProductUsecase;
 
-  ProductGridController(this._getRecommendProductUsecase)
-    : super(ProductGridLoading());
+  RecommendProductsController(this._getRecommendProductUsecase)
+    : super(RecommendProductsLoading());
 
   Future<void> fetchProducts() async {
-    emit(ProductGridLoading());
+    emit(RecommendProductsLoading());
 
     final result = await _getRecommendProductUsecase.call(NoParams());
 
@@ -22,7 +22,7 @@ class ProductGridController extends Cubit<ProductGridState> {
         // TODO: handle fail
       },
       (r) {
-        emit(ProductGridLoaded(r));
+        emit(RecommendProductsLoaded(r));
       },
     );
   }

@@ -22,9 +22,9 @@ import '../domain/usecases/get_categories_usecase.dart' as _i350;
 import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
 import '../presentation/home/category_tab/list_category/list_category_controller.dart'
     as _i686;
-import '../presentation/home/dashboard_tab/banner_carousel_section/banner_carousel_controller.dart'
+import '../presentation/home/banner_carousel_section/banner_carousel_controller.dart'
     as _i692;
-import '../presentation/home/dashboard_tab/product_grid_section/product_grid_controller.dart'
+import '../presentation/home/product_grid_section/recommend_products_controller.dart'
     as _i684;
 import '../presentation/tutorial/tutorial_controller.dart' as _i509;
 
@@ -57,8 +57,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i692.BannerCarouselController>(
       () => _i692.BannerCarouselController(gh<_i515.GetBannersUsecase>()),
     );
-    gh.factory<_i684.ProductGridController>(
-      () => _i684.ProductGridController(gh<_i515.GetRecommendProductUsecase>()),
+    gh.factory<_i684.RecommendProductsController>(
+      () => _i684.RecommendProductsController(
+        gh<_i515.GetRecommendProductUsecase>(),
+      ),
     );
     return this;
   }

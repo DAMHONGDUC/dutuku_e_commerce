@@ -1,9 +1,10 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
-import 'category_tab/category_tab.dart';
-import 'dashboard_tab/dashboard_tab.dart';
+import 'banner_carousel_section/banner_carousel_section.dart';
+import 'product_grid_section/recommend_products_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,9 +34,26 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       appBar: HomeAppBar(tabController: _tabController),
       backgroundColor: context.colorTheme.pageDefault,
-      body: TabBarView(
-        controller: _tabController,
-        children: [DashboardTab(), CategoryTab()],
+      body: Container(
+        padding: EdgeInsets.all(SdSpacing.s8),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // banner section
+              BannerCarouselSection(),
+              SdVerticalSpacing(),
+
+              // recommend product section
+              const SectionHeader(
+                title: 'New Arrivals 🔥',
+                actionText: 'See All',
+              ),
+              SdVerticalSpacing(),
+              RecommendProductsSection(),
+              SdVerticalSpacing(),
+            ],
+          ),
+        ),
       ),
     );
   }

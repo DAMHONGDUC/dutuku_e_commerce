@@ -1,24 +1,37 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import 'product_grid_controller.dart';
+import 'recommend_products_controller.dart';
 
-class ProductGridSection extends StatelessWidget {
-  const ProductGridSection({super.key});
+class RecommendProductsSection extends StatelessWidget {
+  const RecommendProductsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProductGridController, ProductGridState>(
+    return BlocProvider(
+      create: (_) => getIt<RecommendProductsController>()..fetchProducts(),
+      child: _RecommendProductsView(),
+    );
+  }
+}
+
+class _RecommendProductsView extends StatelessWidget {
+  const _RecommendProductsView();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<RecommendProductsController, RecommendProductsState>(
       listener: (context, state) {
         // TODO: implement listener if need
       },
       builder: (context, state) {
-        if (state is ProductGridLoading) {
+        if (state is RecommendProductsLoading) {
           return _ProductGridSkeleton();
-        } else if (state is ProductGridLoaded) {
+        } else if (state is RecommendProductsLoaded) {
           return MasonryGridView.count(
             crossAxisCount: 2,
             mainAxisSpacing: SdSpacing.s16,

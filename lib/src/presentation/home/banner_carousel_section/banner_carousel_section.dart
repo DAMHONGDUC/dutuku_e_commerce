@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,14 +11,26 @@ import 'banner_carousel_controller.dart';
 final kBannerHeight = 150.sp;
 final kBannerBorderRadius = SdSpacing.s12;
 
-class BannerCarouselSection extends StatefulWidget {
+class BannerCarouselSection extends StatelessWidget {
   const BannerCarouselSection({super.key});
 
   @override
-  State<BannerCarouselSection> createState() => _BannerCarouselSectionState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<BannerCarouselController>()..getData(),
+      child: _BannerCarouselView(),
+    );
+  }
 }
 
-class _BannerCarouselSectionState extends State<BannerCarouselSection> {
+class _BannerCarouselView extends StatefulWidget {
+  const _BannerCarouselView();
+
+  @override
+  State<_BannerCarouselView> createState() => _BannerCarouselViewState();
+}
+
+class _BannerCarouselViewState extends State<_BannerCarouselView> {
   int _current = 0;
   final CarouselSliderController _controller = CarouselSliderController();
 
