@@ -4,17 +4,16 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-part 'list_category_state.dart';
+part 'categories_section_state.dart';
 
 @injectable
-class ListCategoryController extends Cubit<ListCategoryState> {
+class CategoriesController extends Cubit<CategoriesState> {
   final GetCategoriesUsecase _getCategoriesUsecase;
 
-  ListCategoryController(this._getCategoriesUsecase)
-    : super(ListCategoryInitial());
+  CategoriesController(this._getCategoriesUsecase) : super(CategoriesInitial());
 
   Future getData() async {
-    emit(ListCategoryLoading());
+    emit(CategoriesLoading());
 
     final result = await _getCategoriesUsecase.call(NoParams());
 
@@ -23,7 +22,7 @@ class ListCategoryController extends Cubit<ListCategoryState> {
         // TODO: handle fail
       },
       (r) {
-        emit(ListCategoryLoaded(categories: r));
+        emit(CategoriesLoaded(categories: r));
       },
     );
   }

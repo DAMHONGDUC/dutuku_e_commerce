@@ -1,10 +1,11 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/components/home_app_bar.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/list_category/categories_section.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'banner_carousel_section/banner_carousel_section.dart';
-import 'product_grid_section/recommend_products_section.dart';
+import 'recommend_products/recommend_products_section.dart';
+import 'user_info_section/user_info_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,26 +33,33 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(tabController: _tabController),
+      // appBar: HomeAppBar(tabController: _tabController),
       backgroundColor: context.colorTheme.pageDefault,
-      body: Container(
-        padding: EdgeInsets.all(SdSpacing.s8),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // banner section
-              BannerCarouselSection(),
-              SdVerticalSpacing(),
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(SdSpacing.s8),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // user info section
+                UserInfoSection(),
+                SdVerticalSpacing(),
 
-              // recommend product section
-              const SectionHeader(
-                title: 'New Arrivals 🔥',
-                actionText: 'See All',
-              ),
-              SdVerticalSpacing(),
-              RecommendProductsSection(),
-              SdVerticalSpacing(),
-            ],
+                // banner section
+                BannerCarouselSection(),
+                SdVerticalSpacing(),
+
+                // categories section
+                const SectionHeader(title: 'Categories'),
+                CategoriesSection(),
+                SdVerticalSpacing(),
+
+                // recommend product section
+                const SectionHeader(title: 'New Arrivals 🔥'),
+                RecommendProductsSection(),
+                SdVerticalSpacing(),
+              ],
+            ),
           ),
         ),
       ),
