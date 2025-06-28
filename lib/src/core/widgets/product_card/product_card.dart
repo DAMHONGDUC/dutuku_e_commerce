@@ -20,7 +20,7 @@ class ProductCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: context.colorTheme.boxShadowDefault,
-            blurRadius: SdSpacing.s12,
+            blurRadius: SdSpacing.s6,
             offset: Offset(0, 4),
           ),
         ],
@@ -92,8 +92,8 @@ class _CardImageView extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 8,
-          right: 8,
+          top: SdSpacing.s8,
+          right: SdSpacing.s8,
           child: Container(
             decoration: BoxDecoration(
               color: SdColors.grey900,

@@ -8,7 +8,7 @@ import 'package:system_design_flutter/index.dart';
 
 import 'banner_carousel_controller.dart';
 
-final kBannerHeight = 150.sp;
+final kBannerHeight = 140.sp;
 final kBannerBorderRadius = SdSpacing.s12;
 
 class BannerCarouselSection extends StatelessWidget {
