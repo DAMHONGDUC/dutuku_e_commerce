@@ -14,27 +14,44 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorTheme.pageDefault,
-      appBar: HomeAppBar(),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(SdSpacing.s12),
-          child: Column(
-            children: [
-              // banner section
-              const BannerCarouselSection(),
-              const SdVerticalSpacing(),
-
-              // categories section
-              const SectionHeader(title: 'Categories'),
-              const CategoriesSection(),
-              const SdVerticalSpacing(),
-
-              // recommend product section
-              const SectionHeader(title: 'New Arrivals 🔥'),
-              const RecommendProductsSection(),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: false,
+            snap: true,
+            elevation: 0,
+            backgroundColor: context.colorTheme.pageDefault,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                color: context.colorTheme.pageDefault,
+                child: HomeAppBar(),
+              ),
+            ),
           ),
-        ),
+
+          SliverToBoxAdapter(
+            child: Container(
+              padding: EdgeInsets.all(SdSpacing.s12),
+              child: Column(
+                children: [
+                  // banner
+                  const BannerCarouselSection(),
+                  const SdVerticalSpacing(),
+
+                  // category
+                  const SectionHeader(title: 'Categories'),
+                  const CategoriesSection(),
+                  const SdVerticalSpacing(),
+
+                  // product
+                  const SectionHeader(title: 'New Arrivals 🔥'),
+                  const RecommendProductsSection(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
