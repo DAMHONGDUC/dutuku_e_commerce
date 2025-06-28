@@ -14,6 +14,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color borderDefault;
   final Color indicatorActive;
   final Color indicatorBg;
+  final Color primary;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -26,6 +27,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.borderDefault,
     required this.indicatorActive,
     required this.indicatorBg,
+    required this.primary,
   });
 
   // Light theme
@@ -41,6 +43,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       borderDefault: SdColors.grey.withValues(alpha: 0.9),
       indicatorActive: AppColors.primary,
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
+      primary: AppColors.primary,
     );
   }
 
@@ -59,6 +62,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       borderDefault: SdColors.grey.withValues(alpha: 0.2),
       indicatorActive: AppColors.primary,
       indicatorBg: SdColors.grey.withValues(alpha: 0.2),
+      primary: AppColors.primary,
     );
   }
 

@@ -79,10 +79,10 @@ class AppRoutes {
   );
 
   // Favorite stack
-  static const SdRouter favorite = SdRouter(
-    name: 'favorite',
-    path: '/favorite',
-    fullPath: '/favorite',
+  static const SdRouter notifications = SdRouter(
+    name: 'notifications',
+    path: '/notifications',
+    fullPath: '/notifications',
   );
 
   // Profile stack

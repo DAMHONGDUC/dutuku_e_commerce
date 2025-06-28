@@ -1,16 +1,16 @@
 import 'package:dutuku_e_commerce/src/core/navigation/app_routes.dart';
-import 'package:dutuku_e_commerce/src/presentation/favorite/favorite_screen.dart';
+import 'package:dutuku_e_commerce/src/presentation/notificartions/notificartions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
-class FavoriteStack {
+class NotificationsStack {
   static final List<GoRoute> routes = [
     SdGoRoute(
-      path: AppRoutes.favorite.path,
-      name: AppRoutes.favorite.name,
+      path: AppRoutes.notifications.path,
+      name: AppRoutes.notifications.name,
       builder: (BuildContext context, GoRouterState state) {
-        return const FavoriteScreen();
+        return const NotificationScreen.NotificationsScreen();
       },
       routes: <RouteBase>[],
     ),

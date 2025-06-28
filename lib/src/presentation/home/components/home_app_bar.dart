@@ -10,22 +10,18 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SdAppBar(
-      backgroundColor: AppColors.primary,
+      backgroundColor: context.colorTheme.pageDefault,
       titleWidget: _SearchBar(),
-      noElevation: true,
       showBackButton: false,
+
       actions: [
         IconButton(
           onPressed: () {
             GoRouter.of(context).push(AppRoutes.search.fullPath);
           },
-          icon: SdIcon(iconData: Ionicons.cart_outline, color: AppColors.white),
-        ),
-        IconButton(
-          onPressed: () {},
           icon: SdIcon(
-            iconData: Ionicons.notifications_outline,
-            color: AppColors.white,
+            iconData: Ionicons.cart,
+            color: context.colorTheme.iconDefault,
           ),
         ),
       ],
@@ -53,12 +49,16 @@ class _SearchBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.colorTheme.cardDefault,
           borderRadius: BorderRadius.circular(SdSpacing.s8),
+          border: Border.all(
+            color: context.colorTheme.borderDefault,
+            width: SdSpacing.s1,
+          ),
         ),
         child: Row(
           children: [
             SdIcon(
-              iconData: Ionicons.search_outline,
-              color: context.colorTheme.iconSecondary,
+              iconData: Ionicons.search,
+              color: context.colorTheme.iconDefault,
             ),
             SdHorizontalSpacing(),
             Text(

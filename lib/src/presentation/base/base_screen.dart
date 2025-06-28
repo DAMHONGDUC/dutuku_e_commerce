@@ -72,11 +72,11 @@ class BaseScreen extends StatelessWidget {
                 padding: iconPadding,
                 child: _buildIcon(
                   isSelected: navigationShell.currentIndex == 2,
-                  icon: Ionicons.heart_outline,
-                  iconSelected: Ionicons.heart,
+                  icon: Ionicons.notifications_outline,
+                  iconSelected: Ionicons.notifications,
                 ),
               ),
-              label: 'Favorite',
+              label: 'Notification',
             ),
             BottomNavigationBarItem(
               icon: Padding(

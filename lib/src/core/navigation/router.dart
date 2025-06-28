@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/core/navigation/stack/favorite_stack.dart';
+import 'package:dutuku_e_commerce/src/core/navigation/stack/notifications_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/home_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/login_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/my_order_stack.dart';
@@ -61,7 +61,7 @@ final GoRouter kAppRouter = GoRouter(
         // Favorite Tab Branch
         StatefulShellBranch(
           navigatorKey: kFavoriteTabNavigatorKey,
-          routes: <RouteBase>[...FavoriteStack.routes],
+          routes: <RouteBase>[...NotificationsStack.routes],
         ),
         // Profile Tab Branch
         StatefulShellBranch(
