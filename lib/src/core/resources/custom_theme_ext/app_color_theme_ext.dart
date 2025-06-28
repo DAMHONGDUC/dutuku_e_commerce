@@ -10,6 +10,9 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color textSubTitle;
   final Color cardDefault;
   final Color boxShadowDefault;
+  final Color borderDefault;
+  final Color indicatorActive;
+  final Color indicatorBg;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -18,6 +21,9 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.textSubTitle,
     required this.cardDefault,
     required this.boxShadowDefault,
+    required this.borderDefault,
+    required this.indicatorActive,
+    required this.indicatorBg,
   });
 
   // Light theme
@@ -29,6 +35,9 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.2),
+      borderDefault: SdColors.grey.withValues(alpha: 0.9),
+      indicatorActive: AppColors.primary,
+      indicatorBg: SdColors.grey.withValues(alpha: 0.3),
     );
   }
 
@@ -43,26 +52,15 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.3),
+      borderDefault: SdColors.grey.withValues(alpha: 0.2),
+      indicatorActive: AppColors.primary,
+      indicatorBg: SdColors.grey.withValues(alpha: 0.2),
     );
   }
 
   @override
-  ThemeExtension<AppColorThemeExt> copyWith({
-    Color? bgPrimary,
-    Color? textTitle,
-    Color? iconPrimary,
-    Color? textSubTitle,
-    Color? cardBg,
-    Color? boxShadowDefault,
-  }) {
-    return AppColorThemeExt(
-      pageDefault: bgPrimary ?? pageDefault,
-      textDefault: textTitle ?? textDefault,
-      iconDefault: iconPrimary ?? iconDefault,
-      textSubTitle: textSubTitle ?? this.textSubTitle,
-      cardDefault: cardBg ?? cardDefault,
-      boxShadowDefault: boxShadowDefault ?? this.boxShadowDefault,
-    );
+  ThemeExtension<AppColorThemeExt> copyWith() {
+    return this;
   }
 
   @override
@@ -70,18 +68,45 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     covariant ThemeExtension<AppColorThemeExt>? other,
     double t,
   ) {
-    if (other is! AppColorThemeExt) return this;
-
-    return AppColorThemeExt(
-      pageDefault: Color.lerp(pageDefault, other.pageDefault, t) ?? pageDefault,
-      textDefault: Color.lerp(textDefault, other.textDefault, t) ?? textDefault,
-      iconDefault: Color.lerp(iconDefault, other.iconDefault, t) ?? iconDefault,
-      textSubTitle:
-          Color.lerp(textSubTitle, other.textSubTitle, t) ?? textSubTitle,
-      cardDefault: Color.lerp(cardDefault, other.cardDefault, t) ?? cardDefault,
-      boxShadowDefault:
-          Color.lerp(boxShadowDefault, other.boxShadowDefault, t) ??
-          boxShadowDefault,
-    );
+    return this;
   }
+
+  // @override
+  // ThemeExtension<AppColorThemeExt> copyWith({
+  //   Color? bgPrimary,
+  //   Color? textTitle,
+  //   Color? iconPrimary,
+  //   Color? textSubTitle,
+  //   Color? cardBg,
+  //   Color? boxShadowDefault,
+  // }) {
+  //   return AppColorThemeExt(
+  //     pageDefault: bgPrimary ?? pageDefault,
+  //     textDefault: textTitle ?? textDefault,
+  //     iconDefault: iconPrimary ?? iconDefault,
+  //     textSubTitle: textSubTitle ?? this.textSubTitle,
+  //     cardDefault: cardBg ?? cardDefault,
+  //     boxShadowDefault: boxShadowDefault ?? this.boxShadowDefault,
+  //   );
+  // }
+
+  // @override
+  // ThemeExtension<AppColorThemeExt> lerp(
+  //   covariant ThemeExtension<AppColorThemeExt>? other,
+  //   double t,
+  // ) {
+  //   if (other is! AppColorThemeExt) return this;
+
+  //   return AppColorThemeExt(
+  //     pageDefault: Color.lerp(pageDefault, other.pageDefault, t) ?? pageDefault,
+  //     textDefault: Color.lerp(textDefault, other.textDefault, t) ?? textDefault,
+  //     iconDefault: Color.lerp(iconDefault, other.iconDefault, t) ?? iconDefault,
+  //     textSubTitle:
+  //         Color.lerp(textSubTitle, other.textSubTitle, t) ?? textSubTitle,
+  //     cardDefault: Color.lerp(cardDefault, other.cardDefault, t) ?? cardDefault,
+  //     boxShadowDefault:
+  //         Color.lerp(boxShadowDefault, other.boxShadowDefault, t) ??
+  //         boxShadowDefault,
+  //   );
+  // }
 }

@@ -6,7 +6,7 @@ class AppColors {
   static const Color grey = SdColors.grey;
 
   // Whites
-  static const Color snowWhite = Color(0xFFFFFFFF);
+  static const Color white = SdColors.white;
   static const Color snowMist = Color(0xFFF9FAFF);
 
   // Primary Brand
@@ -15,8 +15,8 @@ class AppColors {
   // Light
   static const Color textDefaultLight = Color(0xFF000000);
   static final Color textSubTitleLight = Color(0xFFa7a9af);
-  static const Color cardDefaultLight = snowWhite;
-  static const Color pageDefaultLight = snowWhite;
+  static const Color cardDefaultLight = white;
+  static const Color pageDefaultLight = white;
   static const Color pageSecondaryLight = snowMist;
   static final Color iconDefaultLight = const Color(0xFF434750);
 

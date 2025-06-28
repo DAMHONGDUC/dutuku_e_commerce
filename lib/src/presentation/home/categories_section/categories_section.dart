@@ -158,9 +158,9 @@ class _ScrollIndicator extends StatelessWidget {
 
     return Container(
       width: indicatorWidth,
-      height: 4.sp,
+      height: SdSpacing.s4,
       decoration: BoxDecoration(
-        color: SdColors.grey.withValues(alpha: 0.3),
+        color: context.colorTheme.indicatorBg,
         borderRadius: BorderRadius.circular(2.sp),
       ),
       child: Stack(
@@ -170,10 +170,10 @@ class _ScrollIndicator extends StatelessWidget {
             left: scrollProgress * (indicatorWidth - thumbWidth),
             child: Container(
               width: thumbWidth,
-              height: 4.sp,
+              height: SdSpacing.s4,
               decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(2.sp),
+                color: context.colorTheme.indicatorActive,
+                borderRadius: BorderRadius.circular(SdSpacing.s2),
               ),
             ),
           ),

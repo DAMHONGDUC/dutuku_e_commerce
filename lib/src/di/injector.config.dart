@@ -24,7 +24,7 @@ import '../presentation/home/categories_section/categories_section_controller.da
     as _i686;
 import '../presentation/home/banner_carousel_section/banner_carousel_controller.dart'
     as _i692;
-import '../presentation/home/recommend_products/recommend_products_controller.dart'
+import '../presentation/home/recommend_products_section/recommend_products_controller.dart'
     as _i684;
 import '../presentation/tutorial/tutorial_controller.dart' as _i509;
 

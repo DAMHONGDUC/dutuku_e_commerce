@@ -14,7 +14,6 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(SdSpacing.s8),
       decoration: BoxDecoration(
         color: context.colorTheme.pageDefault,
         borderRadius: BorderRadius.circular(SdSpacing.s12),
@@ -37,23 +36,31 @@ class ProductCard extends StatelessWidget {
           ),
           SizedBox(height: SdSpacing.s8),
 
-          // name
-          Text(product.name, style: context.textTheme.body12),
-          SizedBox(height: SdSpacing.s2),
+          Container(
+            padding: EdgeInsets.all(SdSpacing.s8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // name
+                Text(product.name, style: context.textTheme.body12),
+                SizedBox(height: SdSpacing.s2),
 
-          // brand
-          Text(
-            product.brand,
-            style: context.textTheme.body10.wColor(
-              context.colorTheme.textSubTitle,
+                // brand
+                Text(
+                  product.brand,
+                  style: context.textTheme.body10.wColor(
+                    context.colorTheme.textSubTitle,
+                  ),
+                ),
+                SizedBox(height: SdSpacing.s6),
+
+                // price
+                Text(
+                  '\$${product.price.toStringAsFixed(2)}',
+                  style: context.textTheme.heading14.wBold(),
+                ),
+              ],
             ),
-          ),
-          SizedBox(height: SdSpacing.s6),
-
-          // price
-          Text(
-            '\$${product.price.toStringAsFixed(2)}',
-            style: context.textTheme.heading14.wBold(),
           ),
         ],
       ),
@@ -74,7 +81,10 @@ class _CardImageView extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SdSpacing.s8),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(SdSpacing.s8),
+              topRight: Radius.circular(SdSpacing.s8),
+            ),
             image: DecorationImage(
               image: AssetImage(imageUrl),
               fit: BoxFit.cover,
@@ -93,7 +103,7 @@ class _CardImageView extends StatelessWidget {
               padding: EdgeInsets.all(SdSpacing.s6),
               child: SdIcon(
                 iconData: Icons.favorite_border,
-                color: SdColors.white,
+                color: AppColors.white,
                 iconSize: SdSpacing.s16,
               ),
             ),

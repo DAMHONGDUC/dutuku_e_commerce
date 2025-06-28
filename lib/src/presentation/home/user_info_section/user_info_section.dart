@@ -41,7 +41,7 @@ class UserInfoSection extends StatelessWidget {
                 GoRouter.of(context).push(AppRoutes.search.fullPath);
               },
               icon: SdIcon(
-                iconData: Ionicons.search,
+                iconData: Ionicons.cart_outline,
                 color: context.colorTheme.iconDefault,
               ),
             ),

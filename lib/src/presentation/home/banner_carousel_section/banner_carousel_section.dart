@@ -138,8 +138,9 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 ),
-                colorBuilder: (index) =>
-                    index == _current ? AppColors.primary : AppColors.grey,
+                colorBuilder: (index) => index == _current
+                    ? context.colorTheme.indicatorActive
+                    : context.colorTheme.indicatorBg,
               ),
             ],
           );
@@ -189,7 +190,10 @@ class _BannerSkeleton extends StatelessWidget {
       children: [
         SdSkeleton(height: kBannerHeight, borderRadius: kBannerBorderRadius),
         const SdVerticalSpacing(),
-        _BannerIndicator(length: 4, colorBuilder: (index) => AppColors.grey),
+        _BannerIndicator(
+          length: 4,
+          colorBuilder: (index) => context.colorTheme.indicatorBg,
+        ),
       ],
     );
   }
