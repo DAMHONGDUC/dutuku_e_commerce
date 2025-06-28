@@ -36,6 +36,7 @@ class _RecommendProductsView extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: SdSpacing.s16,
             crossAxisSpacing: SdSpacing.s16,
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: state.products.length,
@@ -61,6 +62,7 @@ class _ProductGridSkeleton extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 4,
+      padding: EdgeInsets.zero,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 16,

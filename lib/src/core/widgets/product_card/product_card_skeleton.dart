@@ -8,7 +8,6 @@ class ProductCardSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(SdSpacing.s8),
       decoration: BoxDecoration(
         color: context.colorTheme.pageDefault,
         borderRadius: BorderRadius.circular(SdSpacing.s12),
@@ -30,16 +29,24 @@ class ProductCardSkeleton extends StatelessWidget {
           ),
           SizedBox(height: SdSpacing.s10),
 
-          // name
-          SdSkeleton(height: 14, width: double.infinity),
-          SizedBox(height: SdSpacing.s4),
+          Container(
+            padding: EdgeInsets.all(SdSpacing.s8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // name
+                SdSkeleton(height: 14, width: double.infinity),
+                SizedBox(height: SdSpacing.s4),
 
-          // band
-          SdSkeleton(height: 14, width: 120),
-          SizedBox(height: SdSpacing.s8),
+                // band
+                SdSkeleton(height: 14, width: 120),
+                SizedBox(height: SdSpacing.s8),
 
-          // price
-          SdSkeleton(height: 12, width: 80),
+                // price
+                SdSkeleton(height: 12, width: 80),
+              ],
+            ),
+          ),
         ],
       ),
     );

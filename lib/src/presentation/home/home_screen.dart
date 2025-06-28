@@ -14,39 +14,26 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorTheme.pageDefault,
-      body: SdScrollConfig(
-        child: CustomScrollView(
-          clipBehavior: Clip.none,
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  const HomeAppBar(),
+      appBar: HomeAppBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(SdSpacing.s12),
+          child: Column(
+            children: [
+              // banner section
+              const BannerCarouselSection(),
+              const SdVerticalSpacing(),
 
-                  Container(
-                    padding: EdgeInsets.all(SdSpacing.s8),
-                    child: Column(
-                      children: [
-                        // banner section
-                        const BannerCarouselSection(),
-                        const SdVerticalSpacing(),
+              // categories section
+              const SectionHeader(title: 'Categories'),
+              const CategoriesSection(),
+              const SdVerticalSpacing(),
 
-                        // categories section
-                        const SectionHeader(title: 'Categories'),
-                        const CategoriesSection(),
-                        const SdVerticalSpacing(),
-
-                        // recommend product section
-                        const SectionHeader(title: 'New Arrivals 🔥'),
-                        const RecommendProductsSection(),
-                        const SdVerticalSpacing(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+              // recommend product section
+              const SectionHeader(title: 'New Arrivals 🔥'),
+              const RecommendProductsSection(),
+            ],
+          ),
         ),
       ),
     );
