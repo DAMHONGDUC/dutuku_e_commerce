@@ -7,6 +7,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color pageDefault;
   final Color textDefault;
   final Color iconDefault;
+  final Color iconSecondary;
   final Color textSubTitle;
   final Color cardDefault;
   final Color boxShadowDefault;
@@ -18,6 +19,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.pageDefault,
     required this.textDefault,
     required this.iconDefault,
+    required this.iconSecondary,
     required this.textSubTitle,
     required this.cardDefault,
     required this.boxShadowDefault,
@@ -32,6 +34,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       pageDefault: AppColors.pageDefaultLight,
       textDefault: AppColors.textDefaultLight,
       iconDefault: AppColors.iconDefaultLight,
+      iconSecondary: SdColors.grey.withValues(alpha: 0.9),
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.2),
@@ -49,6 +52,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       pageDefault: AppColors.pageDefaultLight,
       textDefault: AppColors.textDefaultLight,
       iconDefault: AppColors.iconDefaultLight,
+      iconSecondary: SdColors.grey.withValues(alpha: 0.9),
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.3),
