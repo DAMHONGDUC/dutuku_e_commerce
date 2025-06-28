@@ -38,7 +38,7 @@ class BaseScreen extends StatelessWidget {
           unselectedLabelStyle: context.textTheme.body10.copyWith(
             color: AppColors.grey,
           ),
-          backgroundColor: context.colorTheme.pageDefault,
+          backgroundColor: context.colorTheme.surfaceDefault,
           elevation: 0.5,
           selectedItemColor: AppColors.primary,
           unselectedItemColor: AppColors.grey,

@@ -130,7 +130,7 @@ class _BannerCarouselViewState extends State<_BannerCarouselView> {
                   },
                 ),
               ),
-              const SdVerticalSpacing(),
+              SdVerticalSpacing(value: SdSpacing.s8),
               _BannerIndicator(
                 length: state.banners.length,
                 onTap: (index) => _controller.animateToPage(
@@ -189,7 +189,7 @@ class _BannerSkeleton extends StatelessWidget {
     return Column(
       children: [
         SdSkeleton(height: kBannerHeight, borderRadius: kBannerBorderRadius),
-        const SdVerticalSpacing(),
+        SdVerticalSpacing(value: SdSpacing.s8),
         _BannerIndicator(
           length: 4,
           colorBuilder: (index) => context.colorTheme.indicatorBg,

@@ -15,6 +15,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color indicatorActive;
   final Color indicatorBg;
   final Color primary;
+  final Color surfaceDefault;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -28,22 +29,24 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.indicatorActive,
     required this.indicatorBg,
     required this.primary,
+    required this.surfaceDefault,
   });
 
   // Light theme
   static AppColorThemeExt light() {
     return AppColorThemeExt(
-      pageDefault: AppColors.pageDefaultLight,
+      pageDefault: Color(0xFFf1f1f1),
       textDefault: AppColors.textDefaultLight,
       iconDefault: AppColors.iconDefaultLight,
       iconSecondary: SdColors.grey.withValues(alpha: 0.9),
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.2),
-      borderDefault: SdColors.grey.withValues(alpha: 0.9),
+      borderDefault: SdColors.grey.withValues(alpha: 0.8),
       indicatorActive: AppColors.primary,
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
       primary: AppColors.primary,
+      surfaceDefault: AppColors.white,
     );
   }
 
@@ -51,19 +54,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   // TODO: create color for dark theme
   // for now it's have same value with light
   static AppColorThemeExt dark() {
-    return AppColorThemeExt(
-      pageDefault: AppColors.pageDefaultLight,
-      textDefault: AppColors.textDefaultLight,
-      iconDefault: AppColors.iconDefaultLight,
-      iconSecondary: SdColors.grey.withValues(alpha: 0.9),
-      textSubTitle: AppColors.textSubTitleLight,
-      cardDefault: AppColors.cardDefaultLight,
-      boxShadowDefault: SdColors.black.withValues(alpha: 0.3),
-      borderDefault: SdColors.grey.withValues(alpha: 0.2),
-      indicatorActive: AppColors.primary,
-      indicatorBg: SdColors.grey.withValues(alpha: 0.2),
-      primary: AppColors.primary,
-    );
+    return AppColorThemeExt.light();
   }
 
   @override

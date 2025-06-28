@@ -15,7 +15,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.colorTheme.pageDefault,
+        color: context.colorTheme.surfaceDefault,
         borderRadius: BorderRadius.circular(SdSpacing.s12),
         boxShadow: [
           BoxShadow(

@@ -1,6 +1,5 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:system_design_flutter/index.dart';
 
 import 'banner_carousel_section/banner_carousel_section.dart';
 import 'categories_section/categories_section.dart';
@@ -13,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.colorTheme.pageDefault,
+      color: context.colorTheme.surfaceDefault,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: context.colorTheme.pageDefault,
@@ -26,32 +25,33 @@ class HomeScreen extends StatelessWidget {
                 pinned: false,
                 elevation: 0,
                 backgroundColor: context.colorTheme.pageDefault,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Container(
-                    color: context.colorTheme.pageDefault,
-                    child: HomeAppBar(),
-                  ),
-                ),
+                flexibleSpace: FlexibleSpaceBar(background: HomeAppBar()),
               ),
               SliverToBoxAdapter(
-                child: Container(
-                  padding: EdgeInsets.all(SdSpacing.s12),
-                  child: Column(
-                    children: [
-                      // banner
-                      const BannerCarouselSection(),
-                      const SdVerticalSpacing(),
+                child: Column(
+                  children: [
+                    // banner
+                    SectionContainer(
+                      topMargin: true,
+                      bottomMargin: true,
+                      child: const BannerCarouselSection(),
+                    ),
 
-                      // category
-                      const SectionHeader(title: 'Categories'),
-                      const CategoriesSection(),
-                      const SdVerticalSpacing(),
+                    // category
+                    SectionContainer(
+                      titleWidget: const SectionHeader(title: 'Categories'),
+                      bottomMargin: true,
+                      child: const CategoriesSection(),
+                    ),
 
-                      // product
-                      const SectionHeader(title: 'New Arrivals 🔥'),
-                      const RecommendProductsSection(),
-                    ],
-                  ),
+                    // product
+                    SectionContainer(
+                      titleWidget: const SectionHeader(
+                        title: 'New Arrivals 🔥',
+                      ),
+                      child: RecommendProductsSection(),
+                    ),
+                  ],
                 ),
               ),
             ],

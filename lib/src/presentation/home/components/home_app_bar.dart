@@ -10,10 +10,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SdAppBar(
-      backgroundColor: context.colorTheme.pageDefault,
+      backgroundColor: context.colorTheme.surfaceDefault,
       titleWidget: _SearchBar(),
       showBackButton: false,
-
       actions: [
         IconButton(
           onPressed: () {

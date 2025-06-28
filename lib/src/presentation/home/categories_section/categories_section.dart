@@ -90,7 +90,7 @@ class _CategoriesViewState extends State<_CategoriesView> {
                   },
                 ),
               ),
-              SdVerticalSpacing(),
+              SdVerticalSpacing(value: SdSpacing.s8),
               _ScrollIndicator(scrollProgress: _scrollProgress),
             ],
           );
@@ -203,7 +203,7 @@ class _ListCategorySkeleton extends StatelessWidget {
             },
           ),
         ),
-        SdVerticalSpacing(),
+        SdVerticalSpacing(value: SdSpacing.s8),
         Container(
           width: 60.sp,
           height: 4.sp,
