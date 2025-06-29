@@ -25,7 +25,16 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: SdIcon(
             iconData: Ionicons.cart,
-            color: context.colorTheme.iconDefault,
+            color: context.colorTheme.primary,
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            GoRouter.of(context).push(AppRoutes.search.fullPath);
+          },
+          icon: SdIcon(
+            iconData: Ionicons.chatbubble_ellipses_outline,
+            color: context.colorTheme.primary,
           ),
         ),
       ],
