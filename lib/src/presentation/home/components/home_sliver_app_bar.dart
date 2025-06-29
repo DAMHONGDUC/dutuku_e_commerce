@@ -4,15 +4,20 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key});
+class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeSliverAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SdAppBar(
+    return SliverAppBar(
+      // floating & snap => make app bar "snap" into view
+      floating: true,
+      snap: true,
+      pinned: false,
+      elevation: 0,
       backgroundColor: context.colorTheme.surfaceDefault,
-      titleWidget: _SearchBar(),
-      showBackButton: false,
+      surfaceTintColor: SdColors.transparent,
+      title: _SearchBar(),
       actions: [
         IconButton(
           onPressed: () {

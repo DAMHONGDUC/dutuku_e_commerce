@@ -1,5 +1,4 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,26 +11,14 @@ final kImageWidth = 40.sp;
 final kCardWidth = 80.sp;
 final kCardHeight = 80.sp;
 
-class CategoriesSection extends StatelessWidget {
+class CategoriesSection extends StatefulWidget {
   const CategoriesSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<CategoriesController>()..getData(),
-      child: const _CategoriesView(),
-    );
-  }
+  State<CategoriesSection> createState() => _CategoriesSectionState();
 }
 
-class _CategoriesView extends StatefulWidget {
-  const _CategoriesView();
-
-  @override
-  State<_CategoriesView> createState() => _CategoriesViewState();
-}
-
-class _CategoriesViewState extends State<_CategoriesView> {
+class _CategoriesSectionState extends State<CategoriesSection> {
   final ScrollController _scrollController = ScrollController();
   double _scrollProgress = 0.0;
 

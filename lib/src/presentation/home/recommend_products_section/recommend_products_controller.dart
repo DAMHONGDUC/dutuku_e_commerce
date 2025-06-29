@@ -12,7 +12,7 @@ class RecommendProductsController extends Cubit<RecommendProductsState> {
   RecommendProductsController(this._getRecommendProductUsecase)
     : super(RecommendProductsLoading());
 
-  Future<void> fetchProducts() async {
+  Future<void> getData() async {
     emit(RecommendProductsLoading());
 
     final result = await _getRecommendProductUsecase.call(NoParams());

@@ -1,5 +1,4 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
@@ -9,18 +8,6 @@ import 'recommend_products_controller.dart';
 
 class RecommendProductsSection extends StatelessWidget {
   const RecommendProductsSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<RecommendProductsController>()..fetchProducts(),
-      child: _RecommendProductsView(),
-    );
-  }
-}
-
-class _RecommendProductsView extends StatelessWidget {
-  const _RecommendProductsView();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +48,7 @@ class _ProductGridSkeleton extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 4,
+      itemCount: 8,
       padding: EdgeInsets.zero,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

@@ -30,67 +30,65 @@ class BaseScreen extends StatelessWidget {
 
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          currentIndex: navigationShell.currentIndex,
-          onTap: (int index) => _onItemTapped(context, index),
-          selectedLabelStyle: context.textTheme.body10,
-          unselectedLabelStyle: context.textTheme.body10.copyWith(
-            color: AppColors.grey,
-          ),
-          backgroundColor: context.colorTheme.surfaceDefault,
-          elevation: 0.5,
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: AppColors.grey,
-          type: BottomNavigationBarType.fixed,
-          iconSize: SdSpacing.s18,
-          items: [
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: iconPadding,
-                child: _buildIcon(
-                  isSelected: navigationShell.currentIndex == 0,
-                  icon: Ionicons.home_outline,
-                  iconSelected: Ionicons.home,
-                ),
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: iconPadding,
-                child: _buildIcon(
-                  isSelected: navigationShell.currentIndex == 1,
-                  icon: Icons.local_shipping_outlined,
-                  iconSelected: Icons.local_shipping,
-                ),
-              ),
-              label: 'My Order',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: iconPadding,
-                child: _buildIcon(
-                  isSelected: navigationShell.currentIndex == 2,
-                  icon: Ionicons.notifications_outline,
-                  iconSelected: Ionicons.notifications,
-                ),
-              ),
-              label: 'Notification',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: iconPadding,
-                child: _buildIcon(
-                  isSelected: navigationShell.currentIndex == 3,
-                  icon: Ionicons.person_outline,
-                  iconSelected: Ionicons.person,
-                ),
-              ),
-              label: 'Profile',
-            ),
-          ],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: navigationShell.currentIndex,
+        onTap: (int index) => _onItemTapped(context, index),
+        selectedLabelStyle: context.textTheme.body10,
+        unselectedLabelStyle: context.textTheme.body10.copyWith(
+          color: AppColors.grey,
         ),
+        backgroundColor: context.colorTheme.surfaceDefault,
+        elevation: 0.5,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.grey,
+        type: BottomNavigationBarType.fixed,
+        iconSize: SdSpacing.s18,
+        items: [
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: iconPadding,
+              child: _buildIcon(
+                isSelected: navigationShell.currentIndex == 0,
+                icon: Ionicons.home_outline,
+                iconSelected: Ionicons.home,
+              ),
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: iconPadding,
+              child: _buildIcon(
+                isSelected: navigationShell.currentIndex == 1,
+                icon: Icons.local_shipping_outlined,
+                iconSelected: Icons.local_shipping,
+              ),
+            ),
+            label: 'My Order',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: iconPadding,
+              child: _buildIcon(
+                isSelected: navigationShell.currentIndex == 2,
+                icon: Ionicons.notifications_outline,
+                iconSelected: Ionicons.notifications,
+              ),
+            ),
+            label: 'Notification',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: iconPadding,
+              child: _buildIcon(
+                isSelected: navigationShell.currentIndex == 3,
+                icon: Ionicons.person_outline,
+                iconSelected: Ionicons.person,
+              ),
+            ),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
