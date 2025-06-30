@@ -9,6 +9,17 @@ DESIRED_APK_FILENAME="release_${CURRENT_DATE}.apk"
 # Define the standard output directory for Flutter APKs
 FLUTTER_OUTPUT_DIR="build/app/outputs/flutter-apk"
 
+# --- Add this section to remove existing APK ---
+# Construct the full path for the target APK
+TARGET_APK_PATH="${FLUTTER_OUTPUT_DIR}/${DESIRED_APK_FILENAME}"
+
+# Check if the target APK already exists and remove it
+if [ -f "$TARGET_APK_PATH" ]; then
+  echo "Deleting existing APK: $TARGET_APK_PATH"
+  rm "$TARGET_APK_PATH"
+fi
+# --- End of added section ---
+
 # Clean previous builds to ensure a fresh build
 flutter clean
 
