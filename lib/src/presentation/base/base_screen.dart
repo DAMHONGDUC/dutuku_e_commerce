@@ -17,7 +17,7 @@ class BaseScreen extends StatelessWidget {
     return SdIcon(
       iconData: isSelected ? iconSelected : icon,
       color: isSelected ? AppColors.primary : AppColors.grey,
-      iconSize: SdSpacing.s24,
+      iconSize: SdSpacing.s20,
     );
   }
 

@@ -76,7 +76,7 @@ class _SearchBar extends StatelessWidget {
             SdHorizontalSpacing(),
             Text(
               'Search products...',
-              style: context.textTheme.body12.wColor(
+              style: context.textTheme.body14.wColor(
                 context.colorTheme.textSubTitle,
               ),
             ),

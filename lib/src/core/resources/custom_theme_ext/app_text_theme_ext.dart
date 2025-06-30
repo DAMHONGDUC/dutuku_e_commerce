@@ -128,45 +128,10 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
   }
 
   // Dark theme
+  // TODO: create text theme for dark theme
+  // for now it's have same value with light
   static AppTextThemeExt dark() {
-    final darkTextColor = AppColors.textDefaultDark;
-
-    return AppTextThemeExt(
-      // Body styles
-      body6: _applyFont(SdTextStyle.body6().wColor(darkTextColor)),
-      body8: _applyFont(SdTextStyle.body8().wColor(darkTextColor)),
-      body10: _applyFont(SdTextStyle.body10().wColor(darkTextColor)),
-      body12: _applyFont(SdTextStyle.body12().wColor(darkTextColor)),
-      body14: _applyFont(SdTextStyle.body14().wColor(darkTextColor)),
-      body16: _applyFont(SdTextStyle.body16().wColor(darkTextColor)),
-      body18: _applyFont(SdTextStyle.body18().wColor(darkTextColor)),
-      body20: _applyFont(SdTextStyle.body20().wColor(darkTextColor)),
-      body24: _applyFont(SdTextStyle.body24().wColor(darkTextColor)),
-      body32: _applyFont(SdTextStyle.body32().wColor(darkTextColor)),
-      body40: _applyFont(SdTextStyle.body40().wColor(darkTextColor)),
-      body48: _applyFont(SdTextStyle.body48().wColor(darkTextColor)),
-      body56: _applyFont(SdTextStyle.body56().wColor(darkTextColor)),
-      body64: _applyFont(SdTextStyle.body64().wColor(darkTextColor)),
-      body72: _applyFont(SdTextStyle.body72().wColor(darkTextColor)),
-      // Heading styles
-      heading6: _applyFont(SdTextStyle.heading6().wColor(darkTextColor)),
-      heading8: _applyFont(SdTextStyle.heading8().wColor(darkTextColor)),
-      heading10: _applyFont(SdTextStyle.heading10().wColor(darkTextColor)),
-      heading12: _applyFont(SdTextStyle.heading12().wColor(darkTextColor)),
-      heading13: _applyFont(SdTextStyle.heading13().wColor(darkTextColor)),
-      heading14: _applyFont(SdTextStyle.heading14().wColor(darkTextColor)),
-      heading16: _applyFont(SdTextStyle.heading16().wColor(darkTextColor)),
-      heading18: _applyFont(SdTextStyle.heading18().wColor(darkTextColor)),
-      heading20: _applyFont(SdTextStyle.heading20().wColor(darkTextColor)),
-      heading24: _applyFont(SdTextStyle.heading24().wColor(darkTextColor)),
-      heading28: _applyFont(SdTextStyle.heading28().wColor(darkTextColor)),
-      heading32: _applyFont(SdTextStyle.heading32().wColor(darkTextColor)),
-      heading40: _applyFont(SdTextStyle.heading40().wColor(darkTextColor)),
-      heading48: _applyFont(SdTextStyle.heading48().wColor(darkTextColor)),
-      heading56: _applyFont(SdTextStyle.heading56().wColor(darkTextColor)),
-      heading64: _applyFont(SdTextStyle.heading64().wColor(darkTextColor)),
-      heading72: _applyFont(SdTextStyle.heading72().wColor(darkTextColor)),
-    );
+    return AppTextThemeExt.light();
   }
 
   @override
