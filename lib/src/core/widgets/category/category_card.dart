@@ -10,25 +10,28 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SdImage(
-          imagePath: category.imageUrl,
-          width: UIConstants.categoriesImageWidth,
-          height: UIConstants.categoriesImageHeight,
-          borderRadiusValue: SdSpacing.s100,
-        ),
-        SdVerticalSpacing(xRatio: 0.5),
-        Text(
-          category.name,
-          style: context.textTheme.heading14,
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
+    return SizedBox(
+      width: UIConstants.categoriesCardWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SdImage(
+            imagePath: category.imageUrl,
+            width: UIConstants.categoriesImageWidth,
+            height: UIConstants.categoriesImageHeight,
+            borderRadiusValue: SdSpacing.s100,
+          ),
+          SdVerticalSpacing(xRatio: 0.5),
+          Text(
+            category.name,
+            style: context.textTheme.heading14,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 }
