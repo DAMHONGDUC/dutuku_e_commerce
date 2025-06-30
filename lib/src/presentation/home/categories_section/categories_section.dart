@@ -2,14 +2,9 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'categories_section_controller.dart';
-
-final kImageWidth = 40.sp;
-final kCardWidth = 80.sp;
-final kCardHeight = 80.sp;
 
 class CategoriesSection extends StatefulWidget {
   const CategoriesSection({super.key});
@@ -63,7 +58,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
           return Column(
             children: [
               SizedBox(
-                height: kCardHeight,
+                height: UIConstants.categoriesCardHeight,
                 child: ListView.separated(
                   separatorBuilder: (context, index) {
                     return SdHorizontalSpacing();
@@ -96,7 +91,7 @@ class _CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: kCardWidth,
+      width: UIConstants.categoriesCardWidth,
       decoration: BoxDecoration(
         color: AppColors.primary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(SdSpacing.s8),
@@ -115,15 +110,15 @@ class _CategoryCard extends StatelessWidget {
           children: [
             SdImage(
               imagePath: category.imageUrl,
-              width: kImageWidth,
-              height: kImageWidth,
+              width: UIConstants.categoriesImageWidth,
+              height: UIConstants.categoriesImageHeight,
             ),
             SdVerticalSpacing(xRatio: 0.5),
             Text(
               category.name,
-              style: context.textTheme.body10,
+              style: context.textTheme.body12,
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
           ],
@@ -140,15 +135,15 @@ class _ScrollIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final indicatorWidth = 60.sp;
-    final thumbWidth = 16.sp;
+    final indicatorWidth = 60.0;
+    final thumbWidth = 16.0;
 
     return Container(
       width: indicatorWidth,
       height: SdSpacing.s4,
       decoration: BoxDecoration(
         color: context.colorTheme.indicatorBg,
-        borderRadius: BorderRadius.circular(2.sp),
+        borderRadius: BorderRadius.circular(2),
       ),
       child: Stack(
         children: [
@@ -178,25 +173,28 @@ class _ListCategorySkeleton extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: kCardHeight,
+          height: UIConstants.categoriesCardHeight,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(right: SdSpacing.s12),
-                child: SdSkeleton(height: 100.sp, width: kCardWidth),
+                child: SdSkeleton(
+                  height: 100,
+                  width: UIConstants.categoriesCardWidth,
+                ),
               );
             },
           ),
         ),
         SdVerticalSpacing(value: SdSpacing.s8),
         Container(
-          width: 60.sp,
-          height: 4.sp,
+          width: 60,
+          height: 4,
           decoration: BoxDecoration(
             color: SdColors.grey.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(2.sp),
+            borderRadius: BorderRadius.circular(2),
           ),
         ),
       ],

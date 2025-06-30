@@ -31,7 +31,7 @@ class _SplashView extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: context.colorTheme.primary,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +43,7 @@ class _SplashView extends StatelessWidget {
               SdVerticalSpacing(xRatio: 0.5),
               Text(
                 context.loc.splash_description,
-                style: context.textTheme.body14.whiteText(),
+                style: context.textTheme.body16.whiteText(),
               ),
             ],
           ),

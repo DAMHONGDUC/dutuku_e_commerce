@@ -17,7 +17,7 @@ class BaseScreen extends StatelessWidget {
     return SdIcon(
       iconData: isSelected ? iconSelected : icon,
       color: isSelected ? AppColors.primary : AppColors.grey,
-      iconSize: SdSpacing.s18,
+      iconSize: SdSpacing.s24,
     );
   }
 
@@ -33,8 +33,8 @@ class BaseScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         onTap: (int index) => _onItemTapped(context, index),
-        selectedLabelStyle: context.textTheme.body10,
-        unselectedLabelStyle: context.textTheme.body10.copyWith(
+        selectedLabelStyle: context.textTheme.heading12,
+        unselectedLabelStyle: context.textTheme.body12.copyWith(
           color: AppColors.grey,
         ),
         backgroundColor: context.colorTheme.surfaceDefault,

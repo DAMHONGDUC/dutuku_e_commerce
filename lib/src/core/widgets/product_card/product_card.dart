@@ -1,10 +1,9 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:system_design_flutter/index.dart';
 
-final kImageSize = 150.sp;
+const kImageSize = 150.0;
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -34,30 +33,28 @@ class ProductCard extends StatelessWidget {
             height: kImageSize,
             child: _CardImageView(imageUrl: product.imageUrl),
           ),
-          SizedBox(height: SdSpacing.s8),
-
           Container(
             padding: EdgeInsets.all(SdSpacing.s8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // name
-                Text(product.name, style: context.textTheme.body12),
+                Text(product.name, style: context.textTheme.body14),
                 SizedBox(height: SdSpacing.s2),
 
                 // brand
                 Text(
                   product.brand,
-                  style: context.textTheme.body10.wColor(
+                  style: context.textTheme.body12.wColor(
                     context.colorTheme.textSubTitle,
                   ),
                 ),
-                SizedBox(height: SdSpacing.s6),
+                SizedBox(height: SdSpacing.s8),
 
                 // price
                 Text(
                   '\$${product.price.toStringAsFixed(2)}',
-                  style: context.textTheme.heading14.wBold(),
+                  style: context.textTheme.heading16.wBold(),
                 ),
               ],
             ),

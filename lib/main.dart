@@ -20,16 +20,12 @@ class DutukuECommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SdScreenUtil(
-      builder: (_, _) {
-        return AdaptiveTheme(
-          light: AppTheme.buildLightTheme(),
-          dark: AppTheme.buildDarkTheme(),
-          initial: savedThemeMode ?? AdaptiveThemeMode.system,
-          builder: (theme, darkTheme) =>
-              MainMaterialApp(theme: theme, darkTheme: darkTheme),
-        );
-      },
+    return AdaptiveTheme(
+      light: AppTheme.buildLightTheme(),
+      dark: AppTheme.buildDarkTheme(),
+      initial: savedThemeMode ?? AdaptiveThemeMode.system,
+      builder: (theme, darkTheme) =>
+          MainMaterialApp(theme: theme, darkTheme: darkTheme),
     );
   }
 }

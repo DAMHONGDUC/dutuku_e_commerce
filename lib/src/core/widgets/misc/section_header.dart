@@ -26,7 +26,7 @@ class SectionHeader extends StatelessWidget {
               onTap: onActionTap,
               child: Text(
                 actionText ?? 'See All',
-                style: context.textTheme.heading10.wColor(AppColors.primary),
+                style: context.textTheme.heading12.wColor(AppColors.primary),
               ),
             ),
           ],

@@ -7,7 +7,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
   // Body styles
   final TextStyle body6;
   final TextStyle body8;
-  final TextStyle body9;
   final TextStyle body10;
   final TextStyle body12;
   final TextStyle body14;
@@ -25,7 +24,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
   // Heading styles
   final TextStyle heading6;
   final TextStyle heading8;
-  final TextStyle heading9;
   final TextStyle heading10;
   final TextStyle heading12;
   final TextStyle heading13;
@@ -46,7 +44,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
     // Body styles
     required this.body6,
     required this.body8,
-    required this.body9,
     required this.body10,
     required this.body12,
     required this.body14,
@@ -63,7 +60,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
     // Heading styles
     required this.heading6,
     required this.heading8,
-    required this.heading9,
     required this.heading10,
     required this.heading12,
     required this.heading13,
@@ -97,7 +93,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Body styles
       body6: _applyFont(SdTextStyle.body6().wColor(lightTextColor)),
       body8: _applyFont(SdTextStyle.body8().wColor(lightTextColor)),
-      body9: _applyFont(SdTextStyle.body9().wColor(lightTextColor)),
       body10: _applyFont(SdTextStyle.body10().wColor(lightTextColor)),
       body12: _applyFont(SdTextStyle.body12().wColor(lightTextColor)),
       body14: _applyFont(SdTextStyle.body14().wColor(lightTextColor)),
@@ -114,7 +109,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Heading styles
       heading6: _applyFont(SdTextStyle.heading6().wColor(lightTextColor)),
       heading8: _applyFont(SdTextStyle.heading8().wColor(lightTextColor)),
-      heading9: _applyFont(SdTextStyle.heading9().wColor(lightTextColor)),
       heading10: _applyFont(SdTextStyle.heading10().wColor(lightTextColor)),
       heading12: _applyFont(SdTextStyle.heading12().wColor(lightTextColor)),
       heading13: _applyFont(SdTextStyle.heading13().wColor(lightTextColor)),
@@ -141,7 +135,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Body styles
       body6: _applyFont(SdTextStyle.body6().wColor(darkTextColor)),
       body8: _applyFont(SdTextStyle.body8().wColor(darkTextColor)),
-      body9: _applyFont(SdTextStyle.body9().wColor(darkTextColor)),
       body10: _applyFont(SdTextStyle.body10().wColor(darkTextColor)),
       body12: _applyFont(SdTextStyle.body12().wColor(darkTextColor)),
       body14: _applyFont(SdTextStyle.body14().wColor(darkTextColor)),
@@ -158,7 +151,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Heading styles
       heading6: _applyFont(SdTextStyle.heading6().wColor(darkTextColor)),
       heading8: _applyFont(SdTextStyle.heading8().wColor(darkTextColor)),
-      heading9: _applyFont(SdTextStyle.heading9().wColor(darkTextColor)),
       heading10: _applyFont(SdTextStyle.heading10().wColor(darkTextColor)),
       heading12: _applyFont(SdTextStyle.heading12().wColor(darkTextColor)),
       heading13: _applyFont(SdTextStyle.heading13().wColor(darkTextColor)),
@@ -220,7 +212,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Body styles
       body6: body6 ?? this.body6,
       body8: body8 ?? this.body8,
-      body9: body9 ?? this.body9,
       body10: body10 ?? this.body10,
       body12: body12 ?? this.body12,
       body14: body14 ?? this.body14,
@@ -237,7 +228,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Heading styles
       heading6: heading6 ?? this.heading6,
       heading8: heading8 ?? this.heading8,
-      heading9: heading9 ?? this.heading9,
       heading10: heading10 ?? this.heading10,
       heading12: heading12 ?? this.heading12,
       heading13: heading13 ?? this.heading13,
@@ -267,7 +257,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Body styles
       body6: TextStyle.lerp(body6, other.body6, t)!,
       body8: TextStyle.lerp(body8, other.body8, t)!,
-      body9: TextStyle.lerp(body9, other.body9, t)!,
       body10: TextStyle.lerp(body10, other.body10, t)!,
       body12: TextStyle.lerp(body12, other.body12, t)!,
       body14: TextStyle.lerp(body14, other.body14, t)!,
@@ -284,7 +273,6 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
       // Heading styles
       heading6: TextStyle.lerp(heading6, other.heading6, t)!,
       heading8: TextStyle.lerp(heading8, other.heading8, t)!,
-      heading9: TextStyle.lerp(heading9, other.heading9, t)!,
       heading10: TextStyle.lerp(heading10, other.heading10, t)!,
       heading12: TextStyle.lerp(heading12, other.heading12, t)!,
       heading13: TextStyle.lerp(heading13, other.heading13, t)!,

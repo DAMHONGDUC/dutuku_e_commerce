@@ -226,7 +226,7 @@ class MockData {
     ),
     Category(
       id: 1,
-      name: 'New Arrivals',
+      name: 'New',
       imageUrl: '${kMockCategoryPath}c1.png',
       numOfProduct: 120,
     ),

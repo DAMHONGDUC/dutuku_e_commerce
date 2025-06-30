@@ -2,13 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'banner_carousel_controller.dart';
-
-final kBannerHeight = 140.sp;
-final kBannerBorderRadius = SdSpacing.s12;
 
 class BannerCarouselSection extends StatefulWidget {
   const BannerCarouselSection({super.key});
@@ -45,7 +41,7 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(
-                          kBannerBorderRadius,
+                          UIConstants.bannerBorderRadius,
                         ),
                         child: Image.asset(
                           banner.imageUrl,
@@ -65,7 +61,7 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                                 horizontal: SdSpacing.s8,
                                 vertical: SdSpacing.s4,
                               ),
-                              width: 80.sp,
+                              width: UIConstants.bannerTagWidth,
                               decoration: BoxDecoration(
                                 color: banner.tagType.color,
                                 borderRadius: BorderRadius.circular(
@@ -75,15 +71,15 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                               alignment: Alignment.center,
                               child: Text(
                                 banner.tag,
-                                style: context.textTheme.heading12.whiteText(),
+                                style: context.textTheme.heading14.whiteText(),
                               ),
                             ),
                             SdVerticalSpacing(),
                             Text(
                               banner.title,
-                              style: context.textTheme.heading14
-                                  .wColor(contentColor)
-                                  .wBold(),
+                              style: context.textTheme.heading14.wColor(
+                                contentColor,
+                              ),
                             ),
                             Text(
                               banner.subtitle,
@@ -91,10 +87,10 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                                 contentColor,
                               ),
                             ),
-                            SdVerticalSpacing(),
+                            SizedBox(height: SdSpacing.s8),
                             Text(
                               banner.price,
-                              style: context.textTheme.heading14
+                              style: context.textTheme.heading16
                                   .wColor(contentColor)
                                   .wBold(),
                             ),
@@ -106,7 +102,7 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                 }).toList(),
                 carouselController: _controller,
                 options: CarouselOptions(
-                  height: kBannerHeight,
+                  height: UIConstants.bannerHeight,
                   autoPlay: true,
                   viewportFraction: 1,
                   enlargeCenterPage: true,
@@ -175,7 +171,10 @@ class _BannerSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SdSkeleton(height: kBannerHeight, borderRadius: kBannerBorderRadius),
+        SdSkeleton(
+          height: UIConstants.bannerHeight,
+          borderRadius: UIConstants.bannerBorderRadius,
+        ),
         SdVerticalSpacing(value: SdSpacing.s8),
         _BannerIndicator(
           length: 4,
