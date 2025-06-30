@@ -14,7 +14,7 @@ class CategoryCard extends StatelessWidget {
       width: UIConstants.categoriesCardWidth,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SdImage(
             imagePath: category.imageUrl,

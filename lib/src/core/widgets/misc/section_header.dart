@@ -31,7 +31,7 @@ class SectionHeader extends StatelessWidget {
             ),
           ],
         ),
-        SdVerticalSpacing(xRatio: 0.5),
+        SdVerticalSpacing(),
       ],
     );
   }

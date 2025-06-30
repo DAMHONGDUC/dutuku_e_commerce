@@ -113,7 +113,7 @@ class _BannerCarouselSectionState extends State<BannerCarouselSection> {
                   },
                 ),
               ),
-              SdVerticalSpacing(value: SdSpacing.s8),
+              SdVerticalSpacing(),
               _BannerIndicator(
                 length: state.banners.length,
                 onTap: (index) => _controller.animateToPage(
@@ -175,9 +175,9 @@ class _BannerSkeleton extends StatelessWidget {
           height: UIConstants.bannerHeight,
           borderRadiusValue: UIConstants.bannerBorderRadius,
         ),
-        SdVerticalSpacing(value: SdSpacing.s8),
+        SdVerticalSpacing(),
         _BannerIndicator(
-          length: 4,
+          length: 8,
           colorBuilder: (index) => context.colorTheme.indicatorBg,
         ),
       ],

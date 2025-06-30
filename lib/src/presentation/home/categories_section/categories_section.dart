@@ -55,6 +55,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
           return const _ListCategorySkeleton();
         } else if (state is CategoriesLoaded) {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
                 height: UIConstants.categoriesListHeight,
