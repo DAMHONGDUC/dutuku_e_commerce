@@ -19,7 +19,7 @@ class SectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(SdSpacing.s8),
+      padding: EdgeInsets.all(SdSpacing.s12),
       margin: EdgeInsets.only(
         top: topMargin ? SdSpacing.s8 : 0,
         bottom: bottomMargin ? SdSpacing.s8 : 0,

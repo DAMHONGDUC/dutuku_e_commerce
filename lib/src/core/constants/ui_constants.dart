@@ -7,8 +7,7 @@ class UIConstants {
   static const bannerTagWidth = 80.0;
 
   // categories
-  static const categoriesImageWidth = 40.0;
-  static const categoriesImageHeight = 40.0;
-  static const categoriesCardWidth = 80.0;
-  static const categoriesCardHeight = 80.0;
+  static const categoriesImageWidth = 60.0;
+  static const categoriesImageHeight = 60.0;
+  static const categoriesListHeight = 90.0;
 }

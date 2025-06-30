@@ -173,7 +173,7 @@ class _BannerSkeleton extends StatelessWidget {
       children: [
         SdSkeleton(
           height: UIConstants.bannerHeight,
-          borderRadius: UIConstants.bannerBorderRadius,
+          borderRadiusValue: UIConstants.bannerBorderRadius,
         ),
         SdVerticalSpacing(value: SdSpacing.s8),
         _BannerIndicator(

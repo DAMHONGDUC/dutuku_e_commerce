@@ -1,5 +1,4 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
@@ -58,17 +57,19 @@ class _CategoriesSectionState extends State<CategoriesSection> {
           return Column(
             children: [
               SizedBox(
-                height: UIConstants.categoriesCardHeight,
+                height: UIConstants.categoriesListHeight,
                 child: ListView.separated(
                   separatorBuilder: (context, index) {
-                    return SdHorizontalSpacing();
+                    return SdHorizontalSpacing(xRatio: 2);
                   },
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
                   controller: _scrollController,
                   scrollDirection: Axis.horizontal,
                   itemCount: state.categories.length,
                   itemBuilder: (context, index) {
                     final category = state.categories[index];
-                    return _CategoryCard(category: category);
+                    return CategoryCard(category: category);
                   },
                 ),
               ),
@@ -79,51 +80,6 @@ class _CategoriesSectionState extends State<CategoriesSection> {
         }
         return const SizedBox.shrink();
       },
-    );
-  }
-}
-
-class _CategoryCard extends StatelessWidget {
-  final Category category;
-
-  const _CategoryCard({required this.category});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: UIConstants.categoriesCardWidth,
-      decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(SdSpacing.s8),
-        boxShadow: [
-          BoxShadow(
-            color: SdColors.black.withValues(alpha: 0.05),
-            blurRadius: SdSpacing.s8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(SdSpacing.s8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SdImage(
-              imagePath: category.imageUrl,
-              width: UIConstants.categoriesImageWidth,
-              height: UIConstants.categoriesImageHeight,
-            ),
-            SdVerticalSpacing(xRatio: 0.5),
-            Text(
-              category.name,
-              style: context.textTheme.body12,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -173,18 +129,17 @@ class _ListCategorySkeleton extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: UIConstants.categoriesCardHeight,
-          child: ListView.builder(
+          height: UIConstants.categoriesListHeight,
+          child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            separatorBuilder: (context, index) {
+              return SdHorizontalSpacing(xRatio: 2);
+            },
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            itemCount: 10,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(right: SdSpacing.s12),
-                child: SdSkeleton(
-                  height: 100,
-                  width: UIConstants.categoriesCardWidth,
-                ),
-              );
+              return CategoryCardSkeleton();
             },
           ),
         ),

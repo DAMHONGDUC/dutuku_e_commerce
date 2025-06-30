@@ -21,6 +21,6 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<Either<ConfigFailure, List<Category>>> getCategories() async {
     await SdHelper.delayLoading();
 
-    return Right([...MockData.categories, ...MockData.categories]);
+    return Right(MockData.categories);
   }
 }

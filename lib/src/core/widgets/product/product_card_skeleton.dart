@@ -25,7 +25,12 @@ class ProductCardSkeleton extends StatelessWidget {
           // image
           SizedBox(
             height: kImageSize,
-            child: SdSkeleton(borderRadius: SdSpacing.s8),
+            child: SdSkeleton(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(SdSpacing.s8),
+                topRight: Radius.circular(SdSpacing.s8),
+              ),
+            ),
           ),
           SizedBox(height: SdSpacing.s10),
 
@@ -35,15 +40,15 @@ class ProductCardSkeleton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // name
-                SdSkeleton(height: 14, width: double.infinity),
+                SdSkeleton(height: SdSpacing.s14, width: double.infinity),
                 SizedBox(height: SdSpacing.s4),
 
                 // band
-                SdSkeleton(height: 14, width: 120),
+                SdSkeleton(height: SdSpacing.s14, width: 120),
                 SizedBox(height: SdSpacing.s8),
 
                 // price
-                SdSkeleton(height: 12, width: 80),
+                SdSkeleton(height: SdSpacing.s12, width: 80),
               ],
             ),
           ),
