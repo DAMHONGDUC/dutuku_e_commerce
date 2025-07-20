@@ -45,9 +45,8 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
+    return RefreshWrapper(
       onRefresh: () => _onRefreshHome(context),
-      color: context.colorTheme.primary,
       child: Scaffold(
         backgroundColor: context.colorTheme.pageDefault,
         body: CustomScrollView(

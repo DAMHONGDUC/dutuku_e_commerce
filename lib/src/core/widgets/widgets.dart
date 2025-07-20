@@ -1,5 +1,6 @@
 // misc
 export 'misc/section_header.dart';
+export 'misc/refresh_wrapper.dart';
 
 // container
 export './container/section_container.dart';
