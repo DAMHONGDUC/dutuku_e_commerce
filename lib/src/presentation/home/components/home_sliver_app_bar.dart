@@ -6,7 +6,7 @@ import 'package:system_design_flutter/index.dart';
 
 final _kAppBarPadding = SdSpacing.s12;
 final _kAppBarPaddingBottom = SdSpacing.s8;
-final _kSearchBarHeight = SdSpacing.s44;
+final _kSearchBarHeight = SdSpacing.s40;
 final _kAppBarHeight = _kSearchBarHeight + _kAppBarPaddingBottom;
 
 class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
