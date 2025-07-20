@@ -11,14 +11,22 @@ class BaseScreen extends StatelessWidget {
 
   Widget _buildIcon({
     required bool isSelected,
-    required IconData iconSelected,
-    required IconData icon,
+    IconData? iconSelected,
+    IconData? icon,
+    String? imgPath,
+    String? imgPathSelected,
   }) {
-    return SdIcon(
-      iconData: isSelected ? iconSelected : icon,
-      color: isSelected ? AppColors.primary : AppColors.grey,
-      iconSize: SdSpacing.s20,
-    );
+    if ((icon != null && iconSelected != null) ||
+        (imgPath != null && imgPathSelected != null)) {
+      return SdIcon(
+        iconData: isSelected ? iconSelected : icon,
+        iconPath: isSelected ? imgPathSelected : imgPath,
+        color: isSelected ? AppColors.primary : AppColors.grey,
+        iconSize: SdSpacing.s20,
+      );
+    }
+
+    return SizedBox.shrink();
   }
 
   @override
@@ -49,8 +57,8 @@ class BaseScreen extends StatelessWidget {
               padding: iconPadding,
               child: _buildIcon(
                 isSelected: navigationShell.currentIndex == 0,
-                icon: Ionicons.home_outline,
-                iconSelected: Ionicons.home,
+                imgPath: '${kAssetsIconPath}ic_home.svg',
+                imgPathSelected: '${kAssetsIconPath}ic_home_selected.svg',
               ),
             ),
             label: 'Home',

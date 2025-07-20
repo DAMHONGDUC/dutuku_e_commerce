@@ -43,6 +43,7 @@ flutter:
   assets:
     - assets/google_fonts/
     - assets/images/
+    - assets/icons/
     - assets/images/banner/
     - assets/images/product/
     - assets/images/category/

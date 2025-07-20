@@ -5,9 +5,11 @@ import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
 final _kAppBarPadding = SdSpacing.s12;
+final _kAppBarPaddingTop = SdSpacing.s4;
 final _kAppBarPaddingBottom = SdSpacing.s8;
 final _kSearchBarHeight = SdSpacing.s40;
-final _kAppBarHeight = _kSearchBarHeight + _kAppBarPaddingBottom;
+final _kAppBarHeight =
+    _kSearchBarHeight + _kAppBarPaddingBottom + _kAppBarPaddingTop;
 
 class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeSliverAppBar({super.key});
@@ -26,9 +28,12 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: SdColors.transparent,
       titleSpacing: 0,
       title: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: _kAppBarPadding,
-        ).copyWith(bottom: _kAppBarPaddingBottom),
+        padding: EdgeInsets.only(
+          left: _kAppBarPadding,
+          right: _kAppBarPadding,
+          bottom: _kAppBarPaddingBottom,
+          top: _kAppBarPaddingTop,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
