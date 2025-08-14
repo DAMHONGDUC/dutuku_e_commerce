@@ -9,18 +9,50 @@ class ProductRepositoryImpl implements ProductRepository {
   const ProductRepositoryImpl();
 
   @override
-  Future<Either<ConfigFailure, List<Product>>> getRecommendProducts() async {
+  Future<Either<ConfigFailure, Products>> getRecommendProducts({
+    required ProductsFilterParams params,
+  }) async {
+    // These is mock logic
     await SdHelper.delayLoading();
 
+    if (params.getRecommendProject) {
+      final list = [...ProductMock.products, ...ProductMock.products];
+      return Right(
+        Products(
+          products: list,
+          totalPage: 1,
+          currentPage: params.page,
+          totalRecord: list.length,
+        ),
+      );
+    }
+
+    final total = ProductMock.totalRecord;
+    final totalPage = (total / params.itemCount).ceil();
+
+    final start = (params.page - 1) * params.itemCount;
+    final end = (start + params.itemCount).clamp(0, total);
+
+    final products = <Product>[];
+    for (var i = start; i < end; i++) {
+      products.add(ProductMock.products[i % ProductMock.products.length]);
+    }
+
     return Right(
-      List.of([...MockData.products, ...MockData.products])..shuffle(),
+      Products(
+        products: products,
+        totalPage: totalPage,
+        currentPage: params.page,
+        totalRecord: total,
+      ),
     );
   }
 
   @override
   Future<Either<ConfigFailure, List<Category>>> getCategories() async {
+    // These is mock logic
     await SdHelper.delayLoading();
 
-    return Right(MockData.categories);
+    return Right(CategoryMock.categories);
   }
 }

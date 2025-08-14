@@ -49,7 +49,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
       primary: AppColors.primary,
       surfaceDefault: AppColors.white,
-      appBarShadowDefault: AppColors.primary.withValues(alpha: 100),
+      appBarShadowDefault: AppColors.primary.withValues(alpha: 200),
     );
   }
 

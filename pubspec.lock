@@ -324,7 +324,7 @@ packages:
     source: hosted
     version: "0.0.6"
   flutter_staggered_grid_view:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_staggered_grid_view
       sha256: "19e7abb550c96fbfeb546b23f3ff356ee7c59a019a651f8f102a4ba9b7349395"
@@ -332,7 +332,7 @@ packages:
     source: hosted
     version: "0.7.0"
   flutter_svg:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_svg
       sha256: cd57f7969b4679317c17af6fd16ee233c1e60a82ed209d8a475c54fd6fd6f845

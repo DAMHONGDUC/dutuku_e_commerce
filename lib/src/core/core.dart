@@ -14,7 +14,7 @@ export './l10n/l10n.dart';
 export './enums/enums.dart';
 
 // mock
-export './mock/mock_data.dart';
+export 'mock/mock.dart';
 
 // widgets
 export './widgets/widgets.dart';

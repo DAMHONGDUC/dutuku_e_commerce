@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/domain/entities/product_color.dart';
+import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {

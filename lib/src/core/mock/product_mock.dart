@@ -1,93 +1,9 @@
-import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 
-final kMockBannerPath = 'assets/images/banner/';
 final kMockProductPath = 'assets/images/product/';
-final kMockCategoryPath = 'assets/images/category/';
 
-class MockData {
-  static final List<BannerItem> banners = [
-    BannerItem(
-      id: 1,
-      imageUrl: '${kMockBannerPath}b_1.png',
-      tag: '24% OFF',
-      title: 'Shipping Today',
-      subtitle: 'On bag purchases',
-      price: '\$279.99',
-      tagType: BannerTagTypeEnum.discount,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 2,
-      imageUrl: '${kMockBannerPath}b_2.png',
-      tag: 'New',
-      title: 'Leather Tote',
-      subtitle: 'Elegant and spacious',
-      price: '\$249.99',
-      tagType: BannerTagTypeEnum.newArrival,
-      contentColor: '#000000',
-    ),
-    BannerItem(
-      id: 3,
-      imageUrl: '${kMockBannerPath}b_3.png',
-      tag: 'Limited',
-      title: 'Mini Shoulder Bag',
-      subtitle: 'Stylish and compact',
-      price: '\$189.00',
-      tagType: BannerTagTypeEnum.limited,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 4,
-      imageUrl: '${kMockBannerPath}b_4.png',
-      tag: 'Hot',
-      title: 'Everyday Essentials',
-      subtitle: 'Best seller this week',
-      price: 'From \$99.99',
-      tagType: BannerTagTypeEnum.hot,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 5,
-      imageUrl: '${kMockBannerPath}b_5.png',
-      tag: 'Trending',
-      title: 'Canvas Backpack',
-      subtitle: 'Durable and modern',
-      price: '\$129.50',
-      tagType: BannerTagTypeEnum.hot,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 6,
-      imageUrl: '${kMockBannerPath}b_6.png',
-      tag: 'Exclusive',
-      title: 'Elegant Clutch',
-      subtitle: 'Night-out ready',
-      price: '\$89.00',
-      tagType: BannerTagTypeEnum.limited,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 7,
-      imageUrl: '${kMockBannerPath}b_7.png',
-      tag: 'Sale',
-      title: 'Work Bag',
-      subtitle: 'Perfect for the office',
-      price: '\$199.99',
-      tagType: BannerTagTypeEnum.discount,
-      contentColor: '#FFFFFF',
-    ),
-    BannerItem(
-      id: 8,
-      imageUrl: '${kMockBannerPath}b_8.png',
-      tag: 'New',
-      title: 'Weekender Bag',
-      subtitle: 'Ready for travel',
-      price: '\$159.00',
-      tagType: BannerTagTypeEnum.newArrival,
-      contentColor: '#000000',
-    ),
-  ];
+class ProductMock {
+  static final totalRecord = 500;
 
   static final List<Product> products = [
     Product(
@@ -214,45 +130,6 @@ class MockData {
           imageUrl: '${kMockProductPath}p6_2.png',
         ),
       ],
-    ),
-  ];
-
-  static final List<Category> categories = [
-    Category(
-      id: 0,
-      name: 'Luxury',
-      imageUrl: '${kMockCategoryPath}c0.png',
-      numOfProduct: 120,
-    ),
-    Category(
-      id: 1,
-      name: 'Sneakers',
-      imageUrl: '${kMockCategoryPath}c1.png',
-      numOfProduct: 120,
-    ),
-    Category(
-      id: 2,
-      name: 'Toys',
-      imageUrl: '${kMockCategoryPath}c2.png',
-      numOfProduct: 150,
-    ),
-    Category(
-      id: 3,
-      name: 'Pre-loved Luxury',
-      imageUrl: '${kMockCategoryPath}c3.png',
-      numOfProduct: 150,
-    ),
-    Category(
-      id: 4,
-      name: 'Cards',
-      imageUrl: '${kMockCategoryPath}c4.png',
-      numOfProduct: 90,
-    ),
-    Category(
-      id: 5,
-      name: 'P&A',
-      imageUrl: '${kMockCategoryPath}c5.png',
-      numOfProduct: 70,
     ),
   ];
 }

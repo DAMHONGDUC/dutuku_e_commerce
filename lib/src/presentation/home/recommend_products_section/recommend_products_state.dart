@@ -1,17 +1,30 @@
 part of 'recommend_products_controller.dart';
 
-abstract class RecommendProductsState {}
+abstract class RecommendProductsState extends Equatable {
+  const RecommendProductsState();
 
-class RecommendProductsLoading extends RecommendProductsState {}
-
-class RecommendProductsLoaded extends RecommendProductsState {
-  final List<Product> products;
-
-  RecommendProductsLoaded(this.products);
+  @override
+  List<Object> get props => [];
 }
 
-class RecommendProductsError extends RecommendProductsState {
-  final String message;
+class RecommendProductsInitial extends RecommendProductsState {}
 
-  RecommendProductsError(this.message);
+class RecommendProductsLoadingState extends RecommendProductsState {}
+
+class RecommendProductsLoadedState extends RecommendProductsState {
+  final List<Product> products;
+
+  const RecommendProductsLoadedState({required this.products});
+
+  @override
+  List<Object> get props => [products];
+}
+
+class RecommendProductsErrorState extends RecommendProductsState {
+  final String errorMsg;
+
+  const RecommendProductsErrorState({required this.errorMsg});
+
+  @override
+  List<Object> get props => [errorMsg];
 }

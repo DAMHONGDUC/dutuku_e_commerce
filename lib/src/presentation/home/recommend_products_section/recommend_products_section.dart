@@ -2,7 +2,6 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'recommend_products_controller.dart';
 
@@ -16,17 +15,19 @@ class RecommendProductsSection extends StatelessWidget {
         // TODO: implement listener if need
       },
       builder: (context, state) {
-        if (state is RecommendProductsLoading) {
+        if (state is RecommendProductsLoadingState) {
           return _ProductGridSkeleton();
-        } else if (state is RecommendProductsLoaded) {
-          return MasonryGridView.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: SdSpacing.s16,
-            crossAxisSpacing: SdSpacing.s16,
+        } else if (state is RecommendProductsLoadedState) {
+          return SdListView(
+            viewType: SdListViewType.masonryGrid,
+            items: state.products,
+            gridCrossAxisCount: 2,
+            gridMainAxisSpacing: SdSpacing.s16,
+            gridCrossAxisSpacing: SdSpacing.s16,
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: state.products.length,
+
             itemBuilder: (context, index) {
               final product = state.products[index];
               return ProductCard(product: product);

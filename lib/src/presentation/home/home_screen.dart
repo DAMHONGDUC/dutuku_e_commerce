@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         ),
         BlocProvider(create: (_) => getIt<CategoriesController>()..getData()),
         BlocProvider(
-          create: (_) => getIt<RecommendProductsController>()..getData(),
+          create: (_) => getIt<RecommendProductsController>()..onGetData(),
         ),
       ],
       child: Container(
@@ -40,7 +40,7 @@ class _HomeView extends StatelessWidget {
   Future _onRefreshHome(BuildContext context) async {
     context.read<BannerCarouselController>().getData();
     context.read<CategoriesController>().getData();
-    context.read<RecommendProductsController>().getData();
+    context.read<RecommendProductsController>().onGetData();
   }
 
   @override
