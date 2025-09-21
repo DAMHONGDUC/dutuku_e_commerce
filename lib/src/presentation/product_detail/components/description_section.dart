@@ -11,7 +11,7 @@ class DescriptionSection extends StatefulWidget {
 }
 
 class _DescriptionSectionState extends State<DescriptionSection> {
-  bool isExpanded = false;
+  bool isExpanded = true;
 
   @override
   Widget build(BuildContext context) {

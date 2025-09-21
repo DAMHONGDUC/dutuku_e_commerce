@@ -22,7 +22,7 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
       snap: true,
       pinned: false,
       elevation: SdSpacing.s2,
-      shadowColor: context.colorTheme.appBarShadowDefault,
+      shadowColor: context.colorTheme.primaryShadowDefault,
       toolbarHeight: _kAppBarHeight,
       backgroundColor: context.colorTheme.surfaceDefault,
       surfaceTintColor: SdColors.transparent,

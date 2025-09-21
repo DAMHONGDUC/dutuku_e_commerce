@@ -30,22 +30,25 @@ class _SplashView extends StatelessWidget {
           GoRouter.of(context).go(AppRoutes.login.fullPath);
         }
       },
-      child: Scaffold(
+      child: AdaptiveStatusBar(
         backgroundColor: context.colorTheme.primary,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                context.loc.app_name,
-                style: context.textTheme.heading40.whiteText(),
-              ),
-              SdVerticalSpacing(xRatio: 0.5),
-              Text(
-                context.loc.splash_description,
-                style: context.textTheme.body16.whiteText(),
-              ),
-            ],
+        child: Scaffold(
+          backgroundColor: context.colorTheme.primary,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  context.loc.app_name,
+                  style: context.textTheme.heading40.whiteText(),
+                ),
+                SdVerticalSpacing(xRatio: 0.5),
+                Text(
+                  context.loc.splash_description,
+                  style: context.textTheme.body16.whiteText(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -16,7 +16,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color indicatorBg;
   final Color primary;
   final Color surfaceDefault;
-  final Color appBarShadowDefault;
+  final Color primaryShadowDefault;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -31,7 +31,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.indicatorBg,
     required this.primary,
     required this.surfaceDefault,
-    required this.appBarShadowDefault,
+    required this.primaryShadowDefault,
   });
 
   // Light theme
@@ -49,7 +49,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
       primary: AppColors.primary,
       surfaceDefault: AppColors.white,
-      appBarShadowDefault: AppColors.primary.withValues(alpha: 200),
+      primaryShadowDefault: AppColors.primary.withValues(alpha: 0.2),
     );
   }
 

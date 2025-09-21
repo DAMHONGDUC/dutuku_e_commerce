@@ -43,46 +43,42 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SdSafeArea(
-      bgColor: context.colorTheme.surfaceDefault,
+    return SafeAreaScaffold(
+      backgroundColor: context.colorTheme.surfaceDefault,
+      contentColor: context.colorTheme.pageDefault,
       child: RefreshWrapper(
         onRefresh: () => _onRefreshHome(context),
-        child: Scaffold(
-          backgroundColor: context.colorTheme.pageDefault,
-          body: CustomScrollView(
-            physics: const ClampingScrollPhysics(),
-            slivers: [
-              // app bar
-              HomeSliverAppBar(),
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    // banner
-                    SectionContainer(
-                      topMargin: true,
-                      bottomMargin: true,
-                      child: const BannerCarouselSection(),
-                    ),
+        child: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
+          slivers: [
+            // app bar
+            HomeSliverAppBar(),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  // banner
+                  SectionContainer(
+                    topMargin: true,
+                    bottomMargin: true,
+                    child: const BannerCarouselSection(),
+                  ),
 
-                    // category
-                    SectionContainer(
-                      titleWidget: const SectionHeader(title: 'Categories'),
-                      bottomMargin: true,
-                      child: const CategoriesSection(),
-                    ),
+                  // category
+                  SectionContainer(
+                    titleWidget: const SectionHeader(title: 'Categories'),
+                    bottomMargin: true,
+                    child: const CategoriesSection(),
+                  ),
 
-                    // product
-                    SectionContainer(
-                      titleWidget: const SectionHeader(
-                        title: 'New Arrivals 🔥',
-                      ),
-                      child: RecommendProductsSection(),
-                    ),
-                  ],
-                ),
+                  // product
+                  SectionContainer(
+                    titleWidget: const SectionHeader(title: 'New Arrivals 🔥'),
+                    child: RecommendProductsSection(),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
