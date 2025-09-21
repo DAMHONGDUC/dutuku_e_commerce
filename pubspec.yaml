@@ -27,6 +27,7 @@ dependencies:
   ionicons: ^0.2.2
   carousel_slider: ^5.1.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

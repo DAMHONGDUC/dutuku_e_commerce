@@ -73,7 +73,7 @@ class AppRoutes {
   );
 
   static final SdRouter myOrderDetail = SdRouter(
-    name: 'myOrderDetail',
+    name: 'my-order-detail',
     path: 'my-order-detail',
     fullPath: '${myOrder.fullPath}/my-order-detail',
   );
@@ -90,5 +90,12 @@ class AppRoutes {
     name: 'profile',
     path: '/profile',
     fullPath: '/profile',
+  );
+
+  // Product stack
+  static final SdRouter productDetail = SdRouter(
+    name: 'product-detail',
+    path: '/product-detail',
+    fullPath: '/product-detail',
   );
 }

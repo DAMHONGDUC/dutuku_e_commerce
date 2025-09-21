@@ -2,6 +2,7 @@ import 'package:dutuku_e_commerce/src/core/navigation/stack/notifications_stack.
 import 'package:dutuku_e_commerce/src/core/navigation/stack/home_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/login_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/my_order_stack.dart';
+import 'package:dutuku_e_commerce/src/core/navigation/stack/product_stack.dart';
 import 'package:dutuku_e_commerce/src/core/navigation/stack/profile_stack.dart';
 import 'package:dutuku_e_commerce/src/presentation/base/base_screen.dart';
 import 'package:dutuku_e_commerce/src/presentation/splash/splash_screen.dart';
@@ -18,7 +19,7 @@ final GoRouter kAppRouter = GoRouter(
   navigatorKey: kRootNavigatorKey,
   initialLocation: AppRoutes.splash.path,
   debugLogDiagnostics: true,
-  routes: <RouteBase>[
+  routes: [
     SdGoRoute(
       path: AppRoutes.splash.path,
       name: AppRoutes.splash.name,
@@ -37,6 +38,8 @@ final GoRouter kAppRouter = GoRouter(
     ...LoginStack.routes,
     // Register stack
     ...RegisterStack.routes,
+    // Product stack
+    ...ProductStack.routes,
     // Bottom tab
     StatefulShellRoute.indexedStack(
       builder:
@@ -47,7 +50,7 @@ final GoRouter kAppRouter = GoRouter(
           ) {
             return BaseScreen(navigationShell: navigationShell);
           },
-      branches: <StatefulShellBranch>[
+      branches: [
         // Home Tab Branch
         StatefulShellBranch(
           navigatorKey: kHomeTabNavigatorKey,

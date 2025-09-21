@@ -7,59 +7,64 @@ const kImageSize = 150.0;
 
 class ProductCard extends StatelessWidget {
   final Product product;
+  final VoidCallback onPress;
 
-  const ProductCard({super.key, required this.product});
+  const ProductCard({super.key, required this.product, required this.onPress});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.colorTheme.surfaceDefault,
-        borderRadius: BorderRadius.circular(SdSpacing.s12),
-        boxShadow: [
-          BoxShadow(
-            color: context.colorTheme.boxShadowDefault,
-            blurRadius: SdSpacing.s6,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // image
-          SizedBox(
-            height: kImageSize,
-            child: _CardImageView(imageUrl: product.imageUrl),
-          ),
-          Container(
-            padding: EdgeInsets.all(SdSpacing.s8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // name
-                Text(product.name, style: context.textTheme.body14),
-                SizedBox(height: SdSpacing.s2),
-
-                // brand
-                Text(
-                  product.brand,
-                  style: context.textTheme.body12.wColor(
-                    context.colorTheme.textSubTitle,
-                  ),
-                ),
-                SizedBox(height: SdSpacing.s8),
-
-                // price
-                Text(
-                  '\$${product.price.toStringAsFixed(2)}',
-                  style: context.textTheme.heading16.wBold(),
-                ),
-              ],
+    return SdInkWell(
+      isFlat: true,
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.colorTheme.surfaceDefault,
+          borderRadius: BorderRadius.circular(SdSpacing.s12),
+          boxShadow: [
+            BoxShadow(
+              color: context.colorTheme.boxShadowDefault,
+              blurRadius: SdSpacing.s6,
+              offset: Offset(0, 4),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // image
+            SizedBox(
+              height: kImageSize,
+              child: _CardImageView(imageUrl: product.imageUrl),
+            ),
+            Container(
+              padding: EdgeInsets.all(SdSpacing.s8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // name
+                  Text(product.name, style: context.textTheme.body14),
+                  SizedBox(height: SdSpacing.s2),
+
+                  // brand
+                  Text(
+                    product.brand,
+                    style: context.textTheme.body12.wColor(
+                      context.colorTheme.textSubTitle,
+                    ),
+                  ),
+                  SizedBox(height: SdSpacing.s8),
+
+                  // price
+                  Text(
+                    '\$${product.price.toStringAsFixed(2)}',
+                    style: context.textTheme.heading16.wBold(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
