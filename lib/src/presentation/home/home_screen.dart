@@ -43,7 +43,7 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeAreaScaffold(
+    return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
       contentColor: context.colorTheme.pageDefault,
       child: RefreshWrapper(

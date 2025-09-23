@@ -3,6 +3,7 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:system_design_flutter/widgets/widgets.dart';
 
 import 'color_selection_section/color_selection_section.dart';
 import 'product_detail_args.dart';
@@ -45,27 +46,25 @@ class _ProductDetailView extends StatefulWidget {
 class _ProductDetailViewState extends State<_ProductDetailView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
-      body: SafeArea(
-        child: BlocConsumer<ProductDetailController, ProductDetailState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            if (state is ProductDetailLoadingState) {
-              // TODO: add loading UI
-              return SizedBox.shrink();
-            } else if (state is ProductDetailLoadedState) {
-              return _ProductInfoView(currentProduct: state.product);
-            } else if (state is ProductDetailErrorState) {
-              // TODO: add error UI
-              return SizedBox.shrink();
-            }
-
+      child: BlocConsumer<ProductDetailController, ProductDetailState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          if (state is ProductDetailLoadingState) {
+            // TODO: add loading UI
             return SizedBox.shrink();
-          },
-        ),
+          } else if (state is ProductDetailLoadedState) {
+            return _ProductInfoView(currentProduct: state.product);
+          } else if (state is ProductDetailErrorState) {
+            // TODO: add error UI
+            return SizedBox.shrink();
+          }
+
+          return SizedBox.shrink();
+        },
       ),
     );
   }

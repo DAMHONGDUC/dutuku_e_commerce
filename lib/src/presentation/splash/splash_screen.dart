@@ -30,7 +30,7 @@ class _SplashView extends StatelessWidget {
           GoRouter.of(context).go(AppRoutes.login.fullPath);
         }
       },
-      child: AdaptiveStatusBar(
+      child: SdAdaptiveStatusBar(
         backgroundColor: context.colorTheme.primary,
         child: Scaffold(
           backgroundColor: context.colorTheme.primary,
