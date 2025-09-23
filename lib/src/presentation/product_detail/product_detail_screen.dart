@@ -14,6 +14,8 @@ part 'components/description_section.dart';
 part 'components/product_image_section.dart';
 part 'components/product_info_section.dart';
 
+final _kImgHeight = 400.0;
+
 class ProductDetailScreen extends StatelessWidget {
   final ProductDetailArgs args;
 
@@ -48,6 +50,15 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
+      bottomNavigationBar:
+          BlocBuilder<ProductDetailController, ProductDetailState>(
+            builder: (context, state) {
+              if (state is ProductDetailLoadedState) {
+                return BottomActionSection(price: 1);
+              }
+              return SizedBox.shrink();
+            },
+          ),
       child: BlocConsumer<ProductDetailController, ProductDetailState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -57,7 +68,7 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
             // TODO: add loading UI
             return SizedBox.shrink();
           } else if (state is ProductDetailLoadedState) {
-            return _ProductInfoView(currentProduct: state.product);
+            return _ProductInfoView(product: state.product);
           } else if (state is ProductDetailErrorState) {
             // TODO: add error UI
             return SizedBox.shrink();
@@ -71,92 +82,52 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
 }
 
 class _ProductInfoView extends StatelessWidget {
-  const _ProductInfoView({required this.currentProduct});
+  const _ProductInfoView({required this.product});
 
-  final Product currentProduct;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return CustomScrollView(
+      slivers: [
         // App Bar
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  size: 24,
-                  color: Colors.black87,
-                ),
-              ),
-              const Text(
-                'Detail Product',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-              ),
-              const Icon(
-                Icons.shopping_bag_outlined,
-                size: 24,
-                color: Colors.black87,
-              ),
-            ],
+        ProductImageSection(product: product),
+
+        // Product Info Section
+        SliverToBoxAdapter(
+          child: ProductInfoSection(
+            product: product,
+            quantity: 1,
+            onQuantityChanged: (a) {},
           ),
         ),
 
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Product Image Section
-                ProductImageSection(
-                  imageUrl: currentProduct.productColors.isNotEmpty
-                      ? currentProduct.productColors[1].imageUrl
-                      : currentProduct.imageUrl,
-                ),
-
-                // Product Info Section
-                ProductInfoSection(
-                  product: currentProduct,
-                  quantity: 1,
-                  onQuantityChanged: (a) {},
-                ),
-
-                // Color Selection Section
-                if (currentProduct.productColors.isNotEmpty)
-                  ColorSelectionSection(
-                    productColors: currentProduct.productColors,
-                    selectedIndex: 1,
-                    onColorSelected: (a) {},
-                    hexToColor: (a) {
-                      return Colors.black;
-                    },
-                  ),
-
-                // Description Section
-                const DescriptionSection(
-                  description:
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a',
-                ),
-
-                const SizedBox(height: 20),
-              ],
+        // Color Selection Section
+        if (product.productColors.isNotEmpty)
+          SliverToBoxAdapter(
+            child: ColorSelectionSection(
+              productColors: product.productColors,
+              selectedIndex: 1,
+              onColorSelected: (a) {},
+              hexToColor: (a) {
+                return Colors.black;
+              },
             ),
           ),
+
+        // Description Section
+        SliverToBoxAdapter(
+          child: const DescriptionSection(
+            description:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a'
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a',
+          ),
         ),
 
-        // Bottom Action Section
-        BottomActionSection(price: currentProduct.price),
+        // // Bottom Action Section
+        // BottomActionSection(price: currentProduct.price),
       ],
     );
   }
