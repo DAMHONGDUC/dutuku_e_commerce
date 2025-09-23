@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
@@ -9,7 +10,7 @@ class ProductRepositoryImpl implements ProductRepository {
   const ProductRepositoryImpl();
 
   @override
-  Future<Either<ConfigFailure, Products>> getRecommendProducts({
+  Future<Either<Failure, Products>> getRecommendProducts({
     required ProductsFilterParams params,
   }) async {
     // These is mock logic
@@ -49,10 +50,23 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<ConfigFailure, List<Category>>> getCategories() async {
+  Future<Either<Failure, List<Category>>> getCategories() async {
     // These is mock logic
     await SdHelper.delayLoading();
 
     return Right(CategoryMock.categories);
+  }
+
+  @override
+  Future<Either<Failure, Product>> getProductDetail({
+    required int productId,
+  }) async {
+    await SdHelper.delayLoading();
+
+    final product = ProductMock.products.firstWhereOrNull(
+      (e) => e.id == productId,
+    );
+
+    return product != null ? Right(product) : Left(ServerFailure());
   }
 }

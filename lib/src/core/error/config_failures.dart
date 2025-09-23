@@ -1,25 +1,25 @@
 import 'package:equatable/equatable.dart';
 
-abstract class ConfigFailure extends Equatable {
-  const ConfigFailure();
+abstract class Failure extends Equatable {
+  const Failure();
 }
 
-class CacheFailure extends ConfigFailure {
+class CacheFailure extends Failure {
   @override
   List<Object> get props => [];
 }
 
-class ServerFailure extends ConfigFailure {
+class ServerFailure extends Failure {
   @override
   List<Object> get props => [];
 }
 
-class NetworkFailure extends ConfigFailure {
+class NetworkFailure extends Failure {
   @override
   List<Object> get props => [];
 }
 
-class ValidationFailure extends ConfigFailure {
+class ValidationFailure extends Failure {
   final String message;
 
   const ValidationFailure(this.message);

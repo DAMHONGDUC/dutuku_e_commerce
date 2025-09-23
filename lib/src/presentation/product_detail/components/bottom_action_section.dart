@@ -1,5 +1,4 @@
-// widgets/bottom_action_section.dart
-import 'package:flutter/material.dart';
+part of '../product_detail_screen.dart';
 
 class BottomActionSection extends StatelessWidget {
   final double price;

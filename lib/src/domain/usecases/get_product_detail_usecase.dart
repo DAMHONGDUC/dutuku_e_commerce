@@ -4,13 +4,13 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetCategoriesUsecase implements UseCase<List<Category>, NoParams> {
+class GetProductDetailUsecase implements UseCase<Product, int> {
   final ProductRepository repository;
 
-  GetCategoriesUsecase(this.repository);
+  GetProductDetailUsecase(this.repository);
 
   @override
-  Future<Either<Failure, List<Category>>> call(NoParams params) async {
-    return await repository.getCategories();
+  Future<Either<Failure, Product>> call(int productId) async {
+    return await repository.getProductDetail(productId: productId);
   }
 }

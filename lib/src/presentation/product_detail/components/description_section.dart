@@ -1,5 +1,4 @@
-// widgets/description_section.dart
-import 'package:flutter/material.dart';
+part of '../product_detail_screen.dart';
 
 class DescriptionSection extends StatefulWidget {
   final String description;

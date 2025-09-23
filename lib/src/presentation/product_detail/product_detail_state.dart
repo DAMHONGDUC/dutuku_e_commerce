@@ -11,4 +11,14 @@ final class ProductDetailInitial extends ProductDetailState {}
 
 final class ProductDetailLoadingState extends ProductDetailState {}
 
-final class ProductDetailLoadedState extends ProductDetailState {}
+final class ProductDetailLoadedState extends ProductDetailState {
+  final Product product;
+
+  const ProductDetailLoadedState({required this.product});
+}
+
+final class ProductDetailErrorState extends ProductDetailState {
+  final String errorMsg;
+
+  const ProductDetailErrorState({required this.errorMsg});
+}

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../product_detail_screen.dart';
 
 class ProductImageSection extends StatelessWidget {
   final String imageUrl;

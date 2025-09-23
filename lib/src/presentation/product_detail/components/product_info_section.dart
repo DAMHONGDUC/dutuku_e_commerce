@@ -1,6 +1,4 @@
-// widgets/product_info_section.dart
-import 'package:flutter/material.dart';
-import 'package:dutuku_e_commerce/src/domain/entities/product/product.dart';
+part of '../product_detail_screen.dart';
 
 class ProductInfoSection extends StatelessWidget {
   final Product product;

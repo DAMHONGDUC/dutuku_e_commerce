@@ -3,8 +3,9 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/entities.dart';
 
 abstract class ProductRepository {
-  Future<Either<ConfigFailure, Products>> getRecommendProducts({
+  Future<Either<Failure, Products>> getRecommendProducts({
     required ProductsFilterParams params,
   });
-  Future<Either<ConfigFailure, List<Category>>> getCategories();
+  Future<Either<Failure, List<Category>>> getCategories();
+  Future<Either<Failure, Product>> getProductDetail({required int productId});
 }

@@ -9,7 +9,7 @@ class BannerRepositoryImpl implements BannerRepository {
   const BannerRepositoryImpl();
 
   @override
-  Future<Either<ConfigFailure, List<BannerItem>>> getBanners() async {
+  Future<Either<Failure, List<BannerItem>>> getBanners() async {
     // These is mock logic
     await SdHelper.delayLoading();
 
