@@ -1,37 +1,34 @@
 // widgets/color_selection_section.dart
+import 'package:dutuku_e_commerce/src/core/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart';
+import 'package:system_design_flutter/index.dart';
 
 class ColorSelectionSection extends StatelessWidget {
   final List<ProductColor> productColors;
   final int selectedIndex;
   final Function(int) onColorSelected;
-  final Color Function(String) hexToColor;
 
   const ColorSelectionSection({
     super.key,
     required this.productColors,
     required this.selectedIndex,
     required this.onColorSelected,
-    required this.hexToColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: SdSpacing.s16,
+        vertical: SdSpacing.s12,
+      ),
+      color: context.colorTheme.surfaceDefault,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Color',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 12),
+          Text('Color', style: SdTextStyle.heading18()),
+          SdVerticalSpacing(),
           Row(
             children: productColors.asMap().entries.map((entry) {
               int index = entry.key;
@@ -40,38 +37,40 @@ class ColorSelectionSection extends StatelessWidget {
               return GestureDetector(
                 onTap: () => onColorSelected(index),
                 child: Container(
-                  margin: const EdgeInsets.only(right: 12),
-                  child: _buildColorOption(
-                    productColor,
-                    index == selectedIndex,
+                  margin: const EdgeInsets.only(right: SdSpacing.s12),
+                  child: _ColorOption(
+                    productColor: productColor,
+                    isSelected: index == selectedIndex,
                   ),
                 ),
               );
             }).toList(),
           ),
-          const SizedBox(height: 8),
+          SdVerticalSpacing(),
           if (selectedIndex < productColors.length)
             Text(
               'Selected: ${productColors[selectedIndex].colorName}',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w500,
+              style: SdTextStyle.body16().copyWith(
+                color: context.colorTheme.textSubTitle,
               ),
             ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildColorOption(ProductColor productColor, bool isSelected) {
-    Color color;
-    try {
-      color = hexToColor(productColor.colorCode);
-    } catch (e) {
-      // Fallback color if hex parsing fails
-      color = Colors.grey;
-    }
+class _ColorOption extends StatelessWidget {
+  const _ColorOption({
+    required this.isSelected,
+    required this.productColor,
+  });
+  final bool isSelected;
+  final ProductColor productColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = SdColorHelper.getColorFromHex(productColor.colorCode);
 
     return Container(
       width: 50,
@@ -81,27 +80,23 @@ class ColorSelectionSection extends StatelessWidget {
         color: color,
         border: Border.all(
           color: isSelected ? Colors.black87 : Colors.transparent,
-          width: 2,
+          width: SdSpacing.s2,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+            color: context.colorTheme.boxShadowDefault,
+            spreadRadius: SdSpacing.s1,
+            blurRadius: SdSpacing.s4,
+            offset: const Offset(0, SdSpacing.s2),
           ),
         ],
       ),
       child: isSelected
-          ? Icon(Icons.check, color: _getContrastColor(color), size: 24)
+          ? SdIcon(
+              iconData: Icons.check,
+              color: SdColorHelper.getContrastColor(color),
+            )
           : null,
     );
-  }
-
-  Color _getContrastColor(Color color) {
-    // Calculate luminance to determine if we should use white or black text
-    final luminance =
-        (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
-    return luminance > 0.5 ? Colors.black : Colors.white;
   }
 }

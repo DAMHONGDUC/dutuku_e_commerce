@@ -51,7 +51,7 @@ class _ProductDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
-      backgroundColor: context.colorTheme.pageDefault,
+      backgroundColor: context.colorTheme.surfaceDefault,
       bottomNavigationBar:
           BlocBuilder<ProductDetailController, ProductDetailState>(
             builder: (context, state) {
@@ -102,11 +102,6 @@ class _ProductInfoView extends StatelessWidget {
 
         _SeperateSection(),
 
-        // Rating section
-        SliverToBoxAdapter(child: ReviewSection()),
-
-        _SeperateSection(),
-
         // Color selection section
         if (product.productColors.isNotEmpty)
           SliverToBoxAdapter(
@@ -114,11 +109,13 @@ class _ProductInfoView extends StatelessWidget {
               productColors: product.productColors,
               selectedIndex: 1,
               onColorSelected: (a) {},
-              hexToColor: (a) {
-                return Colors.black;
-              },
             ),
           ),
+
+        _SeperateSection(),
+
+        // Rating section
+        SliverToBoxAdapter(child: ReviewSection()),
 
         _SeperateSection(),
 

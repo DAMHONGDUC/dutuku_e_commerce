@@ -11,6 +11,10 @@ class ProductDetailAppBar extends StatelessWidget {
       expandedHeight: _kImgHeight,
       pinned: true,
       floating: false,
+      backgroundColor: context.colorTheme.surfaceDefault,
+      surfaceTintColor: Colors.transparent,
+      elevation: SdSpacing.s2,
+      shadowColor: context.colorTheme.primaryShadowDefault,
       flexibleSpace: FlexibleSpaceBar(
         background: SdImage(imagePath: product.imageUrl),
       ),
