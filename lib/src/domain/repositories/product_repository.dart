@@ -8,4 +8,7 @@ abstract class ProductRepository {
   });
   Future<Either<Failure, List<Category>>> getCategories();
   Future<Either<Failure, Product>> getProductDetail({required int productId});
+  Future<Either<Failure, Products>> getRelatedProducts({
+    required int productId,
+  });
 }

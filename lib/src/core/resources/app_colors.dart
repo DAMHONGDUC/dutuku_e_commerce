@@ -14,7 +14,7 @@ class AppColors {
 
   // Light
   static const Color textDefaultLight = Color(0xFF000000);
-  static final Color textSubTitleLight = SdColors.grey600;
+  static final Color textSubTitleLight = SdColors.grey700;
   static const Color cardDefaultLight = white;
   static const Color pageDefaultLight = white;
   static const Color pageSecondaryLight = snowMist;

@@ -42,7 +42,7 @@ class _DescriptionSectionState extends State<DescriptionSection> {
           widget.description,
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontSize: 14, height: 1.5, color: Colors.grey[600]),
+          style: SdTextStyle.body14(),
         ),
         const SizedBox(height: 8),
         GestureDetector(
@@ -51,13 +51,9 @@ class _DescriptionSectionState extends State<DescriptionSection> {
               isExpanded = true;
             });
           },
-          child: const Text(
+          child: Text(
             'Read More',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF6366F1),
-            ),
+            style: SdTextStyle.heading12().wColor(AppColors.primary),
           ),
         ),
       ],
@@ -68,10 +64,7 @@ class _DescriptionSectionState extends State<DescriptionSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.description,
-          style: TextStyle(fontSize: 14, height: 1.5, color: Colors.grey[600]),
-        ),
+        Text(widget.description, style: SdTextStyle.body14()),
         const SizedBox(height: 8),
         GestureDetector(
           onTap: () {
@@ -79,13 +72,9 @@ class _DescriptionSectionState extends State<DescriptionSection> {
               isExpanded = false;
             });
           },
-          child: const Text(
+          child: Text(
             'Read Less',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF6366F1),
-            ),
+            style: SdTextStyle.heading12().wColor(AppColors.primary),
           ),
         ),
       ],

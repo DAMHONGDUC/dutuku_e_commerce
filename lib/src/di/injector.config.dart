@@ -21,6 +21,7 @@ import '../domain/usecases/get_banners_usecase.dart' as _i638;
 import '../domain/usecases/get_categories_usecase.dart' as _i350;
 import '../domain/usecases/get_product_detail_usecase.dart' as _i365;
 import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
+import '../domain/usecases/get_related_product_usecase.dart' as _i760;
 import '../presentation/home/banner_carousel_section/banner_carousel_controller.dart'
     as _i711;
 import '../presentation/home/categories_section/categories_section_controller.dart'
@@ -28,6 +29,8 @@ import '../presentation/home/categories_section/categories_section_controller.da
 import '../presentation/home/recommend_products_section/recommend_products_controller.dart'
     as _i1056;
 import '../presentation/product_detail/product_detail_controller.dart' as _i939;
+import '../presentation/product_detail/related_product_section/related_products_controller.dart'
+    as _i607;
 import '../presentation/tutorial/tutorial_controller.dart' as _i509;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -53,6 +56,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i365.GetProductDetailUsecase>(
       () => _i365.GetProductDetailUsecase(gh<_i515.ProductRepository>()),
     );
+    gh.factory<_i760.GetRelatedProductUsecase>(
+      () => _i760.GetRelatedProductUsecase(gh<_i747.ProductRepository>()),
+    );
     gh.factory<_i638.GetBannersUsecase>(
       () => _i638.GetBannersUsecase(gh<_i455.BannerRepository>()),
     );
@@ -61,6 +67,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i711.BannerCarouselController>(
       () => _i711.BannerCarouselController(gh<_i515.GetBannersUsecase>()),
+    );
+    gh.factory<_i607.RelatedProductsController>(
+      () =>
+          _i607.RelatedProductsController(gh<_i515.GetRelatedProductUsecase>()),
     );
     gh.factory<_i939.ProductDetailController>(
       () => _i939.ProductDetailController(gh<_i515.GetProductDetailUsecase>()),

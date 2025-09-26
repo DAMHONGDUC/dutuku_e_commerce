@@ -10,7 +10,7 @@ class BannerRepositoryImpl implements BannerRepository {
 
   @override
   Future<Either<Failure, List<BannerItem>>> getBanners() async {
-    // These is mock logic
+    // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
     return Right(List.of(BannerMock.banners)..shuffle());

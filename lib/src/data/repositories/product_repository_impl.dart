@@ -13,7 +13,7 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<Either<Failure, Products>> getRecommendProducts({
     required ProductsFilterParams params,
   }) async {
-    // These is mock logic
+    // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
     if (params.getRecommendProject) {
@@ -51,7 +51,7 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<Either<Failure, List<Category>>> getCategories() async {
-    // These is mock logic
+    // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
     return Right(CategoryMock.categories);
@@ -61,6 +61,7 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<Either<Failure, Product>> getProductDetail({
     required int productId,
   }) async {
+    // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
     final product = ProductMock.products.firstWhereOrNull(
@@ -68,5 +69,15 @@ class ProductRepositoryImpl implements ProductRepository {
     );
 
     return product != null ? Right(product) : Left(ServerFailure());
+  }
+
+  @override
+  Future<Either<Failure, Products>> getRelatedProducts({
+    required int productId,
+  }) async {
+    // Mock logic for testing purposes
+    await SdHelper.delayLoading();
+
+    return getRecommendProducts(params: ProductsFilterParams.init());
   }
 }

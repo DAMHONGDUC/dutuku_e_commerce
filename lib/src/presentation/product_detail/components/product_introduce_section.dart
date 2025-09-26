@@ -16,7 +16,16 @@ class ProductIntroduceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: SdTextStyle.heading24()),
+          Row(
+            children: [
+              Text(product.name, style: SdTextStyle.heading24()),
+              Spacer(),
+              Text(
+                'sold ${product.purchaserCount}',
+                style: SdTextStyle.body12().wSemiBold(),
+              ),
+            ],
+          ),
           if (product.brand.isNotEmpty) ...[
             SdVerticalSpacing(xRatio: 0.5),
             Text(

@@ -18,7 +18,7 @@ class RecommendProductsSection extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is RecommendProductsLoadingState) {
-          return _ProductGridSkeleton();
+          return ProductGridSkeleton();
         } else if (state is RecommendProductsLoadedState) {
           return SdListView(
             viewType: SdListViewType.masonryGrid,
@@ -46,29 +46,6 @@ class RecommendProductsSection extends StatelessWidget {
         }
 
         return const SizedBox.shrink();
-      },
-    );
-  }
-}
-
-class _ProductGridSkeleton extends StatelessWidget {
-  const _ProductGridSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: 8,
-      padding: EdgeInsets.zero,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        childAspectRatio: 0.7,
-      ),
-      itemBuilder: (context, index) {
-        return const ProductCardSkeleton();
       },
     );
   }

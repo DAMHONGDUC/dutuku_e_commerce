@@ -10,6 +10,8 @@ import 'package:system_design_flutter/index.dart';
 import 'color_selection_section/color_selection_section.dart';
 import 'product_detail_args.dart';
 import 'product_detail_controller.dart';
+import 'related_product_section/related_products_controller.dart';
+import 'related_product_section/related_products_section.dart';
 
 part 'components/bottom_action_section.dart';
 part 'components/description_section.dart';
@@ -32,6 +34,11 @@ class ProductDetailScreen extends StatelessWidget {
           create: (_) =>
               getIt<ProductDetailController>()
                 ..getProductDetail(productId: args.productId),
+        ),
+        BlocProvider(
+          create: (_) =>
+              getIt<RelatedProductsController>()
+                ..getData(productId: args.productId),
         ),
       ],
       child: _ProductDetailView(args: args),
@@ -100,23 +107,28 @@ class _ProductInfoView extends StatelessWidget {
 
         // Product introduce section
         SliverToBoxAdapter(child: ProductIntroduceSection(product: product)),
-        _SeperateSection(),
 
         // Color selection section
-        if (product.productColors.isNotEmpty)
+        if (product.productColors.isNotEmpty) ...[
+          _SeperateSection(),
           SliverToBoxAdapter(
             child: ColorSelectionSection(productColors: product.productColors),
           ),
-        _SeperateSection(),
+        ],
 
         // Rating section
-        SliverToBoxAdapter(child: ReviewSection(product: product)),
         _SeperateSection(),
+        SliverToBoxAdapter(child: ReviewSection(product: product)),
 
         // Description section
+        _SeperateSection(),
         SliverToBoxAdapter(
           child: DescriptionSection(description: product.description),
         ),
+
+        // related projects
+        _SeperateSection(),
+        SliverToBoxAdapter(child: RelatedProductsSection()),
       ],
     );
   }
@@ -155,19 +167,10 @@ class _ProductInfoSkeleton extends StatelessWidget {
                 SdSkeleton(height: 20),
                 SdVerticalSpacing(),
                 SdSkeleton(height: 20),
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20),
-
-                // skeleton 4
-                SdVerticalSpacing(xRatio: 2),
-                SdSkeleton(height: 80),
 
                 // skeleton 5
                 SdVerticalSpacing(xRatio: 2),
-                SdSkeleton(height: 20),
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20),
-                SdVerticalSpacing(),
+                ProductGridSkeleton(),
               ],
             ),
           ),
