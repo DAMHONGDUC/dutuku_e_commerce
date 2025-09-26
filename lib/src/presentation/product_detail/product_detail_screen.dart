@@ -3,7 +3,7 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:system_design_flutter/widgets/widgets.dart';
+import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_section.dart';
 import 'product_detail_args.dart';
@@ -36,16 +36,16 @@ class ProductDetailScreen extends StatelessWidget {
   }
 }
 
-class _ProductDetailView extends StatefulWidget {
+class _ProductDetailView extends StatelessWidget {
+  const _ProductDetailView({required this.args});
   final ProductDetailArgs args;
 
-  const _ProductDetailView({required this.args});
+  Future _onRefresh(BuildContext context) async {
+    context.read<ProductDetailController>().getProductDetail(
+      productId: args.productId,
+    );
+  }
 
-  @override
-  State<_ProductDetailView> createState() => _ProductDetailViewState();
-}
-
-class _ProductDetailViewState extends State<_ProductDetailView> {
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
@@ -59,23 +59,25 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
               return SizedBox.shrink();
             },
           ),
-      child: BlocConsumer<ProductDetailController, ProductDetailState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          if (state is ProductDetailLoadingState) {
-            // TODO: add loading UI
-            return SizedBox.shrink();
-          } else if (state is ProductDetailLoadedState) {
-            return _ProductInfoView(product: state.product);
-          } else if (state is ProductDetailErrorState) {
-            // TODO: add error UI
-            return SizedBox.shrink();
-          }
+      child: RefreshWrapper(
+        onRefresh: () => _onRefresh(context),
+        child: BlocConsumer<ProductDetailController, ProductDetailState>(
+          listener: (context, state) {
+            // TODO: implement listener id needed
+          },
+          builder: (context, state) {
+            if (state is ProductDetailLoadingState) {
+              return _ProductInfoSkeleton();
+            } else if (state is ProductDetailLoadedState) {
+              return _ProductInfoView(product: state.product);
+            } else if (state is ProductDetailErrorState) {
+              // TODO: add error UI
+              return SizedBox.shrink();
+            }
 
-          return SizedBox.shrink();
-        },
+            return SizedBox.shrink();
+          },
+        ),
       ),
     );
   }
@@ -101,6 +103,8 @@ class _ProductInfoView extends StatelessWidget {
             onQuantityChanged: (a) {},
           ),
         ),
+
+        SliverToBoxAdapter(child: Divider()),
 
         // Color Selection Section
         if (product.productColors.isNotEmpty)
@@ -129,6 +133,61 @@ class _ProductInfoView extends StatelessWidget {
         // // Bottom Action Section
         // BottomActionSection(price: currentProduct.price),
       ],
+    );
+  }
+}
+
+class _ProductInfoSkeleton extends StatelessWidget {
+  const _ProductInfoSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SdSkeleton(height: _kImgHeight, borderRadius: BorderRadius.zero),
+          Container(
+            color: context.colorTheme.surfaceDefault,
+            padding: EdgeInsets.all(SdSpacing.s16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // skeleton 1
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20, width: 300),
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20, width: 100),
+
+                // skeleton 2
+                SdVerticalSpacing(xRatio: 2),
+                SdSkeleton(height: 80),
+
+                // skeleton 3
+                SdVerticalSpacing(xRatio: 2),
+                SdSkeleton(height: 20),
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20),
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20),
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20),
+
+                // skeleton 4
+                SdVerticalSpacing(xRatio: 2),
+                SdSkeleton(height: 80),
+
+                // skeleton 5
+                SdVerticalSpacing(xRatio: 2),
+                SdSkeleton(height: 20),
+                SdVerticalSpacing(),
+                SdSkeleton(height: 20),
+                SdVerticalSpacing(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
