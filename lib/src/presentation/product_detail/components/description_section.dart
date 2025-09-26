@@ -10,7 +10,7 @@ class DescriptionSection extends StatefulWidget {
 }
 
 class _DescriptionSectionState extends State<DescriptionSection> {
-  bool isExpanded = true;
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,8 @@ class _DescriptionSectionState extends State<DescriptionSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Description',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 12),
+          Text('Description', style: SdTextStyle.heading18()),
+          SdVerticalSpacing(),
           AnimatedCrossFade(
             firstChild: _buildCollapsedDescription(),
             secondChild: _buildExpandedDescription(),

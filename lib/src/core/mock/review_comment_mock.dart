@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 
 class ReviewCommentMock {
@@ -16,6 +15,21 @@ class ReviewCommentMock {
     'Hana',
     'Ivy',
     'Jack',
+    'Liam',
+    'Mia',
+    'Noah',
+    'Olivia',
+    'Paul',
+    'Quinn',
+    'Ruby',
+    'Sophia',
+    'Tom',
+    'Uma',
+    'Victor',
+    'Wendy',
+    'Xander',
+    'Yara',
+    'Zoe',
   ];
 
   static final _comments = [
@@ -29,6 +43,16 @@ class ReviewCommentMock {
     'Color is vibrant and beautiful.',
     'Exactly as described, love it!',
     'Could be improved with more pockets.',
+    'Fast shipping, very satisfied!',
+    'Exceeded my expectations.',
+    'Good value for money.',
+    'Not as described, a bit disappointed.',
+    'Packaging was excellent.',
+    'Would definitely buy again.',
+    'Customer service was helpful.',
+    'Feels cheap, expected better.',
+    'Love the texture and finish.',
+    'Perfect gift for a friend.',
   ];
 
   /// Generate a list of random review comments

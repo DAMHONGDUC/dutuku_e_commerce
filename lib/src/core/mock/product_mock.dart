@@ -1,3 +1,4 @@
+import 'package:dutuku_e_commerce/src/core/mock/product_description_mock.dart';
 import 'package:dutuku_e_commerce/src/core/mock/review_comment_mock.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:system_design_flutter/index.dart';
@@ -15,7 +16,7 @@ class ProductMock {
       price: 195.00,
       imageUrl: '${kMockProductPath}p1_1.png',
       purchaserCount: 120,
-      description: 'A luxurious leather handbag with multiple compartments.',
+
       productColors: [
         ProductColor(
           colorCode: '#2C2C2C',
@@ -42,6 +43,7 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: ProductDescriptionMock.generateRandomDescription(),
     ),
     Product(
       id: 2,
@@ -50,7 +52,6 @@ class ProductMock {
       price: 143.45,
       imageUrl: '${kMockProductPath}p2_2.png',
       purchaserCount: 85,
-      description: 'A sleek and modern crossbody bag for daily use.',
       productColors: [
         ProductColor(
           colorCode: '#2C2C2C',
@@ -77,6 +78,7 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: ProductDescriptionMock.generateRandomDescription(),
     ),
     Product(
       id: 3,
@@ -85,11 +87,11 @@ class ProductMock {
       price: 195.00,
       imageUrl: '${kMockProductPath}p3_1.png',
       purchaserCount: 42,
-      description: 'A light and stylish tote bag, perfect for the beach.',
       reviewComments: ReviewCommentMock.generateRandomReviews(
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: ProductDescriptionMock.generateRandomDescription(),
     ),
     Product(
       id: 4,
@@ -98,7 +100,6 @@ class ProductMock {
       price: 143.45,
       imageUrl: '${kMockProductPath}p4_3.png',
       purchaserCount: 97,
-      description: 'Durable leather bag designed for everyday use.',
       productColors: [
         ProductColor(
           colorCode: '#2C2C2C',
@@ -130,6 +131,7 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: ProductDescriptionMock.generateRandomDescription(),
     ),
     Product(
       id: 5,
