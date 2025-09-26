@@ -3,6 +3,7 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_section.dart';
@@ -11,8 +12,9 @@ import 'product_detail_controller.dart';
 
 part 'components/bottom_action_section.dart';
 part 'components/description_section.dart';
-part 'components/product_image_section.dart';
-part 'components/product_info_section.dart';
+part 'components/product_detail_app_bar.dart';
+part 'components/product_introduce_section.dart';
+part 'components/review_section.dart';
 
 final _kImgHeight = 400.0;
 
@@ -49,7 +51,7 @@ class _ProductDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
-      backgroundColor: context.colorTheme.surfaceDefault,
+      backgroundColor: context.colorTheme.pageDefault,
       bottomNavigationBar:
           BlocBuilder<ProductDetailController, ProductDetailState>(
             builder: (context, state) {
@@ -93,20 +95,19 @@ class _ProductInfoView extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         // App Bar
-        ProductImageSection(product: product),
+        ProductDetailAppBar(product: product),
 
-        // Product Info Section
-        SliverToBoxAdapter(
-          child: ProductInfoSection(
-            product: product,
-            quantity: 1,
-            onQuantityChanged: (a) {},
-          ),
-        ),
+        // Product introduce section
+        SliverToBoxAdapter(child: ProductIntroduceSection(product: product)),
 
-        SliverToBoxAdapter(child: Divider()),
+        _SeperateSection(),
 
-        // Color Selection Section
+        // Rating section
+        SliverToBoxAdapter(child: ReviewSection()),
+
+        _SeperateSection(),
+
+        // Color selection section
         if (product.productColors.isNotEmpty)
           SliverToBoxAdapter(
             child: ColorSelectionSection(
@@ -119,7 +120,9 @@ class _ProductInfoView extends StatelessWidget {
             ),
           ),
 
-        // Description Section
+        _SeperateSection(),
+
+        // Description section
         SliverToBoxAdapter(
           child: const DescriptionSection(
             description:
@@ -187,6 +190,20 @@ class _ProductInfoSkeleton extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SeperateSection extends StatelessWidget {
+  const _SeperateSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: SdVerticalSpacing(
+        bgColor: context.colorTheme.pageDefault,
+        value: SdSpacing.s8,
       ),
     );
   }
