@@ -1,7 +1,8 @@
+import 'package:collection/collection.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
+import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:dutuku_e_commerce/src/domain/entities/product/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
@@ -99,24 +100,17 @@ class _ProductInfoView extends StatelessWidget {
 
         // Product introduce section
         SliverToBoxAdapter(child: ProductIntroduceSection(product: product)),
-
         _SeperateSection(),
 
         // Color selection section
         if (product.productColors.isNotEmpty)
           SliverToBoxAdapter(
-            child: ColorSelectionSection(
-              productColors: product.productColors,
-              selectedIndex: 1,
-              onColorSelected: (a) {},
-            ),
+            child: ColorSelectionSection(productColors: product.productColors),
           ),
-
         _SeperateSection(),
 
         // Rating section
-        SliverToBoxAdapter(child: ReviewSection()),
-
+        SliverToBoxAdapter(child: ReviewSection(product: product)),
         _SeperateSection(),
 
         // Description section
@@ -129,9 +123,6 @@ class _ProductInfoView extends StatelessWidget {
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a',
           ),
         ),
-
-        // // Bottom Action Section
-        // BottomActionSection(price: currentProduct.price),
       ],
     );
   }

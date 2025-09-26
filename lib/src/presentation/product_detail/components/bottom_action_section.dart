@@ -54,7 +54,6 @@ class BottomActionSection extends StatelessWidget {
 
             const SizedBox(width: 20),
 
-            // Add to Cart button
             Expanded(
               flex: 2,
               child: GestureDetector(

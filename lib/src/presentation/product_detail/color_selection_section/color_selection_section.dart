@@ -6,15 +6,8 @@ import 'package:system_design_flutter/index.dart';
 
 class ColorSelectionSection extends StatelessWidget {
   final List<ProductColor> productColors;
-  final int selectedIndex;
-  final Function(int) onColorSelected;
 
-  const ColorSelectionSection({
-    super.key,
-    required this.productColors,
-    required this.selectedIndex,
-    required this.onColorSelected,
-  });
+  const ColorSelectionSection({super.key, required this.productColors});
 
   @override
   Widget build(BuildContext context) {
@@ -35,25 +28,17 @@ class ColorSelectionSection extends StatelessWidget {
               ProductColor productColor = entry.value;
 
               return GestureDetector(
-                onTap: () => onColorSelected(index),
+                onTap: () => {},
                 child: Container(
                   margin: const EdgeInsets.only(right: SdSpacing.s12),
                   child: _ColorOption(
                     productColor: productColor,
-                    isSelected: index == selectedIndex,
+                    isSelected: index == 1,
                   ),
                 ),
               );
             }).toList(),
           ),
-          SdVerticalSpacing(),
-          if (selectedIndex < productColors.length)
-            Text(
-              'Selected: ${productColors[selectedIndex].colorName}',
-              style: SdTextStyle.body16().copyWith(
-                color: context.colorTheme.textSubTitle,
-              ),
-            ),
         ],
       ),
     );
@@ -61,10 +46,7 @@ class ColorSelectionSection extends StatelessWidget {
 }
 
 class _ColorOption extends StatelessWidget {
-  const _ColorOption({
-    required this.isSelected,
-    required this.productColor,
-  });
+  const _ColorOption({required this.isSelected, required this.productColor});
   final bool isSelected;
   final ProductColor productColor;
 
