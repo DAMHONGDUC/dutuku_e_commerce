@@ -4,10 +4,11 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_section.dart';
+import 'product_detail_app_bar.dart/product_detail_app_bar.dart';
+import 'product_detail_app_bar.dart/product_detail_app_bar_controller.dart';
 import 'product_detail_args.dart';
 import 'product_detail_controller.dart';
 import 'related_product_section/related_products_controller.dart';
@@ -15,7 +16,6 @@ import 'related_product_section/related_products_section.dart';
 
 part 'components/bottom_action_section.dart';
 part 'components/description_section.dart';
-part 'components/product_detail_app_bar.dart';
 part 'components/product_introduce_section.dart';
 part 'components/review_section.dart';
 
@@ -40,6 +40,7 @@ class ProductDetailScreen extends StatelessWidget {
               getIt<RelatedProductsController>()
                 ..getData(productId: args.productId),
         ),
+        BlocProvider(create: (_) => getIt<ProductDetailAppBarController>()),
       ],
       child: _ProductDetailView(args: args),
     );
@@ -93,37 +94,66 @@ class _ProductDetailView extends StatelessWidget {
   }
 }
 
-class _ProductInfoView extends StatelessWidget {
+class _ProductInfoView extends StatefulWidget {
   const _ProductInfoView({required this.product});
 
   final Product product;
 
   @override
+  State<_ProductInfoView> createState() => __ProductInfoViewState();
+}
+
+class __ProductInfoViewState extends State<_ProductInfoView> {
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      context.read<ProductDetailAppBarController>().setScrollOffset(
+        _scrollController.offset,
+      );
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: _scrollController,
       slivers: [
         // App Bar
-        ProductDetailAppBar(product: product),
+        ProductDetailAppBar(product: widget.product, imgHeight: _kImgHeight),
 
         // Product introduce section
-        SliverToBoxAdapter(child: ProductIntroduceSection(product: product)),
+        SliverToBoxAdapter(
+          child: ProductIntroduceSection(product: widget.product),
+        ),
 
         // Color selection section
-        if (product.productColors.isNotEmpty) ...[
+        if (widget.product.productColors.isNotEmpty) ...[
           _SeperateSection(),
           SliverToBoxAdapter(
-            child: ColorSelectionSection(productColors: product.productColors),
+            child: ColorSelectionSection(
+              productColors: widget.product.productColors,
+            ),
           ),
         ],
 
         // Rating section
         _SeperateSection(),
-        SliverToBoxAdapter(child: ReviewSection(product: product)),
+        SliverToBoxAdapter(child: ReviewSection(product: widget.product)),
 
         // Description section
         _SeperateSection(),
         SliverToBoxAdapter(
-          child: DescriptionSection(description: product.description),
+          child: DescriptionSection(description: widget.product.description),
         ),
 
         // related projects

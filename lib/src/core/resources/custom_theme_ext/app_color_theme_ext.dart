@@ -17,6 +17,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color primary;
   final Color surfaceDefault;
   final Color primaryShadowDefault;
+  final Color cardOnSurface;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -32,6 +33,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.primary,
     required this.surfaceDefault,
     required this.primaryShadowDefault,
+    required this.cardOnSurface,
   });
 
   // Light theme
@@ -50,6 +52,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       primary: AppColors.primary,
       surfaceDefault: AppColors.white,
       primaryShadowDefault: AppColors.primary.withValues(alpha: 0.2),
+      cardOnSurface: Color(0xFFf1f1f1),
     );
   }
 

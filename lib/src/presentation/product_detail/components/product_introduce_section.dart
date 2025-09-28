@@ -20,9 +20,19 @@ class ProductIntroduceSection extends StatelessWidget {
             children: [
               Text(product.name, style: SdTextStyle.heading24()),
               Spacer(),
-              Text(
-                'sold ${product.purchaserCount}',
-                style: SdTextStyle.body12().wSemiBold(),
+              Row(
+                children: [
+                  Text(
+                    'sold ${product.purchaserCount}',
+                    style: SdTextStyle.body14().wSemiBold(),
+                  ),
+                  SdHorizontalSpacing(),
+                  SdIcon(
+                    iconData: Icons.favorite_border,
+                    color: context.colorTheme.iconDefault,
+                    iconSize: SdSpacing.s20,
+                  ),
+                ],
               ),
             ],
           ),

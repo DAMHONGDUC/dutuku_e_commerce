@@ -1,5 +1,5 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide SearchBar;
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
@@ -37,7 +37,7 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: _SearchBar()),
+            Expanded(child: SearchBar(height: _kSearchBarHeight)),
             SdHorizontalSpacing(),
             Row(
               children: [
@@ -70,47 +70,4 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(_kAppBarHeight);
-}
-
-class _SearchBar extends StatelessWidget {
-  const _SearchBar();
-
-  void _navigateToSearch(BuildContext context) {}
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => _navigateToSearch(context),
-      child: Container(
-        height: _kSearchBarHeight,
-        padding: EdgeInsets.symmetric(
-          horizontal: SdSpacing.s8,
-          vertical: SdSpacing.s6,
-        ),
-        decoration: BoxDecoration(
-          color: context.colorTheme.cardDefault,
-          borderRadius: BorderRadius.circular(SdSpacing.s8),
-          border: Border.all(
-            color: context.colorTheme.borderDefault,
-            width: SdSpacing.s1,
-          ),
-        ),
-        child: Row(
-          children: [
-            SdIcon(
-              iconData: Ionicons.search,
-              color: context.colorTheme.iconDefault,
-            ),
-            SdHorizontalSpacing(),
-            Text(
-              'Search products...',
-              style: context.textTheme.body14.wColor(
-                context.colorTheme.textSubTitle,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
