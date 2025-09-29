@@ -55,14 +55,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i243.GetRecommendProductUsecase>(
       () => _i243.GetRecommendProductUsecase(gh<_i747.ProductRepository>()),
     );
+    gh.factory<_i760.GetRelatedProductUsecase>(
+      () => _i760.GetRelatedProductUsecase(gh<_i747.ProductRepository>()),
+    );
     gh.factory<_i350.GetCategoriesUsecase>(
       () => _i350.GetCategoriesUsecase(gh<_i515.ProductRepository>()),
     );
     gh.factory<_i365.GetProductDetailUsecase>(
       () => _i365.GetProductDetailUsecase(gh<_i515.ProductRepository>()),
-    );
-    gh.factory<_i760.GetRelatedProductUsecase>(
-      () => _i760.GetRelatedProductUsecase(gh<_i747.ProductRepository>()),
     );
     gh.factory<_i638.GetBannersUsecase>(
       () => _i638.GetBannersUsecase(gh<_i455.BannerRepository>()),

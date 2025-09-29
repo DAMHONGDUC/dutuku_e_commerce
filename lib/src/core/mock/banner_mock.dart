@@ -12,7 +12,7 @@ class BannerMock {
       title: 'Shipping Today',
       subtitle: 'On bag purchases',
       price: '\$279.99',
-      tagType: BannerTagTypeEnum.discount,
+      tagType: BannerTagType.discount,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -22,7 +22,7 @@ class BannerMock {
       title: 'Leather Tote',
       subtitle: 'Elegant and spacious',
       price: '\$249.99',
-      tagType: BannerTagTypeEnum.newArrival,
+      tagType: BannerTagType.newArrival,
       contentColor: '#000000',
     ),
     BannerItem(
@@ -32,7 +32,7 @@ class BannerMock {
       title: 'Mini Shoulder Bag',
       subtitle: 'Stylish and compact',
       price: '\$189.00',
-      tagType: BannerTagTypeEnum.limited,
+      tagType: BannerTagType.limited,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -42,7 +42,7 @@ class BannerMock {
       title: 'Everyday Essentials',
       subtitle: 'Best seller this week',
       price: 'From \$99.99',
-      tagType: BannerTagTypeEnum.hot,
+      tagType: BannerTagType.hot,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -52,7 +52,7 @@ class BannerMock {
       title: 'Canvas Backpack',
       subtitle: 'Durable and modern',
       price: '\$129.50',
-      tagType: BannerTagTypeEnum.hot,
+      tagType: BannerTagType.hot,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -62,7 +62,7 @@ class BannerMock {
       title: 'Elegant Clutch',
       subtitle: 'Night-out ready',
       price: '\$89.00',
-      tagType: BannerTagTypeEnum.limited,
+      tagType: BannerTagType.limited,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -72,7 +72,7 @@ class BannerMock {
       title: 'Work Bag',
       subtitle: 'Perfect for the office',
       price: '\$199.99',
-      tagType: BannerTagTypeEnum.discount,
+      tagType: BannerTagType.discount,
       contentColor: '#FFFFFF',
     ),
     BannerItem(
@@ -82,7 +82,7 @@ class BannerMock {
       title: 'Weekender Bag',
       subtitle: 'Ready for travel',
       price: '\$159.00',
-      tagType: BannerTagTypeEnum.newArrival,
+      tagType: BannerTagType.newArrival,
       contentColor: '#000000',
     ),
   ];

@@ -1,5 +1,9 @@
 import 'dart:math';
+import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
+
+const kImgReviewPath = 'assets/images/review_comment/';
+const kVidReviewPath = 'assets/videos/review_comment/';
 
 class ReviewCommentMock {
   static final _random = Random();
@@ -55,6 +59,47 @@ class ReviewCommentMock {
     'Perfect gift for a friend.',
   ];
 
+  // Assets
+  static final _imageAssets = [
+    '${kImgReviewPath}img_review_1.jpg',
+    '${kImgReviewPath}img_review_2.jpg',
+    '${kImgReviewPath}img_review_3.jpg',
+    '${kImgReviewPath}img_review_4.jpg',
+    '${kImgReviewPath}img_review_5.jpg',
+    '${kImgReviewPath}img_review_6.jpg',
+    '${kImgReviewPath}img_review_7.jpg',
+    '${kImgReviewPath}img_review_8.jpg',
+  ];
+
+  static final _videoAssets = [
+    '${kVidReviewPath}vid_review_1.mp4',
+    '${kVidReviewPath}vid_review_2.mp4',
+    '${kVidReviewPath}vid_review_3.mp4',
+    '${kVidReviewPath}vid_review_4.mp4',
+    '${kVidReviewPath}vid_review_5.mp4',
+    '${kVidReviewPath}vid_review_6.mp4',
+    '${kVidReviewPath}vid_review_7.mp4',
+    '${kVidReviewPath}vid_review_8.mp4',
+  ];
+
+  /// Random assets (max 2, có thể là image hoặc video)
+  static List<ReviewAsset> _generateRandomAssets() {
+    final assetCount = _random.nextInt(3); // 0, 1 hoặc 2
+    final assets = <ReviewAsset>[];
+
+    for (int i = 0; i < assetCount; i++) {
+      final isImage = _random.nextBool();
+      if (isImage) {
+        final url = _imageAssets[_random.nextInt(_imageAssets.length)];
+        assets.add(ReviewAsset(url: url, type: AssetType.image));
+      } else {
+        final url = _videoAssets[_random.nextInt(_videoAssets.length)];
+        assets.add(ReviewAsset(url: url, type: AssetType.video));
+      }
+    }
+    return assets;
+  }
+
   /// Generate a list of random review comments
   static List<ReviewComment> generateRandomReviews(int count) {
     return List.generate(count, (index) {
@@ -63,6 +108,7 @@ class ReviewCommentMock {
       final rating = (_random.nextDouble() * 2) + 3; // rating từ 3.0 -> 5.0
       final daysAgo = _random.nextInt(365);
       final date = DateTime.now().subtract(Duration(days: daysAgo));
+      final assets = _generateRandomAssets();
 
       return ReviewComment(
         id: index + 1,
@@ -70,6 +116,7 @@ class ReviewCommentMock {
         comment: comment,
         rating: double.parse(rating.toStringAsFixed(1)),
         createdAt: date,
+        assets: assets,
       );
     });
   }

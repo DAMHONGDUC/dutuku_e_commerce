@@ -28,7 +28,6 @@ dependencies:
   carousel_slider: ^5.1.1
   collection: ^1.19.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -43,11 +42,13 @@ flutter:
   generate: true
   assets:
     - assets/google_fonts/
-    - assets/images/
     - assets/icons/
     - assets/images/banner/
     - assets/images/product/
     - assets/images/category/
+    - assets/images/review_comment/
+    - assets/images/common/
+    - assets/videos/review_comment/
 
 lint_staged:
   "lib/**.dart": dart format && dart fix --apply
