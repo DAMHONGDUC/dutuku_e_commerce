@@ -3,7 +3,7 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
-const _kAssetsReviewSize = 80.0;
+const _kAssetsReviewSize = 100.0;
 
 class ReviewCommentItem extends StatelessWidget {
   const ReviewCommentItem({
@@ -17,7 +17,7 @@ class ReviewCommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final limitedAssets = review.assets.take(2).toList(); // max 2 asset
+    final limitedAssets = review.assets.take(2).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
