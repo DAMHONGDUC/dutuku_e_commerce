@@ -1,6 +1,8 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/product_detail_args.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'recommend_products_controller.dart';
@@ -16,7 +18,7 @@ class RecommendProductsSection extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is RecommendProductsLoadingState) {
-          return _ProductGridSkeleton();
+          return ProductGridSkeleton();
         } else if (state is RecommendProductsLoadedState) {
           return SdListView(
             viewType: SdListViewType.masonryGrid,
@@ -30,35 +32,20 @@ class RecommendProductsSection extends StatelessWidget {
 
             itemBuilder: (context, index) {
               final product = state.products[index];
-              return ProductCard(product: product);
+              return ProductCard(
+                product: product,
+                onPress: () {
+                  GoRouter.of(context).push(
+                    AppRoutes.productDetail.fullPath,
+                    extra: ProductDetailArgs(productId: product.id),
+                  );
+                },
+              );
             },
           );
         }
 
         return const SizedBox.shrink();
-      },
-    );
-  }
-}
-
-class _ProductGridSkeleton extends StatelessWidget {
-  const _ProductGridSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: 8,
-      padding: EdgeInsets.zero,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        childAspectRatio: 0.7,
-      ),
-      itemBuilder: (context, index) {
-        return const ProductCardSkeleton();
       },
     );
   }

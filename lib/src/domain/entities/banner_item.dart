@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 class BannerItem extends Equatable {
   final String imageUrl;
   final String tag;
-  final BannerTagTypeEnum tagType;
+  final BannerTagType tagType;
   final String title;
   final String subtitle;
   final String price;

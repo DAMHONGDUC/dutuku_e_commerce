@@ -10,7 +10,7 @@ class GetCategoriesUsecase implements UseCase<List<Category>, NoParams> {
   GetCategoriesUsecase(this.repository);
 
   @override
-  Future<Either<ConfigFailure, List<Category>>> call(NoParams params) async {
+  Future<Either<Failure, List<Category>>> call(NoParams params) async {
     return await repository.getCategories();
   }
 }

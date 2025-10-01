@@ -11,7 +11,7 @@ class GetBannersUsecase implements UseCase<List<BannerItem>, NoParams> {
   GetBannersUsecase(this.repository);
 
   @override
-  Future<Either<ConfigFailure, List<BannerItem>>> call(NoParams params) async {
+  Future<Either<Failure, List<BannerItem>>> call(NoParams params) async {
     return await repository.getBanners();
   }
 }

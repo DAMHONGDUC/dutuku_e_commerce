@@ -12,9 +12,7 @@ class GetRecommendProductUsecase
   GetRecommendProductUsecase(this.repository);
 
   @override
-  Future<Either<ConfigFailure, Products>> call(
-    ProductsFilterParams params,
-  ) async {
+  Future<Either<Failure, Products>> call(ProductsFilterParams params) async {
     return await repository.getRecommendProducts(params: params);
   }
 }
