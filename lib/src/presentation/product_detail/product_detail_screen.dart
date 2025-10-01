@@ -146,7 +146,7 @@ class __ProductInfoViewState extends State<_ProductInfoView> {
           ),
         ],
 
-        // Rating section
+        // Review section
         _SeperateSection(),
         SliverToBoxAdapter(child: ReviewSection(product: widget.product)),
 
@@ -156,7 +156,7 @@ class __ProductInfoViewState extends State<_ProductInfoView> {
           child: DescriptionSection(description: widget.product.description),
         ),
 
-        // related projects
+        // Related projects
         _SeperateSection(),
         SliverToBoxAdapter(child: RelatedProductsSection()),
       ],
