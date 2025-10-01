@@ -1,6 +1,8 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
+import 'package:dutuku_e_commerce/src/presentation/preview_media/preview_media_args.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
 const _kAssetsReviewSize = 100.0;
@@ -17,8 +19,6 @@ class ReviewCommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final limitedAssets = review.assets.take(2).toList();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,32 +58,48 @@ class ReviewCommentItem extends StatelessWidget {
         const SdVerticalSpacing(xRatio: 0.5),
 
         // Assets (max 2)
-        if (limitedAssets.isNotEmpty) ...[
+        if (review.assets.isNotEmpty) ...[
           const SizedBox(height: SdSpacing.s4),
           SizedBox(
             height: _kAssetsReviewSize,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: limitedAssets.length,
+              itemCount: review.assets.length,
               separatorBuilder: (_, __) => SdHorizontalSpacing(),
               itemBuilder: (context, index) {
-                final asset = limitedAssets[index];
-                if (asset.type == AssetType.image) {
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(SdSpacing.s8),
-                    child: SdImage(
-                      imagePath: asset.url,
-                      width: _kAssetsReviewSize,
-                      height: _kAssetsReviewSize,
-                    ),
-                  );
-                } else {
-                  return SdVideoPlaceHolder(
-                    videoPath: asset.url,
-                    width: _kAssetsReviewSize,
-                    height: _kAssetsReviewSize,
-                  );
-                }
+                final asset = review.assets[index];
+                return GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(
+                      AppRoutes.previewMedia.fullPath,
+                      extra: PreviewMediaArgs(
+                        items: review.assets
+                            .map(
+                              (e) => SdPreviewMediaConfig(
+                                filePath: e.url,
+                                isVideo: e.type == AssetType.video,
+                                isAsset: e.url.contains('asset'),
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  },
+                  child: asset.type == AssetType.image
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(SdSpacing.s8),
+                          child: SdImage(
+                            imagePath: asset.url,
+                            width: _kAssetsReviewSize,
+                            height: _kAssetsReviewSize,
+                          ),
+                        )
+                      : SdVideoPlaceHolder(
+                          videoPath: asset.url,
+                          width: _kAssetsReviewSize,
+                          height: _kAssetsReviewSize,
+                        ),
+                );
               },
             ),
           ),

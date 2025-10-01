@@ -45,7 +45,7 @@ class _HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
-      contentColor: context.colorTheme.pageDefault,
+      contentBgColor: context.colorTheme.pageDefault,
       child: RefreshWrapper(
         onRefresh: () => _onRefreshHome(context),
         child: CustomScrollView(

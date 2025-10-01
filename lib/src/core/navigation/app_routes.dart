@@ -98,4 +98,11 @@ class AppRoutes {
     path: '/product-detail',
     fullPath: '/product-detail',
   );
+
+  // Preview media
+  static final SdRouter previewMedia = SdRouter(
+    name: 'preview-media',
+    path: '/preview-media',
+    fullPath: '/preview-media',
+  );
 }

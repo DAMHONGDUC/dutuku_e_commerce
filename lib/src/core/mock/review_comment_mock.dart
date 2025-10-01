@@ -82,9 +82,9 @@ class ReviewCommentMock {
     '${kVidReviewPath}vid_review_8.mp4',
   ];
 
-  /// Random assets (max 2, có thể là image hoặc video)
-  static List<ReviewAsset> _generateRandomAssets() {
-    final assetCount = _random.nextInt(3); // 0, 1 hoặc 2
+  /// Random assets (max 9, image or video)
+  static List<ReviewAsset> _generateRandomAssets({int max = 5}) {
+    final assetCount = _random.nextInt(max + 1);
     final assets = <ReviewAsset>[];
 
     for (int i = 0; i < assetCount; i++) {
