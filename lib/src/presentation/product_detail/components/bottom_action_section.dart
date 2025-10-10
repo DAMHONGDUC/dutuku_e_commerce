@@ -9,16 +9,16 @@ class BottomActionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: SdHelper.getPageDefaultPadding().copyWith(bottom: 0),
       decoration: BoxDecoration(
         color: context.colorTheme.surfaceDefault,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(25),
+          topLeft: Radius.circular(SdSpacing.s24),
+          topRight: Radius.circular(SdSpacing.s24),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: context.colorTheme.boxShadowSecondary,
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, -5),
@@ -28,99 +28,59 @@ class BottomActionSection extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // Price section
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Price',
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Price',
+                  style: SdTextStyle.body14().wColor(
+                    context.colorTheme.textSubTitle,
                   ),
-                  Text(
-                    '\$${price.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF6366F1),
+                ),
+                Text(
+                  SdCurrencyFormatHelper.formatPrice(price),
+                  style: SdTextStyle.body24()
+                      .wColor(context.colorTheme.primary)
+                      .wBold(),
+                ),
+              ],
+            ),
+            SdHorizontalSpacing(),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SdButton(
+                      text: 'Add to cart',
+                      widthType: SdButtonWidth.full,
+                      onTap: () {},
+                      type: SdButtonType.secondary,
+                      colorConfig: SdButtonColorConfig.init().copyWith(
+                        secondaryBorderColor: context.colorTheme.primary,
+                        secondaryTextColor: context.colorTheme.primary,
+                      ),
+                    ),
+                  ),
+                  SdHorizontalSpacing(),
+                  Expanded(
+                    child: SdButton(
+                      text: 'Buy now',
+                      widthType: SdButtonWidth.full,
+                      colorConfig: SdButtonColorConfig.init().copyWith(
+                        primaryBgColor: context.colorTheme.primary,
+                      ),
+                      onTap: () {},
                     ),
                   ),
                 ],
               ),
             ),
-
-            const SizedBox(width: 20),
-
-            Expanded(
-              flex: 2,
-              child: GestureDetector(
-                onTap: onAddToCart ?? () => _showAddToCartSnackBar(context),
-                child: Container(
-                  height: 56,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                    borderRadius: BorderRadius.circular(28),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xFF6366F1).withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.shopping_bag_outlined,
-                        color: Colors.white,
-                        size: 22,
-                      ),
-                      SizedBox(width: 12),
-                      Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showAddToCartSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Row(
-          children: [
-            Icon(Icons.check_circle, color: Colors.white, size: 20),
-            SizedBox(width: 8),
-            Text(
-              'Product added to cart!',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }

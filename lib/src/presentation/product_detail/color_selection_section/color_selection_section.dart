@@ -1,8 +1,11 @@
-// widgets/color_selection_section.dart
 import 'package:dutuku_e_commerce/src/core/resources/resources.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/color_selection_section/color_selection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
+
+const _kColorOptionSize = 45.0;
 
 class ColorSelectionSection extends StatelessWidget {
   final List<ProductColor> productColors;
@@ -12,32 +15,53 @@ class ColorSelectionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: SdSpacing.s16,
-        vertical: SdSpacing.s12,
-      ),
+      padding: SdHelper.getPageDefaultPadding(),
       color: context.colorTheme.surfaceDefault,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Color', style: SdTextStyle.heading18()),
           SdVerticalSpacing(),
-          Row(
-            children: productColors.asMap().entries.map((entry) {
-              int index = entry.key;
-              ProductColor productColor = entry.value;
+          BlocBuilder<ColorSelectionController, ColorSelectionState>(
+            buildWhen: (previous, current) {
+              return current is ColorSelectionChangedColorState;
+            },
+            builder: (context, state) {
+              if (state is ColorSelectionChangedColorState) {
+                return SizedBox(
+                  height: _kColorOptionSize,
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: productColors.length,
+                    separatorBuilder: (context, index) =>
+                        SizedBox(width: SdSpacing.s12),
+                    itemBuilder: (context, index) {
+                      final productColor = productColors[index];
 
-              return GestureDetector(
-                onTap: () => {},
-                child: Container(
-                  margin: const EdgeInsets.only(right: SdSpacing.s12),
-                  child: _ColorOption(
-                    productColor: productColor,
-                    isSelected: index == 1,
+                      return GestureDetector(
+                        onTap: () {
+                          if (productColor.colorCode !=
+                              state.productColor.colorCode) {
+                            context
+                                .read<ColorSelectionController>()
+                                .onChangeColor(productColor);
+                          }
+                        },
+                        child: _ColorOption(
+                          productColor: productColor,
+                          isSelected:
+                              productColor.colorCode ==
+                              state.productColor.colorCode,
+                        ),
+                      );
+                    },
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }
+
+              return SizedBox.shrink();
+            },
           ),
         ],
       ),
@@ -55,8 +79,8 @@ class _ColorOption extends StatelessWidget {
     final color = SdColorHelper.getColorFromHex(productColor.colorCode);
 
     return Container(
-      width: 50,
-      height: 50,
+      width: _kColorOptionSize,
+      height: _kColorOptionSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: color,

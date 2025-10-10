@@ -12,7 +12,6 @@ import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'app_routes.dart';
-import 'stack/common_stack.dart';
 import 'stack/register_stack.dart';
 
 final GoRouter kAppRouter = GoRouter(
@@ -41,8 +40,6 @@ final GoRouter kAppRouter = GoRouter(
     ...RegisterStack.routes,
     // Product stack
     ...ProductStack.routes,
-    // Common stack
-    ...CommonStack.routes,
     // Bottom tab
     StatefulShellRoute.indexedStack(
       builder:

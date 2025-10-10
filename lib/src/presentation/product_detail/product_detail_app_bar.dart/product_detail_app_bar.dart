@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/color_selection_section/color_selection_controller.dart';
 import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
@@ -49,9 +50,23 @@ class ProductDetailAppBar extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
           elevation: SdSpacing.s2,
           shadowColor: context.colorTheme.primaryShadowDefault,
-          flexibleSpace: FlexibleSpaceBar(
-            background: SdImage(imagePath: product.imageUrl),
-          ),
+          flexibleSpace:
+              BlocBuilder<ColorSelectionController, ColorSelectionState>(
+                buildWhen: (previous, current) {
+                  return current is ColorSelectionChangedColorState;
+                },
+                builder: (context, state) {
+                  String imagePath = product.imageUrl;
+
+                  if (state is ColorSelectionChangedColorState) {
+                    imagePath = state.productColor.imageUrl;
+                  }
+
+                  return FlexibleSpaceBar(
+                    background: SdImage(imagePath: imagePath),
+                  );
+                },
+              ),
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           title: Row(

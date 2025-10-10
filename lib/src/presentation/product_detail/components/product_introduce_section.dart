@@ -36,6 +36,13 @@ class ProductIntroduceSection extends StatelessWidget {
               ),
             ],
           ),
+          SdVerticalSpacing(xRatio: 0.25),
+          Text(
+            SdCurrencyFormatHelper.formatPrice(product.price),
+            style: SdTextStyle.body20().wBold().wColor(
+              context.colorTheme.primary,
+            ),
+          ),
           if (product.brand.isNotEmpty) ...[
             SdVerticalSpacing(xRatio: 0.5),
             Text(

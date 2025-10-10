@@ -18,6 +18,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
   final Color surfaceDefault;
   final Color primaryShadowDefault;
   final Color cardOnSurface;
+  final Color boxShadowSecondary;
 
   const AppColorThemeExt({
     required this.pageDefault,
@@ -34,6 +35,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
     required this.surfaceDefault,
     required this.primaryShadowDefault,
     required this.cardOnSurface,
+    required this.boxShadowSecondary,
   });
 
   // Light theme
@@ -45,7 +47,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       iconSecondary: SdColors.grey.withValues(alpha: 0.9),
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
-      boxShadowDefault: SdColors.black.withValues(alpha: 0.2),
+      boxShadowDefault: SdColors.black.withValues(alpha: 0.15),
       borderDefault: SdColors.grey.withValues(alpha: 0.8),
       indicatorActive: AppColors.primary,
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
@@ -53,6 +55,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       surfaceDefault: AppColors.white,
       primaryShadowDefault: AppColors.primary.withValues(alpha: 0.2),
       cardOnSurface: Color(0xFFf1f1f1),
+      boxShadowSecondary: SdColors.black.withValues(alpha: 0.1),
     );
   }
 

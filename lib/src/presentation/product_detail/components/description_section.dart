@@ -15,15 +15,29 @@ class _DescriptionSectionState extends State<DescriptionSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: SdHelper.getPageDefaultPadding(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Description', style: SdTextStyle.heading18()),
           SdVerticalSpacing(),
           AnimatedCrossFade(
-            firstChild: _buildCollapsedDescription(),
-            secondChild: _buildExpandedDescription(),
+            firstChild: _CollapsedDescription(
+              onClickReadMore: () {
+                setState(() {
+                  isExpanded = true;
+                });
+              },
+              description: widget.description,
+            ),
+            secondChild: _ExpandedDescription(
+              onClickReadLess: () {
+                setState(() {
+                  isExpanded = false;
+                });
+              },
+              description: widget.description,
+            ),
             crossFadeState: isExpanded
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
@@ -33,47 +47,59 @@ class _DescriptionSectionState extends State<DescriptionSection> {
       ),
     );
   }
+}
 
-  Widget _buildCollapsedDescription() {
+class _ExpandedDescription extends StatelessWidget {
+  const _ExpandedDescription({
+    required this.onClickReadLess,
+    required this.description,
+  });
+  final void Function() onClickReadLess;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.description,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          style: SdTextStyle.body14(),
-        ),
-        const SizedBox(height: 8),
+        Text(description, style: SdTextStyle.body14()),
+        SdVerticalSpacing(),
         GestureDetector(
-          onTap: () {
-            setState(() {
-              isExpanded = true;
-            });
-          },
+          onTap: onClickReadLess,
           child: Text(
-            'Read More',
+            'Read Less',
             style: SdTextStyle.heading12().wColor(AppColors.primary),
           ),
         ),
       ],
     );
   }
+}
 
-  Widget _buildExpandedDescription() {
+class _CollapsedDescription extends StatelessWidget {
+  const _CollapsedDescription({
+    required this.onClickReadMore,
+    required this.description,
+  });
+  final void Function() onClickReadMore;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.description, style: SdTextStyle.body14()),
-        const SizedBox(height: 8),
+        Text(
+          description,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+          style: SdTextStyle.body14(),
+        ),
+        SdVerticalSpacing(),
         GestureDetector(
-          onTap: () {
-            setState(() {
-              isExpanded = false;
-            });
-          },
+          onTap: onClickReadMore,
           child: Text(
-            'Read Less',
+            'Read More',
             style: SdTextStyle.heading12().wColor(AppColors.primary),
           ),
         ),

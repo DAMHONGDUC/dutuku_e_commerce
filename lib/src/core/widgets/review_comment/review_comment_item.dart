@@ -1,8 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
-import 'package:dutuku_e_commerce/src/presentation/preview_media/preview_media_args.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:system_design_flutter/index.dart';
 
 const _kAssetsReviewSize = 100.0;
@@ -55,7 +53,7 @@ class ReviewCommentItem extends StatelessWidget {
         // Comment
         Text(review.comment, style: SdTextStyle.body14()),
 
-        const SdVerticalSpacing(xRatio: 0.5),
+        const SdVerticalSpacing(xRatio: 0.25),
 
         // Assets (max 2)
         if (review.assets.isNotEmpty) ...[
@@ -70,19 +68,19 @@ class ReviewCommentItem extends StatelessWidget {
                 final asset = review.assets[index];
                 return GestureDetector(
                   onTap: () {
-                    GoRouter.of(context).push(
-                      AppRoutes.previewMedia.fullPath,
-                      extra: PreviewMediaArgs(
-                        items: review.assets
-                            .map(
-                              (e) => SdPreviewMediaConfig(
-                                filePath: e.url,
-                                isVideo: e.type == AssetType.video,
-                                isAsset: e.url.contains('asset'),
-                              ),
-                            )
-                            .toList(),
-                      ),
+                    final items = review.assets
+                        .map(
+                          (e) => SdPreviewMediaConfig(
+                            filePath: e.url,
+                            isVideo: e.type == AssetType.video,
+                            isAsset: e.url.contains('asset'),
+                          ),
+                        )
+                        .toList();
+                    SdPreviewMediaView.show(
+                      context: context,
+                      items: items,
+                      initialIndex: index,
                     );
                   },
                   child: asset.type == AssetType.image
