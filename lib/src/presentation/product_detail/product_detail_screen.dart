@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
 
+import 'color_selection_section/color_selection_controller.dart';
 import 'color_selection_section/color_selection_section.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar_controller.dart';
@@ -41,6 +42,7 @@ class ProductDetailScreen extends StatelessWidget {
                 ..getData(productId: args.productId),
         ),
         BlocProvider(create: (_) => getIt<ProductDetailAppBarController>()),
+        BlocProvider(create: (_) => getIt<ColorSelectionController>()),
       ],
       child: _ProductDetailView(args: args),
     );
@@ -74,7 +76,11 @@ class _ProductDetailView extends StatelessWidget {
         onRefresh: () => _onRefresh(context),
         child: BlocConsumer<ProductDetailController, ProductDetailState>(
           listener: (context, state) {
-            // TODO: implement listener id needed
+            if (state is ProductDetailLoadedState) {
+              context.read<ColorSelectionController>().onChangeColor(
+                state.product.productColors.firstOrNull,
+              );
+            }
           },
           builder: (context, state) {
             if (state is ProductDetailLoadingState) {
