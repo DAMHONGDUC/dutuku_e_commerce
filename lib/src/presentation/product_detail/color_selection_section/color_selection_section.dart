@@ -5,7 +5,7 @@ import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
 
-const _kColorOptionSize = 40.0;
+const _kColorOptionSize = 45.0;
 
 class ColorSelectionSection extends StatelessWidget {
   final List<ProductColor> productColors;
