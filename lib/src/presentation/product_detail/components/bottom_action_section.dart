@@ -59,6 +59,10 @@ class BottomActionSection extends StatelessWidget {
                       widthType: SdButtonWidth.full,
                       onTap: () {},
                       type: SdButtonType.secondary,
+                      colorConfig: SdButtonColorConfig.init().copyWith(
+                        secondaryBorderColor: context.colorTheme.primary,
+                        secondaryTextColor: context.colorTheme.primary,
+                      ),
                     ),
                   ),
                   SdHorizontalSpacing(),
@@ -66,6 +70,9 @@ class BottomActionSection extends StatelessWidget {
                     child: SdButton(
                       text: 'Buy now',
                       widthType: SdButtonWidth.full,
+                      colorConfig: SdButtonColorConfig.init().copyWith(
+                        primaryBgColor: context.colorTheme.primary,
+                      ),
                       onTap: () {},
                     ),
                   ),
