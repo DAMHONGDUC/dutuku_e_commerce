@@ -65,7 +65,7 @@ class _ProductDetailView extends StatelessWidget {
           BlocBuilder<ProductDetailController, ProductDetailState>(
             builder: (context, state) {
               if (state is ProductDetailLoadedState) {
-                return BottomActionSection(price: 1);
+                return BottomActionSection(price: state.product.price);
               }
               return SizedBox.shrink();
             },

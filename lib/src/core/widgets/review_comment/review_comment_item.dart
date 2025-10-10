@@ -53,7 +53,7 @@ class ReviewCommentItem extends StatelessWidget {
         // Comment
         Text(review.comment, style: SdTextStyle.body14()),
 
-        const SdVerticalSpacing(xRatio: 0.5),
+        const SdVerticalSpacing(xRatio: 0.25),
 
         // Assets (max 2)
         if (review.assets.isNotEmpty) ...[
