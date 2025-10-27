@@ -27,6 +27,7 @@ dependencies:
   ionicons: ^0.2.2
   carousel_slider: ^5.1.1
   collection: ^1.19.1
+  sliver_tools: ^0.2.12
 
 dev_dependencies:
   flutter_test:

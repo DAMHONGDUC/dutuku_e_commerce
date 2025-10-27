@@ -22,6 +22,10 @@ class RelatedProductsSection extends StatelessWidget {
         listener: (context, state) {
           // TODO: implement listener if need
         },
+        buildWhen: (previous, current) {
+          return current is RelatedProductsLoadingState ||
+              current is RelatedProductsLoadedState;
+        },
         builder: (context, state) {
           if (state is RelatedProductsLoadingState) {
             return ProductGridSkeleton();

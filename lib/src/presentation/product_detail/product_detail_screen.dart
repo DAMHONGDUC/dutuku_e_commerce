@@ -4,6 +4,7 @@ import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_controller.dart';
@@ -44,73 +45,21 @@ class ProductDetailScreen extends StatelessWidget {
         BlocProvider(create: (_) => getIt<ProductDetailAppBarController>()),
         BlocProvider(create: (_) => getIt<ColorSelectionController>()),
       ],
-      child: _ProductDetailView(args: args),
+      child: _Body(args: args),
     );
   }
 }
 
-class _ProductDetailView extends StatelessWidget {
-  const _ProductDetailView({required this.args});
+class _Body extends StatefulWidget {
+  const _Body({required this.args});
   final ProductDetailArgs args;
 
-  Future _onRefresh(BuildContext context) async {
-    context.read<ProductDetailController>().getProductDetail(
-      productId: args.productId,
-    );
-  }
-
   @override
-  Widget build(BuildContext context) {
-    return SdSafeAreaScaffold(
-      backgroundColor: context.colorTheme.surfaceDefault,
-      bottomNavigationBar:
-          BlocBuilder<ProductDetailController, ProductDetailState>(
-            builder: (context, state) {
-              if (state is ProductDetailLoadedState) {
-                return BottomActionSection(price: state.product.price);
-              }
-              return SizedBox.shrink();
-            },
-          ),
-      child: RefreshWrapper(
-        onRefresh: () => _onRefresh(context),
-        child: BlocConsumer<ProductDetailController, ProductDetailState>(
-          listener: (context, state) {
-            if (state is ProductDetailLoadedState) {
-              context.read<ColorSelectionController>().onChangeColor(
-                state.product.productColors.firstOrNull,
-              );
-            }
-          },
-          builder: (context, state) {
-            if (state is ProductDetailLoadingState) {
-              return _ProductInfoSkeleton();
-            } else if (state is ProductDetailLoadedState) {
-              return _ProductInfoView(product: state.product);
-            } else if (state is ProductDetailErrorState) {
-              // TODO: add error UI
-              return SizedBox.shrink();
-            }
-
-            return SizedBox.shrink();
-          },
-        ),
-      ),
-    );
-  }
+  State<_Body> createState() => _BodyState();
 }
 
-class _ProductInfoView extends StatefulWidget {
-  const _ProductInfoView({required this.product});
-
-  final Product product;
-
-  @override
-  State<_ProductInfoView> createState() => __ProductInfoViewState();
-}
-
-class __ProductInfoViewState extends State<_ProductInfoView> {
-  late final ScrollController _scrollController;
+class _BodyState extends State<_Body> {
+  late ScrollController _scrollController;
 
   @override
   void initState() {
@@ -129,43 +78,124 @@ class __ProductInfoViewState extends State<_ProductInfoView> {
     super.dispose();
   }
 
+  Future _onRefresh(BuildContext context) async {
+    context.read<ProductDetailController>().getProductDetail(
+      productId: widget.args.productId,
+    );
+    context.read<RelatedProductsController>().getData(
+      productId: widget.args.productId,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: [
-        // App Bar
-        ProductDetailAppBar(product: widget.product, imgHeight: _kImgHeight),
+    return SdSafeAreaScaffold(
+      backgroundColor: context.colorTheme.surfaceDefault,
+      bottomNavigationBar: _BottomSection(),
+      child: BlocListener<ProductDetailController, ProductDetailState>(
+        listener: (context, state) {
+          if (state is ProductDetailLoadedState) {
+            context.read<ColorSelectionController>().onChangeColor(
+              state.product.productColors.firstOrNull,
+            );
+          } else if (state is ProductDetailErrorState) {
+            // handle error case
+          }
+        },
+        child: RefreshWrapper(
+          onRefresh: () => _onRefresh(context),
+          child: CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              // Info section
+              _ProductInfoSection(),
 
-        // Product introduce section
-        SliverToBoxAdapter(
-          child: ProductIntroduceSection(product: widget.product),
-        ),
-
-        // Color selection section
-        if (widget.product.productColors.isNotEmpty) ...[
-          _SeperateSection(),
-          SliverToBoxAdapter(
-            child: ColorSelectionSection(
-              productColors: widget.product.productColors,
-            ),
+              // Related projects
+              _SeperateSection(),
+              SliverToBoxAdapter(child: RelatedProductsSection()),
+            ],
           ),
-        ],
-
-        // Review section
-        _SeperateSection(),
-        SliverToBoxAdapter(child: ReviewSection(product: widget.product)),
-
-        // Description section
-        _SeperateSection(),
-        SliverToBoxAdapter(
-          child: DescriptionSection(description: widget.product.description),
         ),
+      ),
+    );
+  }
+}
 
-        // Related projects
-        _SeperateSection(),
-        SliverToBoxAdapter(child: RelatedProductsSection()),
-      ],
+class _ProductInfoSection extends StatelessWidget {
+  const _ProductInfoSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductDetailController, ProductDetailState>(
+      buildWhen: (previous, current) {
+        return current is ProductDetailLoadingState ||
+            current is ProductDetailLoadedState;
+      },
+      builder: (context, state) {
+        if (state is ProductDetailLoadingState) {
+          return MultiSliver(
+            children: [SliverToBoxAdapter(child: _ProductInfoSkeleton())],
+          );
+        } else if (state is ProductDetailLoadedState) {
+          return MultiSliver(
+            children: [
+              // App Bar
+              ProductDetailAppBar(
+                product: state.product,
+                imgHeight: _kImgHeight,
+              ),
+
+              // Product introduce section
+              SliverToBoxAdapter(
+                child: ProductIntroduceSection(product: state.product),
+              ),
+
+              // Color selection section
+              if (state.product.productColors.isNotEmpty) ...[
+                _SeperateSection(),
+                SliverToBoxAdapter(
+                  child: ColorSelectionSection(
+                    productColors: state.product.productColors,
+                  ),
+                ),
+              ],
+
+              // Review section
+              _SeperateSection(),
+              SliverToBoxAdapter(child: ReviewSection(product: state.product)),
+
+              // Description section
+              _SeperateSection(),
+              SliverToBoxAdapter(
+                child: DescriptionSection(
+                  description: state.product.description,
+                ),
+              ),
+            ],
+          );
+        }
+        return SliverToBoxAdapter(child: SizedBox.shrink());
+      },
+    );
+  }
+}
+
+class _BottomSection extends StatelessWidget {
+  const _BottomSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductDetailController, ProductDetailState>(
+      buildWhen: (previous, current) {
+        return current is ProductDetailLoadedState ||
+            current is ProductDetailLoadingState;
+      },
+      builder: (context, state) {
+        if (state is ProductDetailLoadedState) {
+          return BottomActionSection(price: state.product.price);
+        }
+        return SizedBox.shrink();
+      },
     );
   }
 }
