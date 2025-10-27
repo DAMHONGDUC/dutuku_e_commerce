@@ -1,8 +1,7 @@
 part of '../product_detail_screen.dart';
 
 class DescriptionSection extends StatefulWidget {
-  final String description;
-
+  final Description description;
   const DescriptionSection({super.key, required this.description});
 
   @override
@@ -28,7 +27,7 @@ class _DescriptionSectionState extends State<DescriptionSection> {
                   isExpanded = true;
                 });
               },
-              description: widget.description,
+              description: widget.description.content,
             ),
             secondChild: _ExpandedDescription(
               onClickReadLess: () {
@@ -55,20 +54,33 @@ class _ExpandedDescription extends StatelessWidget {
     required this.description,
   });
   final void Function() onClickReadLess;
-  final String description;
+  final Description description;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(description, style: SdTextStyle.body14()),
+        Text(description.content, style: SdTextStyle.body14()),
         SdVerticalSpacing(),
-        GestureDetector(
-          onTap: onClickReadLess,
-          child: Text(
-            'Read Less',
-            style: SdTextStyle.heading12().wColor(AppColors.primary),
+        ...description.images
+            .take(2)
+            .map(
+              (e) => SdImage(
+                imagePath: e,
+                width: _kImgHeight / 1.5,
+                height: _kImgHeight / 1.5,
+              ),
+            ),
+        SdVerticalSpacing(),
+        Align(
+          alignment: Alignment.topLeft,
+          child: GestureDetector(
+            onTap: onClickReadLess,
+            child: Text(
+              'Read Less',
+              style: SdTextStyle.heading12().wColor(context.colorTheme.primary),
+            ),
           ),
         ),
       ],

@@ -1,7 +1,7 @@
+import 'package:dutuku_e_commerce/src/domain/entities/description.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart';
+import 'package:dutuku_e_commerce/src/domain/entities/review_comment.dart';
 import 'package:equatable/equatable.dart';
-
-import '../review_comment.dart';
 
 class Product extends Equatable {
   final String name;
@@ -11,7 +11,7 @@ class Product extends Equatable {
   final List<ProductColor> productColors;
   final int id;
   final int purchaserCount;
-  final String description;
+  final Description description;
   final List<ReviewComment> reviewComments;
   final double averageRating;
 
