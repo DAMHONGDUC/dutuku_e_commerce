@@ -5,13 +5,26 @@ import 'package:dutuku_e_commerce/src/domain/repositories/product_repository.dar
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetRelatedProductUsecase implements UseCase<Products, int> {
+class GetRelatedProductUsecase
+    implements UseCase<List<Product>, GetRelatedProductParams> {
   final ProductRepository repository;
 
   GetRelatedProductUsecase(this.repository);
 
   @override
-  Future<Either<Failure, Products>> call(int productId) async {
-    return await repository.getRelatedProducts(productId: productId);
+  Future<Either<Failure, List<Product>>> call(
+    GetRelatedProductParams params,
+  ) async {
+    return await repository.getRelatedProducts(
+      productId: params.productId,
+      limit: params.limit,
+    );
   }
+}
+
+class GetRelatedProductParams {
+  final int productId;
+  final int? limit;
+
+  GetRelatedProductParams({required this.productId, required this.limit});
 }

@@ -6,13 +6,21 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetRecommendProductUsecase
-    implements UseCase<Products, ProductsFilterParams> {
+    implements UseCase<List<Product>, GetRecommendProductParams> {
   final ProductRepository repository;
 
   GetRecommendProductUsecase(this.repository);
 
   @override
-  Future<Either<Failure, Products>> call(ProductsFilterParams params) async {
-    return await repository.getRecommendProducts(params: params);
+  Future<Either<Failure, List<Product>>> call(
+    GetRecommendProductParams params,
+  ) async {
+    return await repository.getRecommendProducts(limit: params.limit);
   }
+}
+
+class GetRecommendProductParams {
+  final int? limit;
+
+  GetRecommendProductParams({required this.limit});
 }

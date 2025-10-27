@@ -12,21 +12,19 @@ class RecommendProductsController extends Cubit<RecommendProductsState> {
   RecommendProductsController(this._getRecommendProductUsecase)
     : super(RecommendProductsInitial());
 
-  final ProductsFilterParams _filter = ProductsFilterParams.init().copyWith(
-    getRecommendProject: true,
-  );
-
   Future<void> onGetData() async {
     emit(RecommendProductsLoadingState());
 
-    final result = await _getRecommendProductUsecase.call(_filter);
+    final result = await _getRecommendProductUsecase.call(
+      GetRecommendProductParams(limit: 8),
+    );
 
     result.fold(
       (failure) {
         emit(RecommendProductsErrorState(errorMsg: ''));
       },
       (r) {
-        emit(RecommendProductsLoadedState(products: r.products));
+        emit(RecommendProductsLoadedState(products: r));
       },
     );
   }

@@ -10,23 +10,27 @@ class ProductRepositoryImpl implements ProductRepository {
   const ProductRepositoryImpl();
 
   @override
-  Future<Either<Failure, Products>> getRecommendProducts({
-    required ProductsFilterParams params,
+  Future<Either<Failure, List<Product>>> getRecommendProducts({
+    int? limit,
   }) async {
     // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
-    if (params.getRecommendProject) {
-      final list = [...ProductMock.products, ...ProductMock.products];
-      return Right(
-        Products(
-          products: list,
-          totalPage: 1,
-          currentPage: params.page,
-          totalRecord: list.length,
-        ),
-      );
+    final list = [...ProductMock.products, ...ProductMock.products].shuffled();
+
+    if (limit != null) {
+      return Right(list.shuffled().take(limit).toList());
+    } else {
+      return Right(list.shuffled());
     }
+  }
+
+  @override
+  Future<Either<Failure, Products>> searchProducts({
+    required SearchProductsFilterParams params,
+  }) async {
+    // Mock logic for testing purposes
+    await SdHelper.delayLoading();
 
     final total = ProductMock.totalRecord;
     final totalPage = (total / params.itemCount).ceil();
@@ -72,12 +76,13 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, Products>> getRelatedProducts({
+  Future<Either<Failure, List<Product>>> getRelatedProducts({
     required int productId,
+    int? limit,
   }) async {
     // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
-    return getRecommendProducts(params: ProductsFilterParams.init());
+    return getRecommendProducts(limit: limit);
   }
 }

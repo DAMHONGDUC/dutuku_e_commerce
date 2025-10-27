@@ -12,21 +12,19 @@ class RelatedProductsController extends Cubit<RelatedProductsState> {
   RelatedProductsController(this._getRelatedProductUsecase)
     : super(RelatedProductsInitial());
 
-  final ProductsFilterParams _filter = ProductsFilterParams.init().copyWith(
-    getRecommendProject: true,
-  );
-
   Future<void> getData({required int productId}) async {
     emit(RelatedProductsLoadingState());
 
-    final result = await _getRelatedProductUsecase.call(productId);
+    final result = await _getRelatedProductUsecase.call(
+      GetRelatedProductParams(productId: productId, limit: 6),
+    );
 
     result.fold(
       (failure) {
         emit(RelatedProductsErrorState(errorMsg: ''));
       },
       (r) {
-        emit(RelatedProductsLoadedState(products: r.products.take(6).toList()));
+        emit(RelatedProductsLoadedState(products: r));
       },
     );
   }
