@@ -43,7 +43,10 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
-      description: ProductDescriptionMock.generateRandomDescription(),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p1_2.png'],
+      ),
     ),
     Product(
       id: 2,
@@ -78,7 +81,10 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
-      description: ProductDescriptionMock.generateRandomDescription(),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p2_3.png'],
+      ),
     ),
     Product(
       id: 3,
@@ -91,7 +97,10 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
-      description: ProductDescriptionMock.generateRandomDescription(),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p3_1.png'],
+      ),
     ),
     Product(
       id: 4,
@@ -131,7 +140,10 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
-      description: ProductDescriptionMock.generateRandomDescription(),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p4_5.png'],
+      ),
     ),
     Product(
       id: 5,
@@ -140,11 +152,14 @@ class ProductMock {
       price: 195.00,
       imageUrl: '${kMockProductPath}p5_1.png',
       purchaserCount: 60,
-      description: 'Retro-inspired knit sweater with bold patterns.',
       reviewComments: ReviewCommentMock.generateRandomReviews(
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p5_1.png'],
+      ),
     ),
     Product(
       id: 6,
@@ -153,7 +168,6 @@ class ProductMock {
       price: 143.45,
       imageUrl: '${kMockProductPath}p6_1.png',
       purchaserCount: 73,
-      description: 'Soft suede bag with a modern, elegant look.',
       productColors: [
         ProductColor(
           colorCode: '#8B4513',
@@ -170,6 +184,10 @@ class ProductMock {
         SdHelper.randomInt(min: 100, max: 500),
       ),
       averageRating: SdHelper.randomDouble(min: 3, max: 5),
+      description: Description(
+        content: ProductDescriptionMock.generateRandomDescription(),
+        images: ['${kMockProductPath}p6_2.png'],
+      ),
     ),
   ];
 }
