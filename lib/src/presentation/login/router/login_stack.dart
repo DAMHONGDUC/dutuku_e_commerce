@@ -1,22 +1,23 @@
-import 'package:dutuku_e_commerce/src/core/navigation/app_routes.dart';
-import 'package:dutuku_e_commerce/src/presentation/login/login_screen.dart';
-import 'package:dutuku_e_commerce/src/presentation/login/otp/login_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:system_design_flutter/index.dart';
+import 'package:system_design_flutter/widgets/route/sd_go_route.dart';
+
+import '../login_screen.dart';
+import '../otp/login_otp_screen.dart';
+import 'login_routes.dart';
 
 class LoginStack {
   static final List<GoRoute> routes = [
     SdGoRoute(
-      path: AppRoutes.login.path,
-      name: AppRoutes.login.name,
+      path: LoginRoutes.login.path,
+      name: LoginRoutes.login.name,
       builder: (BuildContext context, GoRouterState state) {
         return const LoginScreen();
       },
       routes: [
         SdGoRoute(
-          path: AppRoutes.loginOtp.path,
-          name: AppRoutes.loginOtp.name,
+          path: LoginRoutes.loginOtp.path,
+          name: LoginRoutes.loginOtp.name,
           builder: (BuildContext context, GoRouterState state) {
             return const LoginOTPScreen();
           },

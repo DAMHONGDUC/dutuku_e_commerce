@@ -1,7 +1,7 @@
 // misc
 export 'misc/section_header.dart';
 export 'misc/refresh_wrapper.dart';
-export 'misc/search_bar.dart';
+export 'misc/custom_search_bar.dart';
 
 // container
 export './container/section_container.dart';

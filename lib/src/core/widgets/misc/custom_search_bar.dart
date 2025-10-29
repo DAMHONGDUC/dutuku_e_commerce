@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({
+class CustomSearchBar extends StatelessWidget {
+  const CustomSearchBar({
     super.key,
     this.height = 40.0,
     this.bgColor,

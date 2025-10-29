@@ -1,5 +1,5 @@
 // Config
-export 'navigation/config.dart';
+export 'navigation/router_config.dart';
 
 // Constants
 export './constants/constants.dart';

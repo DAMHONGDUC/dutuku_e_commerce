@@ -1,5 +1,4 @@
-// lib/screens/base/my_order_screen.dart
-import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/my_order/router/my_order_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +15,7 @@ class MyOrderScreen extends StatelessWidget {
             Text('My Order Content'),
             ElevatedButton(
               onPressed: () {
-                GoRouter.of(context).push(AppRoutes.myOrderDetail.fullPath);
+                GoRouter.of(context).push(MyOrderRoutes.myOrderDetail.fullPath);
               },
               child: Text('Go to my order detail screen'),
             ),

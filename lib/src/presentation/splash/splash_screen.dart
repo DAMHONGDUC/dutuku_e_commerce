@@ -1,4 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/login/router/login_routes.dart';
 import 'package:dutuku_e_commerce/src/presentation/splash/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +27,9 @@ class _SplashView extends StatelessWidget {
     return BlocListener<SplashController, SplashState>(
       listener: (context, state) {
         if (state is LoggedInLState) {
-          GoRouter.of(context).go(AppRoutes.home.fullPath);
+          GoRouter.of(context).go(HomeRoutes.home.fullPath);
         } else if (state is NotLogInLState) {
-          GoRouter.of(context).go(AppRoutes.login.fullPath);
+          GoRouter.of(context).go(LoginRoutes.login.fullPath);
         }
       },
       child: SdAdaptiveStatusBar(

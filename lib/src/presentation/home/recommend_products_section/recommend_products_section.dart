@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/presentation/product_detail/product_detail_args.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/router/product_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -36,7 +37,7 @@ class RecommendProductsSection extends StatelessWidget {
                 product: product,
                 onPress: () {
                   GoRouter.of(context).push(
-                    AppRoutes.productDetail.fullPath,
+                    ProductRoutes.productDetail.fullPath,
                     extra: ProductDetailArgs(productId: product.id),
                   );
                 },

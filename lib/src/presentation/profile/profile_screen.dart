@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/login/router/login_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
             const Text('Profile Content'),
             ElevatedButton(
               onPressed: () {
-                context.go(AppRoutes.login.fullPath);
+                context.go(LoginRoutes.login.fullPath);
               },
               child: const Text('Logout'),
             ),

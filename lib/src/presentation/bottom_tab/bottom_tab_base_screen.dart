@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
 
-class BaseScreen extends StatelessWidget {
+class BottomTabBaseScreen extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
-  const BaseScreen({super.key, required this.navigationShell});
+  const BottomTabBaseScreen({super.key, required this.navigationShell});
 
   Widget _buildIcon({
     required bool isSelected,
@@ -16,8 +16,11 @@ class BaseScreen extends StatelessWidget {
     String? imgPath,
     String? imgPathSelected,
   }) {
-    if ((icon != null && iconSelected != null) ||
-        (imgPath != null && imgPathSelected != null)) {
+    final isValid =
+        (icon != null && iconSelected != null) ||
+        (imgPath != null && imgPathSelected != null);
+
+    if (isValid) {
       return SdIcon(
         iconData: isSelected ? iconSelected : icon,
         iconPath: isSelected ? imgPathSelected : imgPath,

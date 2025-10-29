@@ -84,7 +84,7 @@ class ProductDetailAppBar extends StatelessWidget {
               Expanded(
                 child: SdFadeWrapper(
                   progress: t,
-                  child: SearchBar(
+                  child: CustomSearchBar(
                     bgColor: context.colorTheme.cardOnSurface,
                     hasBorder: false,
                     searchIconSize: SdSpacing.s20,

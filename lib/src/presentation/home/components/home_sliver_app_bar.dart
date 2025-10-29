@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:flutter/material.dart' hide SearchBar;
+import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:system_design_flutter/index.dart';
@@ -37,13 +38,13 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: SearchBar(height: _kSearchBarHeight)),
+            Expanded(child: CustomSearchBar(height: _kSearchBarHeight)),
             SdHorizontalSpacing(),
             Row(
               children: [
                 IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRoutes.search.fullPath);
+                    GoRouter.of(context).push(HomeRoutes.search.fullPath);
                   },
                   icon: SdIcon(
                     iconData: Ionicons.cart,
@@ -52,7 +53,7 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRoutes.search.fullPath);
+                    GoRouter.of(context).push(HomeRoutes.search.fullPath);
                   },
                   icon: SdIcon(
                     iconData: Ionicons.chatbubble_ellipses_outline,

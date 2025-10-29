@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +16,7 @@ class RegisterOTPScreen extends StatelessWidget {
             const Text('Enter OTP'),
             ElevatedButton(
               onPressed: () {
-                context.go(AppRoutes.home.fullPath);
+                context.go(HomeRoutes.home.fullPath);
               },
               child: const Text('Verify OTP'),
             ),

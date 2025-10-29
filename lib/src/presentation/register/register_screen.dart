@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/presentation/register/router/register_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
             const Text('Register here'),
             ElevatedButton(
               onPressed: () {
-                context.go(AppRoutes.registerOtp.fullPath);
+                context.go(RegisterRoutes.registerOtp.fullPath);
               },
               child: const Text('Register'),
             ),
