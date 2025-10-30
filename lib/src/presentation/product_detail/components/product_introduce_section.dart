@@ -17,9 +17,17 @@ class ProductIntroduceSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(product.name, style: SdTextStyle.heading24()),
-              Spacer(),
+              Expanded(
+                child: Text(
+                  product.name,
+                  style: SdTextStyle.heading24(),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              SdHorizontalSpacing(),
               Row(
                 children: [
                   Text(
