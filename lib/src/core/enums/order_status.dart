@@ -9,7 +9,9 @@ enum OrderStatus {
 }
 
 extension OrderStatusExt on OrderStatus {
-  static List<OrderStatus> get allStatus =>
+  static const OrderStatus defaultFirst = OrderStatus.waitingForConfirmation;
+
+  static List<OrderStatus> get tabs =>
       OrderStatus.values.where((e) => e != OrderStatus.none).toList();
 
   String get label {
@@ -29,5 +31,13 @@ extension OrderStatusExt on OrderStatus {
       case OrderStatus.none:
         return 'None';
     }
+  }
+
+  static OrderStatus fromIndex(int index) {
+    if (index >= 0 && index <= tabs.length) {
+      return tabs[index];
+    }
+
+    return OrderStatus.none;
   }
 }

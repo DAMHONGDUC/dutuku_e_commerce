@@ -55,7 +55,7 @@ class MyOrderAppBar extends StatelessWidget implements PreferredSizeWidget {
           unselectedLabelStyle: SdTextStyle.body14().wColor(
             context.colorTheme.textDefault,
           ),
-          tabs: OrderStatusExt.allStatus
+          tabs: OrderStatusExt.tabs
               .map((e) => Tab(text: e.label, height: SdSpacing.s32))
               .toList(),
         ),

@@ -35,9 +35,11 @@ class __MyOrderViewState extends State<_MyOrderView>
   @override
   void initState() {
     _tabController = TabController(
-      length: OrderStatusExt.allStatus.length,
+      length: OrderStatusExt.tabs.length,
       vsync: this,
     );
+    _tabController.addListener(() {});
+
     super.initState();
   }
 
@@ -52,7 +54,34 @@ class __MyOrderViewState extends State<_MyOrderView>
     return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
       appBar: MyOrderAppBar(controller: _tabController),
-      child: Column(children: []),
+      child: Expanded(
+        child: TabBarView(
+          controller: _tabController,
+          children: OrderStatusExt.tabs
+              .map((e) => _TabContent(tabValue: e))
+              .toList(),
+        ),
+      ),
     );
   }
+}
+
+class _TabContent extends StatefulWidget {
+  const _TabContent({required this.tabValue});
+  final OrderStatus tabValue;
+
+  @override
+  State<_TabContent> createState() => __TabContentState();
+}
+
+class __TabContentState extends State<_TabContent>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return const Placeholder();
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }

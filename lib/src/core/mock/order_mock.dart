@@ -3,12 +3,12 @@ import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:system_design_flutter/utils/utils.dart';
 
 class OrderMock {
-  static Order generateOrderMockItem() {
+  static OrderEntity generateOrderMockItem() {
     final randomProduct = ProductMock.products.getRandomItem();
     final randomQuantity = SdHelper.randomInt(min: 1, max: 10);
-    final randomStatus = OrderStatusExt.allStatus.getRandomItem();
+    final randomStatus = OrderStatusExt.tabs.getRandomItem();
 
-    return Order(
+    return OrderEntity(
       productName: randomProduct.name,
       productId: randomProduct.id,
       quantity: randomQuantity,
@@ -18,7 +18,7 @@ class OrderMock {
     );
   }
 
-  static List<Order> generateOrders({int count = 10}) {
+  static List<OrderEntity> generateOrders({int count = 10}) {
     return List.generate(count, (_) => generateOrderMockItem());
   }
 }

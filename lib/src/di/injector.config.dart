@@ -13,12 +13,14 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../data/repositories/banner_repository_impl.dart' as _i519;
+import '../data/repositories/order_repository_impl.dart' as _i979;
 import '../data/repositories/product_repository_impl.dart' as _i839;
 import '../domain/domain.dart' as _i515;
 import '../domain/repositories/banner_repository.dart' as _i455;
 import '../domain/repositories/product_repository.dart' as _i747;
 import '../domain/usecases/get_banners_usecase.dart' as _i638;
 import '../domain/usecases/get_categories_usecase.dart' as _i350;
+import '../domain/usecases/get_my_order_usecase.dart' as _i620;
 import '../domain/usecases/get_product_detail_usecase.dart' as _i365;
 import '../domain/usecases/get_recommend_product_usecase.dart' as _i243;
 import '../domain/usecases/get_related_product_usecase.dart' as _i760;
@@ -46,9 +48,6 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i509.TutorialController>(() => _i509.TutorialController());
-    gh.factory<_i344.ProductDetailController>(
-      () => _i344.ProductDetailController(),
-    );
     gh.factory<_i933.ProductDetailAppBarController>(
       () => _i933.ProductDetailAppBarController(),
     );
@@ -73,6 +72,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i365.GetProductDetailUsecase>(
       () => _i365.GetProductDetailUsecase(gh<_i515.ProductRepository>()),
     );
+    gh.factory<_i515.OrderRepository>(() => const _i979.OrderRepositoryImpl());
     gh.factory<_i638.GetBannersUsecase>(
       () => _i638.GetBannersUsecase(gh<_i455.BannerRepository>()),
     );
@@ -86,8 +86,14 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i607.RelatedProductsController(gh<_i515.GetRelatedProductUsecase>()),
     );
+    gh.factory<_i620.GetMyOrderUsecase>(
+      () => _i620.GetMyOrderUsecase(gh<_i515.OrderRepository>()),
+    );
     gh.factory<_i939.ProductDetailController>(
       () => _i939.ProductDetailController(gh<_i515.GetProductDetailUsecase>()),
+    );
+    gh.factory<_i344.ProductDetailController>(
+      () => _i344.ProductDetailController(gh<_i620.GetMyOrderUsecase>()),
     );
     gh.factory<_i1056.RecommendProductsController>(
       () => _i1056.RecommendProductsController(

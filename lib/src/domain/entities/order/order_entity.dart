@@ -1,6 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 
-class Order {
+class OrderEntity {
   final String productName;
   final String productId;
   final int quantity;
@@ -8,7 +8,7 @@ class Order {
   final double totalPrice;
   final String productThumbnailUrl;
 
-  Order({
+  OrderEntity({
     required this.productName,
     required this.productId,
     required this.quantity,

@@ -11,5 +11,5 @@ export './description.dart';
 
 // order
 export 'order/orders_data.dart';
-export 'order/order.dart';
+export 'order/order_entity.dart';
 export './order/get_my_order_filter_params.dart';
