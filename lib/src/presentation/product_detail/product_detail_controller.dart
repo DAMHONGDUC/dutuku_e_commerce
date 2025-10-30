@@ -12,7 +12,7 @@ class ProductDetailController extends Cubit<ProductDetailState> {
 
   final GetProductDetailUsecase _getProductDetailUsecase;
 
-  Future getProductDetail({required int productId}) async {
+  Future getProductDetail({required String productId}) async {
     emit(ProductDetailLoadingState());
 
     final result = await _getProductDetailUsecase.call(productId);

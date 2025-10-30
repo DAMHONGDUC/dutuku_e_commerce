@@ -23,7 +23,7 @@ class GetRelatedProductUsecase
 }
 
 class GetRelatedProductParams {
-  final int productId;
+  final String productId;
   final int? limit;
 
   GetRelatedProductParams({required this.productId, required this.limit});

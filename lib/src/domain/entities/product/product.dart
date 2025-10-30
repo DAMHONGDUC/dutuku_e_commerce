@@ -9,7 +9,7 @@ class Product extends Equatable {
   final double price;
   final String imageUrl;
   final List<ProductColor> productColors;
-  final int id;
+  final String id;
   final int purchaserCount;
   final Description description;
   final List<ReviewComment> reviewComments;

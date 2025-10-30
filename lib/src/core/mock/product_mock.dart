@@ -10,7 +10,7 @@ class ProductMock {
 
   static final List<Product> products = [
     Product(
-      id: 1,
+      id: "1",
       name: 'Margaux Leather',
       brand: 'Handbag',
       price: 195.00,
@@ -49,7 +49,7 @@ class ProductMock {
       ),
     ),
     Product(
-      id: 2,
+      id: "2",
       name: 'Vancouver Crossbody',
       brand: 'Bag',
       price: 143.45,
@@ -87,7 +87,7 @@ class ProductMock {
       ),
     ),
     Product(
-      id: 3,
+      id: "3",
       name: 'Shoulder Bag Beach',
       brand: 'Tote Bag Straw bags',
       price: 195.00,
@@ -103,7 +103,7 @@ class ProductMock {
       ),
     ),
     Product(
-      id: 4,
+      id: "4",
       name: 'Everyday Leather',
       brand: 'Bag',
       price: 143.45,
@@ -146,7 +146,7 @@ class ProductMock {
       ),
     ),
     Product(
-      id: 5,
+      id: "5",
       name: 'Retro Kaleidoscope Print Knit V-neck Pullover',
       brand: 'Sweater',
       price: 195.00,
@@ -162,7 +162,7 @@ class ProductMock {
       ),
     ),
     Product(
-      id: 6,
+      id: "6",
       name: 'Melanie Suede',
       brand: 'Bag',
       price: 143.45,
