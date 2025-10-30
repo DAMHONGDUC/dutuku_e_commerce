@@ -1,3 +1,4 @@
+import 'package:dutuku_e_commerce/src/core/navigation/extra_codec_config.dart';
 import 'package:dutuku_e_commerce/src/presentation/bottom_tab/bottom_tab_stack.dart';
 import 'package:dutuku_e_commerce/src/presentation/login/router/login_stack.dart';
 import 'package:dutuku_e_commerce/src/presentation/product_detail/router/product_stack.dart';
@@ -26,6 +27,7 @@ final GoRouter kAppRouter = GoRouter(
   navigatorKey: kRootNavigatorKey,
   initialLocation: SplashRoutes.splash.path,
   debugLogDiagnostics: true,
+  extraCodec: const ExtraCodecConfig(),
   routes: [
     ...SplashStack.routes,
     ...TutorialStack.routes,
