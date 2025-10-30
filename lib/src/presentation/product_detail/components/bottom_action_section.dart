@@ -1,4 +1,6 @@
-part of '../product_detail_screen.dart';
+import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 class BottomActionSection extends StatelessWidget {
   final double price;

@@ -1,8 +1,16 @@
-part of '../product_detail_screen.dart';
+import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/domain/domain.dart';
+import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 class DescriptionSection extends StatefulWidget {
   final Description description;
-  const DescriptionSection({super.key, required this.description});
+  const DescriptionSection({
+    super.key,
+    required this.description,
+    required this.imgHeight,
+  });
+  final double imgHeight;
 
   @override
   State<DescriptionSection> createState() => _DescriptionSectionState();
@@ -36,6 +44,7 @@ class _DescriptionSectionState extends State<DescriptionSection> {
                 });
               },
               description: widget.description,
+              imgHeight: widget.imgHeight,
             ),
             crossFadeState: isExpanded
                 ? CrossFadeState.showSecond
@@ -52,9 +61,11 @@ class _ExpandedDescription extends StatelessWidget {
   const _ExpandedDescription({
     required this.onClickReadLess,
     required this.description,
+    required this.imgHeight,
   });
   final void Function() onClickReadLess;
   final Description description;
+  final double imgHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +77,7 @@ class _ExpandedDescription extends StatelessWidget {
         ...description.images
             .take(2)
             .map(
-              (e) => SdImage(
-                imagePath: e,
-                width: _kImgHeight / 1.5,
-                height: _kImgHeight / 1.5,
-              ),
+              (e) => SdImage(imagePath: e, width: imgHeight, height: imgHeight),
             ),
         SdVerticalSpacing(),
         Align(

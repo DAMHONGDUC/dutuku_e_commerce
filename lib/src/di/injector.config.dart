@@ -28,6 +28,7 @@ import '../presentation/home/categories_section/categories_section_controller.da
     as _i5;
 import '../presentation/home/recommend_products_section/recommend_products_controller.dart'
     as _i1056;
+import '../presentation/my_order/my_order_controller.dart' as _i344;
 import '../presentation/product_detail/color_selection_section/color_selection_controller.dart'
     as _i944;
 import '../presentation/product_detail/product_detail_app_bar.dart/product_detail_app_bar_controller.dart'
@@ -45,6 +46,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i509.TutorialController>(() => _i509.TutorialController());
+    gh.factory<_i344.ProductDetailController>(
+      () => _i344.ProductDetailController(),
+    );
     gh.factory<_i933.ProductDetailAppBarController>(
       () => _i933.ProductDetailAppBarController(),
     );

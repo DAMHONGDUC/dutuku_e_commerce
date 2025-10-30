@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
-import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -9,17 +8,16 @@ import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_controller.dart';
 import 'color_selection_section/color_selection_section.dart';
+import 'components/bottom_action_section.dart';
+import 'components/description_section.dart';
+import 'components/product_introduce_section.dart';
+import 'components/review_section.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar_controller.dart';
 import 'product_detail_args.dart';
 import 'product_detail_controller.dart';
 import 'related_product_section/related_products_controller.dart';
 import 'related_product_section/related_products_section.dart';
-
-part 'components/bottom_action_section.dart';
-part 'components/description_section.dart';
-part 'components/product_introduce_section.dart';
-part 'components/review_section.dart';
 
 final _kImgHeight = 400.0;
 
@@ -169,6 +167,7 @@ class _ProductInfoSection extends StatelessWidget {
               SliverToBoxAdapter(
                 child: DescriptionSection(
                   description: state.product.description,
+                  imgHeight: _kImgHeight / 1.5,
                 ),
               ),
             ],
