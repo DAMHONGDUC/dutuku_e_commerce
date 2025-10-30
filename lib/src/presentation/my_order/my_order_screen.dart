@@ -13,9 +13,7 @@ class MyOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => getIt<ProductDetailController>()),
-      ],
+      providers: [BlocProvider(create: (_) => getIt<MyOrderController>())],
       child: _MyOrderView(),
     );
   }

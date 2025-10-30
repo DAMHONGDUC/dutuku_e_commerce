@@ -1,8 +1,8 @@
 import 'package:dutuku_e_commerce/src/core/navigation/router_config.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/router/home_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/my_order/router/my_order_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/notificartions/router/notifications_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/profile/router/profile_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/config/home_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/my_order/config/my_order_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/notificartions/config/notifications_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/profile/config/profile_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

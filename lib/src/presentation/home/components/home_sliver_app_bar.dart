@@ -1,5 +1,5 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/config/home_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';

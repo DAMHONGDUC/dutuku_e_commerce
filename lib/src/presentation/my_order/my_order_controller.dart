@@ -1,16 +1,12 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
-import 'package:dutuku_e_commerce/src/domain/usecases/get_my_order_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 
 part 'my_order_state.dart';
 
-@injectable
-class ProductDetailController extends Cubit<MyOrderState> {
-  ProductDetailController(this._getMyOrderUsecase)
-    : super(MyOrderStateInitial());
+class MyOrderController extends Cubit<MyOrderState> {
+  MyOrderController(this._getMyOrderUsecase) : super(MyOrderStateInitial());
 
   final GetMyOrderUsecase _getMyOrderUsecase;
 

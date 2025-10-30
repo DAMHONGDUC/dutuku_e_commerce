@@ -1,6 +1,7 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
-import 'package:dutuku_e_commerce/src/presentation/login/router/login_routes.dart';
+import 'package:dutuku_e_commerce/src/di/injector.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/config/home_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/login/config/login_routes.dart';
 import 'package:dutuku_e_commerce/src/presentation/splash/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SplashController()..checkLoginStatus(),
+      create: (context) => getIt<SplashController>()..checkLoginStatus(),
       child: _SplashView(),
     );
   }

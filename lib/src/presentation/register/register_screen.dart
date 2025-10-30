@@ -1,4 +1,4 @@
-import 'package:dutuku_e_commerce/src/presentation/register/router/register_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/register/config/register_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
