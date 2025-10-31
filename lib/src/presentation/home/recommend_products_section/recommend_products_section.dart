@@ -21,8 +21,7 @@ class RecommendProductsSection extends StatelessWidget {
         if (state is RecommendProductsLoadingState) {
           return ProductGridSkeleton();
         } else if (state is RecommendProductsLoadedState) {
-          return SdListView(
-            viewType: SdListViewType.masonryGrid,
+          return SdGridView(
             items: state.products,
             gridCrossAxisCount: 2,
             gridMainAxisSpacing: SdSpacing.s16,

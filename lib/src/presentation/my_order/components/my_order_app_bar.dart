@@ -8,8 +8,8 @@ final _kTitleSpacing = SdSpacing.s12;
 final _kBottomHeight = SdSpacing.s40;
 
 class MyOrderAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyOrderAppBar({super.key, required this.controller});
-  final TabController controller;
+  const MyOrderAppBar({super.key, required this.tabController});
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class MyOrderAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TabBar(
           tabAlignment: TabAlignment.start,
           isScrollable: true,
-          controller: controller,
+          controller: tabController,
           dividerColor: SdColors.transparent,
           padding: EdgeInsets.zero,
           labelPadding: EdgeInsets.symmetric(

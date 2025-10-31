@@ -9,7 +9,7 @@ enum OrderStatus {
 }
 
 extension OrderStatusExt on OrderStatus {
-  static const OrderStatus defaultFirst = OrderStatus.waitingForConfirmation;
+  static const OrderStatus defaultFirstTab = OrderStatus.waitingForConfirmation;
 
   static List<OrderStatus> get tabs =>
       OrderStatus.values.where((e) => e != OrderStatus.none).toList();

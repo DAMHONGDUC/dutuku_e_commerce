@@ -36,8 +36,7 @@ class RelatedProductsSection extends StatelessWidget {
               children: [
                 Text('Related products', style: SdTextStyle.heading18()),
                 SdVerticalSpacing(),
-                SdListView(
-                  viewType: SdListViewType.masonryGrid,
+                SdGridView(
                   items: state.products,
                   gridCrossAxisCount: 2,
                   gridMainAxisSpacing: SdSpacing.s16,

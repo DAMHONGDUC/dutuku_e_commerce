@@ -14,7 +14,7 @@ class GetMyOrderFilterParams {
   factory GetMyOrderFilterParams.init() => const GetMyOrderFilterParams(
     pageNumber: 1,
     itemCount: 10,
-    status: OrderStatusExt.defaultFirst,
+    status: OrderStatusExt.defaultFirstTab,
   );
 
   GetMyOrderFilterParams copyWith({

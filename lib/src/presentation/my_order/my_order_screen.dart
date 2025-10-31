@@ -13,7 +13,13 @@ class MyOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => getIt<MyOrderController>())],
+      providers: [
+        BlocProvider(
+          create: (_) =>
+              getIt<MyOrderController>()
+                ..onRefresh(currentTab: OrderStatusExt.defaultFirstTab),
+        ),
+      ],
       child: _MyOrderView(),
     );
   }
@@ -29,14 +35,24 @@ class _MyOrderView extends StatefulWidget {
 class __MyOrderViewState extends State<_MyOrderView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late ValueNotifier<int> _selectedTabIndex;
 
   @override
   void initState() {
+    _selectedTabIndex = ValueNotifier<int>(0);
     _tabController = TabController(
       length: OrderStatusExt.tabs.length,
       vsync: this,
     );
-    _tabController.addListener(() {});
+    // Handle tab action => TAP & SWIPE
+    _tabController.addListener(() {
+      final newIndex = _tabController.index;
+
+      if (_selectedTabIndex.value != newIndex) {
+        _selectedTabIndex.value = newIndex;
+        _onChangeTab(newIndex);
+      }
+    });
 
     super.initState();
   }
@@ -47,17 +63,30 @@ class __MyOrderViewState extends State<_MyOrderView>
     super.dispose();
   }
 
+  void _onChangeTab(int newIndex) {
+    context.read<MyOrderController>().onChangeTab(
+      tabIndex: _selectedTabIndex.value,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.surfaceDefault,
-      appBar: MyOrderAppBar(controller: _tabController),
-      child: Expanded(
-        child: TabBarView(
-          controller: _tabController,
-          children: OrderStatusExt.tabs
-              .map((e) => _TabContent(tabValue: e))
-              .toList(),
+      appBar: MyOrderAppBar(tabController: _tabController),
+      child: Padding(
+        padding: const EdgeInsets.all(SdSpacing.s16),
+        child: Column(
+          children: [
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: OrderStatusExt.tabs
+                    .map((e) => _TabContent(tabValue: e))
+                    .toList(),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -74,10 +103,47 @@ class _TabContent extends StatefulWidget {
 
 class __TabContentState extends State<_TabContent>
     with AutomaticKeepAliveClientMixin {
+  Future _onRefresh() async {
+    context.read<MyOrderController>().onRefresh(currentTab: widget.tabValue);
+  }
+
+  Future _onLoadMore({required bool canLoadMore}) async {
+    context.read<MyOrderController>().onLoadMore(
+      currentTab: widget.tabValue,
+      canLoadMore: canLoadMore,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return const Placeholder();
+    return RefreshWrapper(
+      onRefresh: _onRefresh,
+      child: BlocBuilder<MyOrderController, MyOrderState>(
+        buildWhen: (previous, current) {
+          return (current is MyOrderLoadingState ||
+                  current is MyOrderLoadedState) &&
+              current.currentTab == widget.tabValue;
+        },
+        builder: (context, state) {
+          if (state is MyOrderLoadingState) {
+            return Text('Loading');
+          } else if (state is MyOrderLoadedState) {
+            return SdListViewLoadMore(
+              items: state.items,
+              canLoadMore: state.canLoadMore,
+              physics: const AlwaysScrollableScrollPhysics(),
+              onLoadMore: () => _onLoadMore(canLoadMore: state.canLoadMore),
+              itemBuilder: (_, index) {
+                return Text(state.items[index].productName);
+              },
+            );
+          }
+
+          return SizedBox.shrink();
+        },
+      ),
+    );
   }
 
   @override
