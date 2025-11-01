@@ -9,8 +9,8 @@ class MyOrderController extends Cubit<MyOrderState> {
   MyOrderController(this._getMyOrderUsecase) : super(MyOrderStateInitial());
 
   final GetMyOrderUsecase _getMyOrderUsecase;
-
   final Map<OrderStatus, _TabData> _tabsData = {};
+  bool _isLoadingMore = false;
 
   Future<void> onRefresh({required OrderStatus currentTab}) async {
     final newFilter = GetMyOrderFilterParams.init().copyWith(
@@ -29,6 +29,13 @@ class MyOrderController extends Cubit<MyOrderState> {
     required OrderStatus currentTab,
     required bool canLoadMore,
   }) async {
+    if (_isLoadingMore) {
+      return;
+    }
+
+    // Start load more
+    _isLoadingMore = true;
+
     // Load more => use exist filter && push more item into exist data
     final tabData = _tabsData[currentTab];
 
@@ -50,6 +57,9 @@ class MyOrderController extends Cubit<MyOrderState> {
         return [...tabData.state.items, ...r.items];
       },
     );
+
+    // End load more
+    _isLoadingMore = false;
   }
 
   Future<void> onChangeTab({required int tabIndex}) async {
