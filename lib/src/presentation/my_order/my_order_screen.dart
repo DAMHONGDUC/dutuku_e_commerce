@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'components/my_order_app_bar.dart';
+import 'components/my_order_card_skeleton.dart';
 import 'my_order_controller.dart';
 
 class MyOrderScreen extends StatelessWidget {
@@ -73,10 +74,11 @@ class __MyOrderViewState extends State<_MyOrderView>
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
-      backgroundColor: context.colorTheme.surfaceDefault,
+      backgroundColor: context.colorTheme.pageDefault,
+      contentBgColor: context.colorTheme.pageDefault,
       appBar: MyOrderAppBar(tabController: _tabController),
       child: Padding(
-        padding: const EdgeInsets.all(SdSpacing.s16),
+        padding: const EdgeInsets.all(SdSpacing.s10),
         child: Column(
           children: [
             Expanded(
@@ -128,14 +130,15 @@ class __TabContentState extends State<_TabContent>
         },
         builder: (context, state) {
           if (state is MyOrderLoadingState) {
-            return Text('Loading');
+            return _MyOrderLoadingScreen();
           } else if (state is MyOrderLoadedState) {
             return SdListViewLoadMore(
               items: state.items,
               canLoadMore: state.canLoadMore,
               physics: const AlwaysScrollableScrollPhysics(),
               onLoadMore: () => _onLoadMore(canLoadMore: state.canLoadMore),
-              separatorBuilder: (_, __) => SdVerticalSpacing(),
+              separatorBuilder: (_, __) =>
+                  SdVerticalSpacing(value: SdSpacing.s10),
               itemBuilder: (_, index) {
                 return MyOrderCard(order: state.items[index]);
               },
@@ -150,4 +153,19 @@ class __TabContentState extends State<_TabContent>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class _MyOrderLoadingScreen extends StatelessWidget {
+  const _MyOrderLoadingScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    return SdListView(
+      itemBuilder: (context, index) {
+        return MyOrderCardSkeleton();
+      },
+      separatorBuilder: (_, __) => SdVerticalSpacing(value: SdSpacing.s10),
+      items: List.generate(10, (e) => e),
+    );
+  }
 }

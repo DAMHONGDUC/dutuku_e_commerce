@@ -21,7 +21,7 @@ class MyOrderCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(SdSpacing.s10)),
         border: Border.all(
           width: SdSpacing.s1,
-          color: context.colorTheme.borderDefault,
+          color: context.colorTheme.pageDefault,
         ),
       ),
       child: Column(
@@ -50,7 +50,7 @@ class MyOrderCard extends StatelessWidget {
               ),
             ],
           ),
-          SdVerticalSpacing(),
+          SdVerticalSpacing(xRatio: 0.5),
           _ActionSection(),
         ],
       ),
@@ -59,10 +59,7 @@ class MyOrderCard extends StatelessWidget {
 }
 
 class _PriceAndTagSection extends StatelessWidget {
-  const _PriceAndTagSection({
-    required this.price,
-    required this.status,
-  });
+  const _PriceAndTagSection({required this.price, required this.status});
   final double price;
   final OrderStatus status;
 
