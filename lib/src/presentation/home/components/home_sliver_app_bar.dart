@@ -1,5 +1,5 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
-import 'package:dutuku_e_commerce/src/presentation/home/router/home_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/home/config/home_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
@@ -11,6 +11,7 @@ final _kAppBarPaddingBottom = SdSpacing.s8;
 final _kSearchBarHeight = SdSpacing.s40;
 final _kAppBarHeight =
     _kSearchBarHeight + _kAppBarPaddingBottom + _kAppBarPaddingTop;
+final _kIconPadding = SdSpacing.s6;
 
 class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeSliverAppBar({super.key});
@@ -31,7 +32,7 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Padding(
         padding: EdgeInsets.only(
           left: _kAppBarPadding,
-          right: _kAppBarPadding,
+          right: _kAppBarPadding - _kIconPadding,
           bottom: _kAppBarPaddingBottom,
           top: _kAppBarPaddingTop,
         ),
@@ -42,7 +43,8 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
             SdHorizontalSpacing(),
             Row(
               children: [
-                IconButton(
+                SdIconButton(
+                  padding: EdgeInsets.all(_kIconPadding),
                   onPressed: () {
                     GoRouter.of(context).push(HomeRoutes.search.fullPath);
                   },
@@ -51,7 +53,9 @@ class HomeSliverAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: context.colorTheme.primary,
                   ),
                 ),
-                IconButton(
+                SdHorizontalSpacing(xRatio: 0.5),
+                SdIconButton(
+                  padding: EdgeInsets.all(_kIconPadding),
                   onPressed: () {
                     GoRouter.of(context).push(HomeRoutes.search.fullPath);
                   },

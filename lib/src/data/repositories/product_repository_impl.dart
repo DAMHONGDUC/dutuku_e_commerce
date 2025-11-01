@@ -2,10 +2,8 @@ import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
-import 'package:injectable/injectable.dart';
 import 'package:system_design_flutter/index.dart';
 
-@Injectable(as: ProductRepository)
 class ProductRepositoryImpl implements ProductRepository {
   const ProductRepositoryImpl();
 
@@ -26,7 +24,7 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, Products>> searchProducts({
+  Future<Either<Failure, ProductsData>> searchProducts({
     required SearchProductsFilterParams params,
   }) async {
     // Mock logic for testing purposes
@@ -44,8 +42,8 @@ class ProductRepositoryImpl implements ProductRepository {
     }
 
     return Right(
-      Products(
-        products: products,
+      ProductsData(
+        items: products,
         totalPage: totalPage,
         currentPage: params.page,
         totalRecord: total,
@@ -63,7 +61,7 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<Either<Failure, Product>> getProductDetail({
-    required int productId,
+    required String productId,
   }) async {
     // Mock logic for testing purposes
     await SdHelper.delayLoading();
@@ -77,7 +75,7 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<Either<Failure, List<Product>>> getRelatedProducts({
-    required int productId,
+    required String productId,
     int? limit,
   }) async {
     // Mock logic for testing purposes

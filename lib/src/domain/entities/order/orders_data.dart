@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-import 'product.dart';
+import 'order_entity.dart';
 
-class Products extends Equatable {
-  final List<Product> products;
+class OrdersData extends Equatable {
+  final List<OrderEntity> items;
   final int totalPage;
   final int currentPage;
   final int totalRecord;
 
-  const Products({
-    required this.products,
+  const OrdersData({
+    required this.items,
     required this.totalPage,
     required this.currentPage,
     required this.totalRecord,
   });
 
   @override
-  List<Object?> get props => [products, totalPage, currentPage, totalRecord];
+  List<Object?> get props => [items, totalPage, currentPage, totalRecord];
 }

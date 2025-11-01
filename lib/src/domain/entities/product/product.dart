@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/domain/entities/description.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/product/product_color.dart';
+import 'package:dutuku_e_commerce/src/domain/entities/product/product_size.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/review_comment.dart';
 import 'package:equatable/equatable.dart';
 
@@ -9,14 +10,16 @@ class Product extends Equatable {
   final double price;
   final String imageUrl;
   final List<ProductColor> productColors;
-  final int id;
+  final String id;
   final int purchaserCount;
   final Description description;
   final List<ReviewComment> reviewComments;
   final double averageRating;
+  final List<ProductSize> productSizes;
 
   const Product({
     this.productColors = const [],
+    this.productSizes = const [],
     required this.name,
     required this.brand,
     required this.price,
@@ -40,5 +43,6 @@ class Product extends Equatable {
     description,
     reviewComments,
     averageRating,
+    productSizes,
   ];
 }

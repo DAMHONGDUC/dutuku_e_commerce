@@ -2,9 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/entities/entities.dart';
 import 'package:dutuku_e_commerce/src/domain/repositories/product_repository.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class GetRelatedProductUsecase
     implements UseCase<List<Product>, GetRelatedProductParams> {
   final ProductRepository repository;
@@ -23,7 +21,7 @@ class GetRelatedProductUsecase
 }
 
 class GetRelatedProductParams {
-  final int productId;
+  final String productId;
   final int? limit;
 
   GetRelatedProductParams({required this.productId, required this.limit});

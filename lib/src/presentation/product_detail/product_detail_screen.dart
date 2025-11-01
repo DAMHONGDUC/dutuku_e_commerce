@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
-import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -9,17 +8,17 @@ import 'package:system_design_flutter/index.dart';
 
 import 'color_selection_section/color_selection_controller.dart';
 import 'color_selection_section/color_selection_section.dart';
+import 'components/bottom_action_section.dart';
+import 'components/description_section.dart';
+import 'components/product_info_skeleton.dart';
+import 'components/product_introduce_section.dart';
+import 'components/review_section.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar.dart';
 import 'product_detail_app_bar.dart/product_detail_app_bar_controller.dart';
 import 'product_detail_args.dart';
 import 'product_detail_controller.dart';
 import 'related_product_section/related_products_controller.dart';
 import 'related_product_section/related_products_section.dart';
-
-part 'components/bottom_action_section.dart';
-part 'components/description_section.dart';
-part 'components/product_introduce_section.dart';
-part 'components/review_section.dart';
 
 final _kImgHeight = 400.0;
 
@@ -134,7 +133,11 @@ class _ProductInfoSection extends StatelessWidget {
       builder: (context, state) {
         if (state is ProductDetailLoadingState) {
           return MultiSliver(
-            children: [SliverToBoxAdapter(child: _ProductInfoSkeleton())],
+            children: [
+              SliverToBoxAdapter(
+                child: ProductInfoSkeleton(imgHeight: _kImgHeight),
+              ),
+            ],
           );
         } else if (state is ProductDetailLoadedState) {
           return MultiSliver(
@@ -169,6 +172,7 @@ class _ProductInfoSection extends StatelessWidget {
               SliverToBoxAdapter(
                 child: DescriptionSection(
                   description: state.product.description,
+                  imgHeight: _kImgHeight / 1.5,
                 ),
               ),
             ],
@@ -196,52 +200,6 @@ class _BottomSection extends StatelessWidget {
         }
         return SizedBox.shrink();
       },
-    );
-  }
-}
-
-class _ProductInfoSkeleton extends StatelessWidget {
-  const _ProductInfoSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SdSkeleton(height: _kImgHeight, borderRadius: BorderRadius.zero),
-          Container(
-            color: context.colorTheme.surfaceDefault,
-            padding: EdgeInsets.all(SdSpacing.s16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // skeleton 1
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20, width: 300),
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20, width: 100),
-
-                // skeleton 2
-                SdVerticalSpacing(xRatio: 2),
-                SdSkeleton(height: 80),
-
-                // skeleton 3
-                SdVerticalSpacing(xRatio: 2),
-                SdSkeleton(height: 20),
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20),
-                SdVerticalSpacing(),
-                SdSkeleton(height: 20),
-
-                // skeleton 5
-                SdVerticalSpacing(xRatio: 2),
-                ProductGridSkeleton(),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

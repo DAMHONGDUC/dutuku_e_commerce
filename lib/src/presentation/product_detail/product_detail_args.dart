@@ -1,5 +1,5 @@
 class ProductDetailArgs {
-  final int productId;
+  final String productId;
 
   ProductDetailArgs({required this.productId});
 

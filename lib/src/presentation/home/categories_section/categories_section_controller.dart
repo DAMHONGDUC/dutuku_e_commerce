@@ -2,11 +2,9 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 
 part 'categories_section_state.dart';
 
-@injectable
 class CategoriesController extends Cubit<CategoriesState> {
   final GetCategoriesUsecase _getCategoriesUsecase;
 

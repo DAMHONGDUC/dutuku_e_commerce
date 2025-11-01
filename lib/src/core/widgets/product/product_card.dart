@@ -58,7 +58,7 @@ class ProductCard extends StatelessWidget {
 
                   // price
                   Text(
-                    '\$${product.price.toStringAsFixed(2)}',
+                    SdCurrencyFormatHelper.formatPrice(product.price),
                     style: context.textTheme.heading16.wBold(),
                   ),
                 ],

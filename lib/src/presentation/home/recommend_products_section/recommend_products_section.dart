@@ -1,6 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/presentation/product_detail/product_detail_args.dart';
-import 'package:dutuku_e_commerce/src/presentation/product_detail/router/product_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/config/product_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -21,8 +21,7 @@ class RecommendProductsSection extends StatelessWidget {
         if (state is RecommendProductsLoadingState) {
           return ProductGridSkeleton();
         } else if (state is RecommendProductsLoadedState) {
-          return SdListView(
-            viewType: SdListViewType.masonryGrid,
+          return SdGridView(
             items: state.products,
             gridCrossAxisCount: 2,
             gridMainAxisSpacing: SdSpacing.s16,

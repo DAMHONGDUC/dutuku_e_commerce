@@ -1,11 +1,11 @@
 import 'package:dutuku_e_commerce/src/core/navigation/extra_codec_config.dart';
 import 'package:dutuku_e_commerce/src/presentation/bottom_tab/bottom_tab_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/login/router/login_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/product_detail/router/product_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/register/router/register_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/splash/router/splash_routes.dart';
-import 'package:dutuku_e_commerce/src/presentation/splash/router/splash_stack.dart';
-import 'package:dutuku_e_commerce/src/presentation/tutorial/router/tutorial_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/login/config/login_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/product_detail/config/product_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/register/config/register_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/splash/config/splash_routes.dart';
+import 'package:dutuku_e_commerce/src/presentation/splash/config/splash_stack.dart';
+import 'package:dutuku_e_commerce/src/presentation/tutorial/config/tutorial_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

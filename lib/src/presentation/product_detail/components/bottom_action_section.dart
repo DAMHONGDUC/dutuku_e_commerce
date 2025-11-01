@@ -1,4 +1,6 @@
-part of '../product_detail_screen.dart';
+import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 class BottomActionSection extends StatelessWidget {
   final double price;
@@ -55,7 +57,7 @@ class BottomActionSection extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SdButton(
-                      text: 'Add to cart',
+                      title: 'Add to cart',
                       widthType: SdButtonWidth.full,
                       onTap: () {},
                       type: SdButtonType.secondary,
@@ -68,7 +70,7 @@ class BottomActionSection extends StatelessWidget {
                   SdHorizontalSpacing(),
                   Expanded(
                     child: SdButton(
-                      text: 'Buy now',
+                      title: 'Buy now',
                       widthType: SdButtonWidth.full,
                       colorConfig: SdButtonColorConfig.init().copyWith(
                         primaryBgColor: context.colorTheme.primary,

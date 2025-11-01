@@ -1,4 +1,8 @@
-part of '../product_detail_screen.dart';
+import 'package:collection/collection.dart';
+import 'package:dutuku_e_commerce/src/core/core.dart';
+import 'package:dutuku_e_commerce/src/domain/domain.dart';
+import 'package:flutter/material.dart';
+import 'package:system_design_flutter/index.dart';
 
 class ReviewSection extends StatelessWidget {
   const ReviewSection({super.key, required this.product});
