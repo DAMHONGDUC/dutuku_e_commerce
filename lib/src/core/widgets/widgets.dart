@@ -2,6 +2,7 @@
 export 'misc/section_header.dart';
 export 'misc/refresh_wrapper.dart';
 export 'misc/custom_search_bar.dart';
+export './misc/title_content_row.dart';
 
 // container
 export './container/section_container.dart';

@@ -1,12 +1,20 @@
+
 import 'package:dutuku_e_commerce/src/core/mock/product_description_mock.dart';
 import 'package:dutuku_e_commerce/src/core/mock/review_comment_mock.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
+import 'package:dutuku_e_commerce/src/domain/entities/product/product_size.dart';
 import 'package:system_design_flutter/index.dart';
 
 final kMockProductPath = 'assets/images/product/';
 
 class ProductMock {
   static final totalRecord = 500;
+
+  static List<ProductSize> generateProductSizes() {
+    final sizeNames = ['S', 'M', 'L', 'XL', 'XXL'];
+
+    return sizeNames.map((e) => ProductSize(id: e, name: e)).toList();
+  }
 
   static final List<Product> products = [
     Product(
@@ -16,7 +24,6 @@ class ProductMock {
       price: 195.00,
       imageUrl: '${kMockProductPath}p1_1.png',
       purchaserCount: 120,
-
       productColors: [
         ProductColor(
           colorCode: '#2C2C2C',
@@ -47,6 +54,7 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p1_2.png'],
       ),
+      productSizes: generateProductSizes(),
     ),
     Product(
       id: "2",
@@ -85,6 +93,7 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p2_3.png'],
       ),
+      productSizes: generateProductSizes(),
     ),
     Product(
       id: "3",
@@ -92,6 +101,13 @@ class ProductMock {
       brand: 'Tote Bag Straw bags',
       price: 195.00,
       imageUrl: '${kMockProductPath}p3_1.png',
+      productColors: [
+        ProductColor(
+          colorCode: '#2C2C2C',
+          colorName: 'Onyx',
+          imageUrl: '${kMockProductPath}p3_1.png',
+        ),
+      ],
       purchaserCount: 42,
       reviewComments: ReviewCommentMock.generateRandomReviews(
         SdHelper.randomInt(min: 100, max: 500),
@@ -101,6 +117,7 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p3_1.png'],
       ),
+      productSizes: generateProductSizes(),
     ),
     Product(
       id: "4",
@@ -144,6 +161,7 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p4_5.png'],
       ),
+      productSizes: generateProductSizes(),
     ),
     Product(
       id: "5",
@@ -160,6 +178,14 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p5_1.png'],
       ),
+      productColors: [
+        ProductColor(
+          colorCode: '#2C2C2C',
+          colorName: 'Onyx',
+          imageUrl: '${kMockProductPath}p5_1.png',
+        ),
+      ],
+      productSizes: generateProductSizes(),
     ),
     Product(
       id: "6",
@@ -188,6 +214,7 @@ class ProductMock {
         content: ProductDescriptionMock.generateRandomDescription(),
         images: ['${kMockProductPath}p6_2.png'],
       ),
+      productSizes: generateProductSizes(),
     ),
   ];
 }

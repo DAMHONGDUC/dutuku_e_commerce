@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:dutuku_e_commerce/src/di/injector.dart';
+import 'package:dutuku_e_commerce/src/presentation/my_order/components/my_order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
@@ -134,8 +135,9 @@ class __TabContentState extends State<_TabContent>
               canLoadMore: state.canLoadMore,
               physics: const AlwaysScrollableScrollPhysics(),
               onLoadMore: () => _onLoadMore(canLoadMore: state.canLoadMore),
+              separatorBuilder: (_, __) => SdVerticalSpacing(),
               itemBuilder: (_, index) {
-                return Text(state.items[index].productName);
+                return MyOrderCard(order: state.items[index]);
               },
             );
           }

@@ -48,7 +48,7 @@ class AppColorThemeExt extends ThemeExtension<AppColorThemeExt> {
       textSubTitle: AppColors.textSubTitleLight,
       cardDefault: AppColors.cardDefaultLight,
       boxShadowDefault: SdColors.black.withValues(alpha: 0.15),
-      borderDefault: SdColors.grey.withValues(alpha: 0.8),
+      borderDefault: Color(0xFFe6e7eb),
       indicatorActive: AppColors.primary,
       indicatorBg: SdColors.grey.withValues(alpha: 0.3),
       primary: AppColors.primary,

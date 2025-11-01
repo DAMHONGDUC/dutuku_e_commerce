@@ -57,7 +57,7 @@ class BottomActionSection extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SdButton(
-                      text: 'Add to cart',
+                      title: 'Add to cart',
                       widthType: SdButtonWidth.full,
                       onTap: () {},
                       type: SdButtonType.secondary,
@@ -70,7 +70,7 @@ class BottomActionSection extends StatelessWidget {
                   SdHorizontalSpacing(),
                   Expanded(
                     child: SdButton(
-                      text: 'Buy now',
+                      title: 'Buy now',
                       widthType: SdButtonWidth.full,
                       colorConfig: SdButtonColorConfig.init().copyWith(
                         primaryBgColor: context.colorTheme.primary,

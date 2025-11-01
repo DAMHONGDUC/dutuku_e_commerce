@@ -15,6 +15,8 @@ class OrderMock {
       status: randomStatus,
       totalPrice: randomProduct.price * randomQuantity,
       productThumbnailUrl: randomProduct.imageUrl,
+      productColor: randomProduct.productColors.getRandomItem(),
+      productsize: randomProduct.productSizes.getRandomItem(),
     );
   }
 
