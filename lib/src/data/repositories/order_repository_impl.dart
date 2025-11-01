@@ -13,11 +13,13 @@ class OrderRepositoryImpl implements OrderRepository {
     // Mock logic for testing purposes
     await SdHelper.delayLoading();
 
+    final items = OrderMock.generateOrders(count: 10);
+
     return Right(
       OrdersData(
         currentPage: 1,
         totalPage: 1,
-        items: OrderMock.generateOrders(count: 10),
+        items: items.where((e) => e.status == params.status).toList(),
         totalRecord: 10,
       ),
     );

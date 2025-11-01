@@ -68,7 +68,11 @@ class _PriceAndTagSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        SdTag(label: status.label),
+        SdTag(
+          label: status.label,
+          color: status.color,
+          borderRadiusValue: SdSpacing.s8,
+        ),
         SdVerticalSpacing(),
         Text(
           SdCurrencyFormatHelper.formatPrice(price),
@@ -121,14 +125,14 @@ class _ActionSection extends StatelessWidget {
           type: SdButtonType.secondary,
           title: 'Detail',
           colorConfig: Helper.getSdButtonColorConfig(context),
-          borderRadiusValue: SdSpacing.s12,
+          borderRadiusValue: SdSpacing.s8,
           buttonSize: SdButtonSize.Small,
         ),
         SdHorizontalSpacing(),
         SdButton(
           title: 'Tracking',
           colorConfig: Helper.getSdButtonColorConfig(context),
-          borderRadiusValue: SdSpacing.s12,
+          borderRadiusValue: SdSpacing.s8,
           buttonSize: SdButtonSize.Small,
         ),
       ],

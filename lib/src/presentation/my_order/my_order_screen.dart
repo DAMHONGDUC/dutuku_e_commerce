@@ -132,17 +132,20 @@ class __TabContentState extends State<_TabContent>
           if (state is MyOrderLoadingState) {
             return _MyOrderLoadingScreen();
           } else if (state is MyOrderLoadedState) {
-            return SdListViewLoadMore(
-              items: state.items,
-              canLoadMore: state.canLoadMore,
-              physics: const AlwaysScrollableScrollPhysics(),
-              onLoadMore: () => _onLoadMore(canLoadMore: state.canLoadMore),
-              separatorBuilder: (_, __) =>
-                  SdVerticalSpacing(value: SdSpacing.s10),
-              itemBuilder: (_, index) {
-                return MyOrderCard(order: state.items[index]);
-              },
-            );
+            return state.items.isEmpty
+                ? EmptyView()
+                : SdListViewLoadMore(
+                    items: state.items,
+                    canLoadMore: state.canLoadMore,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    onLoadMore: () =>
+                        _onLoadMore(canLoadMore: state.canLoadMore),
+                    separatorBuilder: (_, __) =>
+                        SdVerticalSpacing(value: SdSpacing.s10),
+                    itemBuilder: (_, index) {
+                      return MyOrderCard(order: state.items[index]);
+                    },
+                  );
           }
 
           return SizedBox.shrink();

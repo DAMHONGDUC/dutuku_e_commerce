@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum OrderStatus {
   waitingForConfirmation,
   waitingForPickup,
@@ -39,5 +41,24 @@ extension OrderStatusExt on OrderStatus {
     }
 
     return OrderStatus.none;
+  }
+
+  Color get color {
+    switch (this) {
+      case OrderStatus.waitingForConfirmation:
+        return Colors.orangeAccent;
+      case OrderStatus.waitingForPickup:
+        return Colors.blueAccent;
+      case OrderStatus.waitingForDelivery:
+        return Colors.teal;
+      case OrderStatus.delivered:
+        return Colors.green;
+      case OrderStatus.rolledBack:
+        return Colors.deepPurple;
+      case OrderStatus.cancelled:
+        return Colors.redAccent;
+      case OrderStatus.none:
+        return Colors.grey;
+    }
   }
 }
