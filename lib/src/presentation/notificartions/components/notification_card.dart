@@ -82,7 +82,7 @@ class _InfoSectio extends StatelessWidget {
         SdVerticalSpacing(xRatio: 0.25),
         Text(
           SdDateTimeHelper.dateTimeToHHMMDDMMYY(createdAt),
-          style: SdTextStyle.heading12().copyWith(
+          style: SdTextStyle.body12().copyWith(
             color: context.colorTheme.textSubTitle,
           ),
         ),
