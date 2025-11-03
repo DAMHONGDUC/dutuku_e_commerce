@@ -12,7 +12,7 @@ class RelatedProductsInitial extends RelatedProductsState {}
 class RelatedProductsLoadingState extends RelatedProductsState {}
 
 class RelatedProductsLoadedState extends RelatedProductsState {
-  final List<Product> products;
+  final List<ProductEntity> products;
 
   const RelatedProductsLoadedState({required this.products});
 

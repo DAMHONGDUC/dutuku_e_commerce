@@ -4,7 +4,7 @@ import 'package:dutuku_e_commerce/src/domain/entities/product/product_size.dart'
 import 'package:dutuku_e_commerce/src/domain/entities/review_comment.dart';
 import 'package:equatable/equatable.dart';
 
-class Product extends Equatable {
+class ProductEntity extends Equatable {
   final String name;
   final String brand;
   final double price;
@@ -17,7 +17,7 @@ class Product extends Equatable {
   final double averageRating;
   final List<ProductSize> productSizes;
 
-  const Product({
+  const ProductEntity({
     this.productColors = const [],
     this.productSizes = const [],
     required this.name,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
 class ProductIntroduceSection extends StatelessWidget {
-  final Product product;
+  final ProductEntity product;
 
   const ProductIntroduceSection({super.key, required this.product});
 

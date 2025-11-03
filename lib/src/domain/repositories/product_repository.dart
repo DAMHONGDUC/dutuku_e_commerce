@@ -7,12 +7,14 @@ abstract class ProductRepository {
     required SearchProductsFilterParams params,
   });
   Future<Either<Failure, List<Category>>> getCategories();
-  Future<Either<Failure, Product>> getProductDetail({
+  Future<Either<Failure, ProductEntity>> getProductDetail({
     required String productId,
   });
-  Future<Either<Failure, List<Product>>> getRelatedProducts({
+  Future<Either<Failure, List<ProductEntity>>> getRelatedProducts({
     required String productId,
     int? limit,
   });
-  Future<Either<Failure, List<Product>>> getRecommendProducts({int? limit});
+  Future<Either<Failure, List<ProductEntity>>> getRecommendProducts({
+    int? limit,
+  });
 }

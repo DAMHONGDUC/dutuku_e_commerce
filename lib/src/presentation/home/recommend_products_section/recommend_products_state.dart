@@ -12,7 +12,7 @@ class RecommendProductsInitial extends RecommendProductsState {}
 class RecommendProductsLoadingState extends RecommendProductsState {}
 
 class RecommendProductsLoadedState extends RecommendProductsState {
-  final List<Product> products;
+  final List<ProductEntity> products;
 
   const RecommendProductsLoadedState({required this.products});
 

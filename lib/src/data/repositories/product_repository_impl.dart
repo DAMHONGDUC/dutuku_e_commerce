@@ -8,7 +8,7 @@ class ProductRepositoryImpl implements ProductRepository {
   const ProductRepositoryImpl();
 
   @override
-  Future<Either<Failure, List<Product>>> getRecommendProducts({
+  Future<Either<Failure, List<ProductEntity>>> getRecommendProducts({
     int? limit,
   }) async {
     // Mock logic for testing purposes
@@ -36,7 +36,7 @@ class ProductRepositoryImpl implements ProductRepository {
     final start = (params.page - 1) * params.itemCount;
     final end = (start + params.itemCount).clamp(0, total);
 
-    final products = <Product>[];
+    final products = <ProductEntity>[];
     for (var i = start; i < end; i++) {
       products.add(ProductMock.products[i % ProductMock.products.length]);
     }
@@ -60,7 +60,7 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, Product>> getProductDetail({
+  Future<Either<Failure, ProductEntity>> getProductDetail({
     required String productId,
   }) async {
     // Mock logic for testing purposes
@@ -74,7 +74,7 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> getRelatedProducts({
+  Future<Either<Failure, List<ProductEntity>>> getRelatedProducts({
     required String productId,
     int? limit,
   }) async {

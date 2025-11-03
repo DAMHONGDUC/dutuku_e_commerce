@@ -6,12 +6,14 @@ class SectionHeader extends StatelessWidget {
   final String title;
   final String? actionText;
   final VoidCallback? onActionTap;
+  final bool hasBottomSpacing;
 
   const SectionHeader({
     super.key,
     required this.title,
     this.actionText,
     this.onActionTap,
+    this.hasBottomSpacing = true,
   });
 
   @override
@@ -31,7 +33,7 @@ class SectionHeader extends StatelessWidget {
             ),
           ],
         ),
-        SdVerticalSpacing(),
+        if (hasBottomSpacing) SdVerticalSpacing(),
       ],
     );
   }

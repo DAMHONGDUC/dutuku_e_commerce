@@ -4,13 +4,13 @@ import 'package:dutuku_e_commerce/src/domain/entities/entities.dart';
 import 'package:dutuku_e_commerce/src/domain/repositories/product_repository.dart';
 
 class GetRelatedProductUsecase
-    implements UseCase<List<Product>, GetRelatedProductParams> {
+    implements UseCase<List<ProductEntity>, GetRelatedProductParams> {
   final ProductRepository repository;
 
   GetRelatedProductUsecase(this.repository);
 
   @override
-  Future<Either<Failure, List<Product>>> call(
+  Future<Either<Failure, List<ProductEntity>>> call(
     GetRelatedProductParams params,
   ) async {
     return await repository.getRelatedProducts(

@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-import 'product.dart';
+import 'product_entity.dart';
 
 class ProductsData extends Equatable {
-  final List<Product> items;
+  final List<ProductEntity> items;
   final int totalPage;
   final int currentPage;
   final int totalRecord;

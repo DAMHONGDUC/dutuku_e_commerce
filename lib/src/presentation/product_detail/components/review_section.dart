@@ -6,7 +6,7 @@ import 'package:system_design_flutter/index.dart';
 
 class ReviewSection extends StatelessWidget {
   const ReviewSection({super.key, required this.product});
-  final Product product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +57,9 @@ class ReviewSection extends StatelessWidget {
             ),
           ),
           if (reviewAvailable) ...[
-            SdVerticalSpacing(value: SdSpacing.s4),
+            SdVerticalSpacing(),
             SdDivider(),
-            SdVerticalSpacing(value: SdSpacing.s4),
+            SdVerticalSpacing(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: SdSpacing.s16),
               child: Column(

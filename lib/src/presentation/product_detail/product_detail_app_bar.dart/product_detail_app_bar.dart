@@ -9,7 +9,7 @@ import 'package:system_design_flutter/index.dart';
 import 'product_detail_app_bar_controller.dart';
 
 class ProductDetailAppBar extends StatelessWidget {
-  final Product product;
+  final ProductEntity product;
   final double imgHeight;
 
   const ProductDetailAppBar({
@@ -135,7 +135,7 @@ class _ActionSection extends StatelessWidget {
 
 class _ImageSection extends StatelessWidget {
   const _ImageSection({required this.product});
-  final Product product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {

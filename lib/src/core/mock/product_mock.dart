@@ -1,4 +1,3 @@
-
 import 'package:dutuku_e_commerce/src/core/mock/product_description_mock.dart';
 import 'package:dutuku_e_commerce/src/core/mock/review_comment_mock.dart';
 import 'package:dutuku_e_commerce/src/domain/domain.dart';
@@ -16,8 +15,8 @@ class ProductMock {
     return sizeNames.map((e) => ProductSize(id: e, name: e)).toList();
   }
 
-  static final List<Product> products = [
-    Product(
+  static final List<ProductEntity> products = [
+    ProductEntity(
       id: "1",
       name: 'Margaux Leather',
       brand: 'Handbag',
@@ -56,7 +55,7 @@ class ProductMock {
       ),
       productSizes: generateProductSizes(),
     ),
-    Product(
+    ProductEntity(
       id: "2",
       name: 'Vancouver Crossbody',
       brand: 'Bag',
@@ -95,7 +94,7 @@ class ProductMock {
       ),
       productSizes: generateProductSizes(),
     ),
-    Product(
+    ProductEntity(
       id: "3",
       name: 'Shoulder Bag Beach',
       brand: 'Tote Bag Straw bags',
@@ -119,7 +118,7 @@ class ProductMock {
       ),
       productSizes: generateProductSizes(),
     ),
-    Product(
+    ProductEntity(
       id: "4",
       name: 'Everyday Leather',
       brand: 'Bag',
@@ -163,7 +162,7 @@ class ProductMock {
       ),
       productSizes: generateProductSizes(),
     ),
-    Product(
+    ProductEntity(
       id: "5",
       name: 'Retro Kaleidoscope Print Knit V-neck Pullover',
       brand: 'Sweater',
@@ -187,7 +186,7 @@ class ProductMock {
       ],
       productSizes: generateProductSizes(),
     ),
-    Product(
+    ProductEntity(
       id: "6",
       name: 'Melanie Suede',
       brand: 'Bag',

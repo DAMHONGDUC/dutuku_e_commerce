@@ -12,7 +12,7 @@ final class ProductDetailInitial extends ProductDetailState {}
 final class ProductDetailLoadingState extends ProductDetailState {}
 
 final class ProductDetailLoadedState extends ProductDetailState {
-  final Product product;
+  final ProductEntity product;
 
   const ProductDetailLoadedState({required this.product});
 }

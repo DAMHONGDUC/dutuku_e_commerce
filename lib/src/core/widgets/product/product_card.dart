@@ -6,7 +6,7 @@ import 'package:system_design_flutter/index.dart';
 const kImageSize = 150.0;
 
 class ProductCard extends StatelessWidget {
-  final Product product;
+  final ProductEntity product;
   final VoidCallback onPress;
 
   const ProductCard({super.key, required this.product, required this.onPress});
