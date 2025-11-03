@@ -22,7 +22,7 @@ class NotificationCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: 0,
       containerBg: isUnread
-          ? Colors.red.withValues(alpha: 0.03)
+          ? context.colorTheme.primary.withValues(alpha: 0.05)
           : context.colorTheme.cardDefault,
       child: Row(
         children: [
