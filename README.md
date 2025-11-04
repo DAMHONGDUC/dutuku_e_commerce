@@ -6,8 +6,13 @@
   https://www.figma.com/design/MWXnUlavawxNQSMaYIsRRh/Kutuku----eCommerce-Mobile-App-UI-Kit-Figma-High-Quality-Template--Community-?node-id=0-1&p=f
 
 ## Tech Stack
+
 - Clean Architecture
 - Bloc for state management
+
+## DB Design
+
+- https://drive.google.com/file/d/1vY04Wm6R2z69D4JhJ8cdIqszU7TTXFpA/view?usp=sharing
 
 ## Screenshots
 
