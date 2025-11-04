@@ -5,6 +5,10 @@
 - inspired by:
   https://www.figma.com/design/MWXnUlavawxNQSMaYIsRRh/Kutuku----eCommerce-Mobile-App-UI-Kit-Figma-High-Quality-Template--Community-?node-id=0-1&p=f
 
+## Tech Stack
+- Clean Architecture
+- Bloc for state management
+
 ## Screenshots
 
 <!-- Screenshots Table -->
