@@ -21,50 +21,45 @@ class NotificationScreen extends StatelessWidget {
       backgroundColor: context.colorTheme.pageDefault,
       contentBgColor: context.colorTheme.pageDefault,
       appBar: NotificationAppBar(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: SdSpacing.s10,
-        ).copyWith(bottom: 0),
-        child: ListView(
-          children: [
-            SdListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              items: _dataNotiCategory,
-              separatorBuilder: (context, index) {
-                return SdDivider();
-              },
-              itemBuilder: (context, index) {
-                return NotificationCategoryCard(
-                  category: _dataNotiCategory[index],
-                  onTap: () {},
-                );
-              },
+      child: ListView(
+        padding: EdgeInsets.symmetric(vertical: SdSpacing.s10),
+        children: [
+          SdListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            items: _dataNotiCategory,
+            separatorBuilder: (context, index) {
+              return SdDivider();
+            },
+            itemBuilder: (context, index) {
+              return NotificationCategoryCard(
+                category: _dataNotiCategory[index],
+                onTap: () {},
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(SdSpacing.s10),
+            child: SectionHeader(
+              title: 'Order update information',
+              hasBottomSpacing: false,
             ),
-            Padding(
-              padding: const EdgeInsets.all(SdSpacing.s10),
-              child: SectionHeader(
-                title: 'Order update information',
-                hasBottomSpacing: false,
-              ),
-            ),
-            SdListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              items: _dataNoti,
-              separatorBuilder: (context, index) {
-                return SdDivider();
-              },
-              itemBuilder: (_, index) {
-                return NotificationCard(
-                  notification: _dataNoti[index],
-                  onTap: () {},
-                );
-              },
-            ),
-            SdVerticalSpacing(value: SdSpacing.s10),
-          ],
-        ),
+          ),
+          SdListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            items: _dataNoti,
+            separatorBuilder: (context, index) {
+              return SdDivider();
+            },
+            itemBuilder: (_, index) {
+              return NotificationCard(
+                notification: _dataNoti[index],
+                onTap: () {},
+              );
+            },
+          ),
+        ],
       ),
     );
   }

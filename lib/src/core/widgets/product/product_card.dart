@@ -15,7 +15,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SdInkWell(
       borderRadius: 0,
-      padding: EdgeInsets.zero,
+      contentPadding: EdgeInsets.zero,
       onTap: onPress,
       child: Container(
         decoration: BoxDecoration(
