@@ -1,4 +1,4 @@
-enum SettingSectionType { general, preferences }
+enum SettingSectionType { general, preferences, app }
 
 extension SettingSectionTypeExt on SettingSectionType {
   String get label {
@@ -7,6 +7,8 @@ extension SettingSectionTypeExt on SettingSectionType {
         return 'General';
       case SettingSectionType.preferences:
         return 'Preferences';
+      case SettingSectionType.app:
+        return 'App';
     }
   }
 }

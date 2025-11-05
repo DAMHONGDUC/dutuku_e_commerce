@@ -21,12 +21,14 @@ class SettingCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              SdIcon(
-                iconData: setting.iconData,
-                color: context.colorTheme.iconDefault,
-              ),
+              SdIcon(iconData: setting.iconData, color: setting.iconColor),
               SdHorizontalSpacing(),
-              Text(setting.name, style: SdTextStyle.body14().wSemiBold()),
+              Text(
+                setting.name,
+                style: SdTextStyle.body14().wSemiBold().copyWith(
+                  color: setting.nameColor,
+                ),
+              ),
             ],
           ),
           SdIcon(

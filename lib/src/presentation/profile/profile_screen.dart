@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_design_flutter/index.dart';
 
 import 'components/profile_app_bar.dart';
+import 'components/profile_skeleton.dart';
 import 'profile_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -45,7 +46,7 @@ class _ProfileView extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is ProfileLoadingState) {
-            return _ProfileSkeleton();
+            return ProfileSkeleton();
           } else if (state is ProfileLoadedState) {
             return RefreshWrapper(
               onRefresh: () => _onRefresh(context),
@@ -67,38 +68,6 @@ class _ProfileView extends StatelessWidget {
           return SizedBox.shrink();
         },
       ),
-    );
-  }
-}
-
-class _ProfileSkeleton extends StatelessWidget {
-  const _ProfileSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    return SdListView(
-      padding: EdgeInsets.all(SdSpacing.s16),
-      items: List.generate(10, (e) => e),
-      separatorBuilder: (context, index) {
-        return SdVerticalSpacing();
-      },
-      itemBuilder: (_, index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: context.colorTheme.cardDefault,
-            borderRadius: BorderRadius.all(Radius.circular(SdSpacing.s12)),
-          ),
-          padding: EdgeInsets.all(SdSpacing.s12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SdSkeleton(width: 50),
-              SdVerticalSpacing(xRatio: 0.5),
-              SdSkeleton(width: 100),
-            ],
-          ),
-        );
-      },
     );
   }
 }
