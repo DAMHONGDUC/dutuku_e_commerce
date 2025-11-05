@@ -21,9 +21,9 @@ class ProductInfoSkeleton extends StatelessWidget {
               children: [
                 // skeleton 1
                 SdVerticalSpacing(),
-                SdSkeleton(height: 20, width: 300),
+                SdSkeleton(width: 300),
                 SdVerticalSpacing(),
-                SdSkeleton(height: 20, width: 100),
+                SdSkeleton(width: 100),
 
                 // skeleton 2
                 SdVerticalSpacing(xRatio: 2),
@@ -31,11 +31,11 @@ class ProductInfoSkeleton extends StatelessWidget {
 
                 // skeleton 3
                 SdVerticalSpacing(xRatio: 2),
-                SdSkeleton(height: 20),
+                SdSkeleton(),
                 SdVerticalSpacing(),
-                SdSkeleton(height: 20),
+                SdSkeleton(),
                 SdVerticalSpacing(),
-                SdSkeleton(height: 20),
+                SdSkeleton(),
 
                 // skeleton 5
                 SdVerticalSpacing(xRatio: 2),

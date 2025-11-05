@@ -39,9 +39,13 @@ class _ProfileView extends StatelessWidget {
         listener: (context, state) {
           // TODO: implement listener
         },
+        buildWhen: (previous, current) {
+          return current is ProfileLoadingState ||
+              current is ProfileLoadedState;
+        },
         builder: (context, state) {
           if (state is ProfileLoadingState) {
-            return Text('loading');
+            return _ProfileSkeleton();
           } else if (state is ProfileLoadedState) {
             return RefreshWrapper(
               onRefresh: () => _onRefresh(context),
@@ -72,6 +76,29 @@ class _ProfileSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SdListView(
+      padding: EdgeInsets.all(SdSpacing.s16),
+      items: List.generate(10, (e) => e),
+      separatorBuilder: (context, index) {
+        return SdVerticalSpacing();
+      },
+      itemBuilder: (_, index) {
+        return Container(
+          decoration: BoxDecoration(
+            color: context.colorTheme.cardDefault,
+            borderRadius: BorderRadius.all(Radius.circular(SdSpacing.s12)),
+          ),
+          padding: EdgeInsets.all(SdSpacing.s12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SdSkeleton(width: 50),
+              SdVerticalSpacing(xRatio: 0.5),
+              SdSkeleton(width: 100),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

@@ -21,11 +21,11 @@ class MyOrderCardSkeleton extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SdSkeleton(height: 18, width: 50),
+              SdSkeleton(width: 50),
               SdVerticalSpacing(xRatio: 0.5),
-              SdSkeleton(height: 18, width: 100),
+              SdSkeleton(width: 100),
               SdVerticalSpacing(xRatio: 0.25),
-              SdSkeleton(height: 18, width: 200),
+              SdSkeleton(width: 200),
             ],
           ),
         ],

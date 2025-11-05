@@ -18,7 +18,7 @@ class CategoryCardSkeleton extends StatelessWidget {
             borderRadiusValue: SdSpacing.s100,
           ),
           SdVerticalSpacing(),
-          SdSkeleton(height: SdSpacing.s12, width: double.infinity),
+          SdSkeleton(width: double.infinity),
         ],
       ),
     );
