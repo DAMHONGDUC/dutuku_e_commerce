@@ -55,47 +55,47 @@ final _preferencesList = [
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  Future _onRefresh() async {}
+
   @override
   Widget build(BuildContext context) {
     return SdSafeAreaScaffold(
       backgroundColor: context.colorTheme.pageDefault,
       contentBgColor: context.colorTheme.pageDefault,
       appBar: ProfileAppBar(),
-      child: SingleChildScrollView(
-        child: Padding(
+      child: RefreshWrapper(
+        onRefresh: _onRefresh,
+        child: ListView(
           padding: EdgeInsets.all(SdSpacing.s16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('General', style: SdTextStyle.heading16()),
-              SdVerticalSpacing(),
-              SdListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                items: _generalList,
-                separatorBuilder: (_, index) {
-                  return SdVerticalSpacing();
-                },
-                itemBuilder: (_, index) {
-                  return SettingCard(setting: _generalList[index]);
-                },
-              ),
-              SdVerticalSpacing(xRatio: 2),
-              Text('General', style: SdTextStyle.heading16()),
-              SdVerticalSpacing(),
-              SdListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                items: _preferencesList,
-                separatorBuilder: (_, index) {
-                  return SdVerticalSpacing();
-                },
-                itemBuilder: (_, index) {
-                  return SettingCard(setting: _preferencesList[index]);
-                },
-              ),
-            ],
-          ),
+          children: [
+            Text('General', style: SdTextStyle.heading16()),
+            SdVerticalSpacing(),
+            SdListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              items: _generalList,
+              separatorBuilder: (_, index) {
+                return SdVerticalSpacing();
+              },
+              itemBuilder: (_, index) {
+                return SettingCard(setting: _generalList[index]);
+              },
+            ),
+            SdVerticalSpacing(xRatio: 2),
+            Text('General', style: SdTextStyle.heading16()),
+            SdVerticalSpacing(),
+            SdListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              items: _preferencesList,
+              separatorBuilder: (_, index) {
+                return SdVerticalSpacing();
+              },
+              itemBuilder: (_, index) {
+                return SettingCard(setting: _preferencesList[index]);
+              },
+            ),
+          ],
         ),
       ),
     );
