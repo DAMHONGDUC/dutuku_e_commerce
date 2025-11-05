@@ -13,6 +13,7 @@ class NotificationAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return SdAppBar(
+      centerTitle: true,
       titleText: 'Notifications',
       showBackButton: false,
       titleSpacing: _kTitleSpacing,

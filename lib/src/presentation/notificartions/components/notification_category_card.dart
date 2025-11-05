@@ -52,6 +52,7 @@ class NotificationCategoryCard extends StatelessWidget {
               ],
             ),
           ),
+          SdHorizontalSpacing(xRatio: 0.5),
           Row(
             children: [
               SdBadge(count: category.numOfNotifications, size: SdSpacing.s20),
@@ -59,6 +60,7 @@ class NotificationCategoryCard extends StatelessWidget {
               SdIcon(
                 iconData: Ionicons.chevron_forward,
                 iconSize: SdSpacing.s20,
+                color: context.colorTheme.iconSecondary,
               ),
             ],
           ),

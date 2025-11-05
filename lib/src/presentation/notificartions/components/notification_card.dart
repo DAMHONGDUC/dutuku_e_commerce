@@ -32,6 +32,7 @@ class NotificationCard extends StatelessWidget {
                 SdIcon(
                   iconData: notification.type.iconData,
                   iconSize: SdSpacing.s28,
+                  color: context.colorTheme.iconDefault,
                 ),
                 SdHorizontalSpacing(),
                 Expanded(
@@ -44,7 +45,12 @@ class NotificationCard extends StatelessWidget {
               ],
             ),
           ),
-          SdIcon(iconData: Ionicons.chevron_forward, iconSize: SdSpacing.s20),
+          SdHorizontalSpacing(xRatio: 0.5),
+          SdIcon(
+            iconData: Ionicons.chevron_forward,
+            iconSize: SdSpacing.s20,
+            color: context.colorTheme.iconSecondary,
+          ),
         ],
       ),
     );
