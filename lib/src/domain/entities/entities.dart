@@ -20,4 +20,5 @@ export './notification/notification_entity.dart';
 export './notification/notification_category_entity.dart';
 
 // setting
-export './setting/setting_entity.dart';
+export 'setting/setting_item_entity.dart';
+export './setting/setting_section_entity.dart';

@@ -3,3 +3,4 @@ export './category_mock.dart';
 export './product_mock.dart';
 export './order_mock.dart';
 export './notifications_mock.dart';
+export './profile_mock.dart';

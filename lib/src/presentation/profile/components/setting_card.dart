@@ -7,7 +7,7 @@ import 'package:system_design_flutter/index.dart';
 class SettingCard extends StatelessWidget {
   const SettingCard({super.key, required this.setting});
 
-  final SettingEntity setting;
+  final SettingItemEntity setting;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SettingCard extends StatelessWidget {
                 color: context.colorTheme.iconDefault,
               ),
               SdHorizontalSpacing(),
-              Text(setting.type.label, style: SdTextStyle.body14().wSemiBold()),
+              Text(setting.name, style: SdTextStyle.body14().wSemiBold()),
             ],
           ),
           SdIcon(

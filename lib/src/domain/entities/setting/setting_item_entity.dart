@@ -1,14 +1,14 @@
 import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 
-class SettingEntity {
+class SettingItemEntity {
   final String name;
   final IconData iconData;
-  final SettingItemType type;
+  final SettingItemType itemType;
 
-  SettingEntity({
+  SettingItemEntity({
     required this.name,
     required this.iconData,
-    required this.type,
+    required this.itemType,
   });
 }

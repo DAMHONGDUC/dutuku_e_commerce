@@ -11,4 +11,4 @@ export './notification_category_type.dart';
 
 // setting
 export './setting_item_type.dart';
-export './setting_section.dart';
+export 'setting_section_type.dart';
