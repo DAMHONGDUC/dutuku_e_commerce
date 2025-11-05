@@ -77,20 +77,17 @@ class __MyOrderViewState extends State<_MyOrderView>
       backgroundColor: context.colorTheme.pageDefault,
       contentBgColor: context.colorTheme.pageDefault,
       appBar: MyOrderAppBar(tabController: _tabController),
-      child: Padding(
-        padding: const EdgeInsets.all(SdSpacing.s10),
-        child: Column(
-          children: [
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: OrderStatusExt.tabs
-                    .map((e) => _TabContent(tabValue: e))
-                    .toList(),
-              ),
+      child: Column(
+        children: [
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: OrderStatusExt.tabs
+                  .map((e) => _TabContent(tabValue: e))
+                  .toList(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -135,6 +132,7 @@ class __TabContentState extends State<_TabContent>
             return state.items.isEmpty
                 ? EmptyView()
                 : SdListViewLoadMore(
+                    padding: EdgeInsets.all(SdSpacing.s10),
                     items: state.items,
                     canLoadMore: state.canLoadMore,
                     physics: const AlwaysScrollableScrollPhysics(),
@@ -164,6 +162,7 @@ class _MyOrderLoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SdListView(
+      padding: EdgeInsets.all(SdSpacing.s10),
       itemBuilder: (context, index) {
         return MyOrderCardSkeleton();
       },

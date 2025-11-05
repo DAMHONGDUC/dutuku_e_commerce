@@ -22,7 +22,9 @@ class NotificationScreen extends StatelessWidget {
       contentBgColor: context.colorTheme.pageDefault,
       appBar: NotificationAppBar(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: SdSpacing.s12),
+        padding: const EdgeInsets.symmetric(
+          vertical: SdSpacing.s10,
+        ).copyWith(bottom: 0),
         child: ListView(
           children: [
             SdListView(
@@ -40,7 +42,7 @@ class NotificationScreen extends StatelessWidget {
               },
             ),
             Padding(
-              padding: const EdgeInsets.all(SdSpacing.s12),
+              padding: const EdgeInsets.all(SdSpacing.s10),
               child: SectionHeader(
                 title: 'Order update information',
                 hasBottomSpacing: false,
@@ -60,6 +62,7 @@ class NotificationScreen extends StatelessWidget {
                 );
               },
             ),
+            SdVerticalSpacing(value: SdSpacing.s10),
           ],
         ),
       ),

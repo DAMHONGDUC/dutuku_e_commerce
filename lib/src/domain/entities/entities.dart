@@ -18,3 +18,6 @@ export './order/get_my_order_filter_params.dart';
 // Notification
 export './notification/notification_entity.dart';
 export './notification/notification_category_entity.dart';
+
+// setting
+export './setting/setting_entity.dart';
