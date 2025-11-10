@@ -2,8 +2,8 @@ import 'package:dutuku_e_commerce/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:system_design_flutter/index.dart';
 
-class ProfileSkeleton extends StatelessWidget {
-  const ProfileSkeleton({super.key});
+class NotificationsSkeleton extends StatelessWidget {
+  const NotificationsSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {

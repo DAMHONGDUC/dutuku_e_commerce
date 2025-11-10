@@ -8,6 +8,7 @@ import 'package:system_design_flutter/index.dart';
 
 import 'components/notification_app_bar.dart';
 import 'components/notification_category_card.dart';
+import 'components/notifications_skeleton.dart';
 import 'notifications_controller.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -29,7 +30,9 @@ class NotificationScreen extends StatelessWidget {
 class _NotificationView extends StatelessWidget {
   const _NotificationView();
 
-  Future _onRefresh() async {}
+  Future _onRefresh(BuildContext context) async {
+    context.read<NotificationsController>().getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class _NotificationView extends StatelessWidget {
       contentBgColor: context.colorTheme.pageDefault,
       appBar: NotificationAppBar(),
       child: RefreshWrapper(
-        onRefresh: _onRefresh,
+        onRefresh: () => _onRefresh(context),
         child: BlocConsumer<NotificationsController, NotificationsState>(
           listener: (context, state) {
             // TODO: implement listener
@@ -49,7 +52,7 @@ class _NotificationView extends StatelessWidget {
           },
           builder: (context, state) {
             if (state is NotificationsLoadingState) {
-              Text('Loading');
+              return NotificationsSkeleton();
             }
             if (state is NotificationsLoadedState) {
               return _Body(notificationData: state.notificationData);
