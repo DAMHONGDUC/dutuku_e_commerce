@@ -12,7 +12,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SdAppBar(
       centerTitle: true,
-      titleText: 'Settings',
+      titleText: 'Account',
       showBackButton: false,
       titleSpacing: _kTitleSpacing,
       actionPadding: EdgeInsets.only(right: _kTitleSpacing - _kIconPadding),

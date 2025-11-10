@@ -9,5 +9,8 @@ class RepositoriesDi {
     getIt.registerLazySingleton<ProductRepository>(
       () => ProductRepositoryImpl(),
     );
+    getIt.registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(),
+    );
   }
 }
