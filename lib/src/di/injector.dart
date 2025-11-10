@@ -12,32 +12,32 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 
 class Injector {
-  static configureDependencies() {
+  static config() {
     // repository
-    RepositoriesDi.configureDependencies();
+    RepositoriesDi.config();
 
     // usecase
-    UsecasesDi.configureDependencies();
+    UsecasesDi.config();
 
     // =========Controller===========
 
     // home
-    HomeDi.configureDependencies();
+    HomeDi.config();
 
     // my order
-    MyOrderDi.configureDependencies();
+    MyOrderDi.config();
 
     // product
-    ProductDi.configureDependencies();
+    ProductDi.config();
 
     // splash
-    SplashDi.configureDependencies();
+    SplashDi.config();
 
     // tutorial
-    TutorialDi.configureDependencies();
+    TutorialDi.config();
 
     // profile
-    ProfileDi.configureDependencies();
+    ProfileDi.config();
 
     // notifications
     NotificationsDi.config();

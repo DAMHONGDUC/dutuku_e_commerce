@@ -3,7 +3,7 @@ import 'package:dutuku_e_commerce/src/domain/usecases/get_profile_settings_useca
 import 'package:dutuku_e_commerce/src/presentation/profile/profile_controller.dart';
 
 class ProfileDi {
-  static configureDependencies() {
+  static config() {
     getIt.registerFactory<ProfileController>(
       () => ProfileController(getIt<GetProfileSettingsUsecase>()),
     );

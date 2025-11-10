@@ -6,7 +6,7 @@ import 'package:dutuku_e_commerce/src/presentation/product_detail/product_detail
 import 'package:dutuku_e_commerce/src/presentation/product_detail/related_product_section/related_products_controller.dart';
 
 class ProductDi {
-  static configureDependencies() {
+  static config() {
     getIt.registerFactory<ColorSelectionController>(
       () => ColorSelectionController(),
     );

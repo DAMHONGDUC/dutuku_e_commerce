@@ -33,7 +33,7 @@ class DutukuECommerceApp extends StatelessWidget {
 Future<void> initialisation() async {
   try {
     // di
-    Injector.configureDependencies();
+    Injector.config();
 
     // bloc observer
     Bloc.observer = SdBlocObserver();

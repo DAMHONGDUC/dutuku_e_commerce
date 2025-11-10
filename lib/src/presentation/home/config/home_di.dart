@@ -5,7 +5,7 @@ import 'package:dutuku_e_commerce/src/presentation/home/categories_section/categ
 import 'package:dutuku_e_commerce/src/presentation/home/recommend_products_section/recommend_products_controller.dart';
 
 class HomeDi {
-  static configureDependencies() {
+  static config() {
     getIt.registerFactory<BannerCarouselController>(
       () => BannerCarouselController(getIt<GetBannersUsecase>()),
     );

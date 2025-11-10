@@ -5,7 +5,7 @@ import 'package:dutuku_e_commerce/src/domain/usecases/get_profile_settings_useca
 import 'package:dutuku_e_commerce/src/domain/usecases/usecases.dart';
 
 class UsecasesDi {
-  static configureDependencies() {
+  static config() {
     getIt.registerLazySingleton<GetBannersUsecase>(
       () => GetBannersUsecase(getIt<BannerRepository>()),
     );
