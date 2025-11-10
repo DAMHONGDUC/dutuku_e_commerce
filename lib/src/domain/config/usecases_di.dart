@@ -1,5 +1,6 @@
 import 'package:dutuku_e_commerce/src/di/injector.dart';
 import 'package:dutuku_e_commerce/src/domain/repositories/repositories.dart';
+import 'package:dutuku_e_commerce/src/domain/usecases/get_notifications_usecase.dart';
 import 'package:dutuku_e_commerce/src/domain/usecases/get_profile_settings_usecase.dart';
 import 'package:dutuku_e_commerce/src/domain/usecases/usecases.dart';
 
@@ -25,6 +26,9 @@ class UsecasesDi {
     );
     getIt.registerLazySingleton<GetProfileSettingsUsecase>(
       () => GetProfileSettingsUsecase(getIt<ProfileRepository>()),
+    );
+    getIt.registerLazySingleton<GetNotificationsUsecase>(
+      () => GetNotificationsUsecase(getIt<NotificationRepository>()),
     );
   }
 }

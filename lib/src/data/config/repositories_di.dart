@@ -12,5 +12,8 @@ class RepositoriesDi {
     getIt.registerLazySingleton<ProfileRepository>(
       () => ProfileRepositoryImpl(),
     );
+    getIt.registerLazySingleton<NotificationRepository>(
+      () => NotificationRepositoryImpl(),
+    );
   }
 }
