@@ -7,8 +7,20 @@
 
 ## Tech Stack
 
+- Flutter
+- Firebase
+- Fastlane
 - Clean Architecture
 - Bloc for state management
+
+## Version
+
+- Flutter: 3.32.1
+- Dart: 3.8.1
+- Android Studio: 2024.3
+- Java: 21.0.7
+- Xcode: 16.3
+- CocoaPods: 1.16.2
 
 ## DB Design
 
