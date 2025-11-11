@@ -22,7 +22,7 @@
 -keep class * implements com.google.gson.JsonDeserializer
 
 # Keep model classes (adjust package names as needed)
--keep class com.example.dutuku_e_commerce.models.** { *; }
+-keep class com.flyd.dutuku_e_commerce.models.** { *; }
 
 # OkHttp and Retrofit rules (if using for API calls)
 -dontwarn okhttp3.**

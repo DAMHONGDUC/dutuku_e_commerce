@@ -18,7 +18,7 @@
 - Flutter: 3.32.1
 - Dart: 3.8.1
 - Android Studio: 2024.3
-- Java: 21.0.7
+- Java: java 17.0.12 2024-07-16 LTS
 - Xcode: 16.3
 - CocoaPods: 1.16.2
 
