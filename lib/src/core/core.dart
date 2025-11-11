@@ -24,3 +24,6 @@ export './error/config_failures.dart';
 
 // usecase
 export './usecase/usecase.dart';
+
+// emv
+export './env/app_env.dart';
