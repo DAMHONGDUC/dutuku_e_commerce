@@ -35,7 +35,7 @@ The repo is a [Melos](https://melos.invertase.dev) workspace containing the app 
 
 | Script | What it does |
 | --- | --- |
-| `melos run setup` | **one-shot setup**: submodule checkout + deep clean + bootstrap + all codegen — run after cloning, and again after any `git pull` that bumps the submodule pointer or dependencies |
+| `melos run setup` | **one-shot setup**: submodule checkout (always on latest `main`) + deep clean + bootstrap + all codegen — run after cloning, and again after any `git pull` |
 | `melos bootstrap` | `pub get` in every package |
 | `melos run analyze` | `flutter analyze` in every package |
 | `melos run test` | `flutter test` in every package that has `test/` |
