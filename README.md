@@ -13,6 +13,57 @@
 - Feature-based Clean Architecture
 - Bloc for state management
 
+## Getting Started
+
+### 1. Clone with submodules
+
+This project depends on the shared design system package [`system_design_flutter`](https://github.com/DAMHONGDUC/system_design_flutter), included as a **git submodule** at `packages/system_design_flutter` and referenced from `pubspec.yaml` as a path dependency. `flutter pub get` will fail if the submodule is not checked out.
+
+Clone the repo together with its submodules:
+
+```
+git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce_3.git
+```
+
+If you already cloned without `--recurse-submodules`, initialize the submodule afterwards:
+
+```
+git submodule update --init --recursive
+```
+
+To update the submodule to the latest commit on its `main` branch later:
+
+```
+git submodule update --remote packages/system_design_flutter
+```
+
+Then commit the new submodule pointer (`git add packages/system_design_flutter && git commit`).
+
+### 2. Set up Flutter with FVM
+
+The Flutter version is pinned in `.fvmrc`. With [FVM](https://fvm.app) installed:
+
+```
+fvm install
+fvm use
+```
+
+Alternatively, use a global Flutter matching the [Version](#version) section.
+
+### 3. Install dependencies and generate code
+
+```
+fvm flutter pub get
+fvm flutter gen-l10n
+fvm dart run build_runner build --delete-conflicting-outputs
+```
+
+### 4. Run the app
+
+```
+fvm flutter run
+```
+
 ## Architecture
 
 The project follows a **feature-based Clean Architecture**: instead of one global `domain`/`data`/`presentation` split, each business feature owns its own domain/data/presentation slice under `lib/src/features/<feature>/`. `core` holds truly cross-cutting building blocks, and `di` only bootstraps the features.
