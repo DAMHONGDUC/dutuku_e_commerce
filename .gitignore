@@ -66,3 +66,5 @@ env/*.json
 ios/ExportOptions.plist
 *.p12
 *.mobileprovision
+# Melos
+pubspec_overrides.yaml
