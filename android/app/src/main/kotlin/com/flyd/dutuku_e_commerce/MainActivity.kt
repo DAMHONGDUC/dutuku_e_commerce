@@ -1,4 +1,4 @@
-package com.example.dutuku_e_commerce
+package com.flyd.dutuku_e_commerce
 
 import io.flutter.embedding.android.FlutterActivity
 
