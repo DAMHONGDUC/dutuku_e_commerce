@@ -7,28 +7,46 @@ A Flutter e-commerce app, UI inspired by the [Kutuku Figma template](https://www
 - Flutter · Firebase · Fastlane
 - Feature-based Clean Architecture
 - Bloc/Cubit for state management
+- Melos workspace (app + `packages/*`)
 
 ## Getting Started
 
 The project depends on [`system_design_flutter`](https://github.com/DAMHONGDUC/system_design_flutter) as a **git submodule** at `packages/system_design_flutter` (a `pubspec.yaml` path dependency — `pub get` fails if it's not checked out), and pins the Flutter version via [FVM](https://fvm.app) (`.fvmrc`).
 
 ```bash
-# 1. Clone with submodules
+# 1. Clone (submodules included)
 git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce_3.git
-# already cloned without submodules?
-git submodule update --init --recursive
 
 # 2. Flutter version (FVM)
 fvm install && fvm use 3.38.8
 
-# 3. Dependencies & code generation
-fvm flutter pub get
-fvm flutter gen-l10n
-fvm dart run build_runner build --delete-conflicting-outputs
+# 3. One-shot setup — submodules + pub get everywhere + all codegen
+fvm flutter pub get              # once, so melos (dev dependency) is available
+fvm dart run melos run setup
 
 # 4. Run
 fvm flutter run --dart-define-from-file=env/dev.json
 ```
+
+> Cloned without `--recurse-submodules`? Run `git submodule update --init --recursive` first — `pub get` can't resolve the `system_design_flutter` path dependency until the submodule is checked out.
+
+## Melos workspace
+
+The repo is a [Melos](https://melos.invertase.dev) workspace containing the app (root) and every package under `packages/` (including the `system_design_flutter` submodule). Scripts are defined in `melos.yaml` and run across all packages at once:
+
+| Script | What it does |
+| --- | --- |
+| `melos run setup` | **one-shot setup**: submodule checkout + bootstrap + all codegen |
+| `melos bootstrap` | `pub get` in every package |
+| `melos run analyze` | `flutter analyze` in every package |
+| `melos run test` | `flutter test` in every package that has `test/` |
+| `melos run format` / `format:check` | format all packages / fail on unformatted code |
+| `melos run gen:l10n` | generate localizations (app only) |
+| `melos run gen:build` | `build_runner` in packages that depend on it |
+| `melos run gen:all` | all code generation in one go |
+| `melos run clean:flutter` | `flutter clean` in every package |
+
+Prefix with `fvm dart run` (e.g. `fvm dart run melos run test`) — melos is a dev dependency, no global install needed. Note: versioning/publishing features of melos are intentionally not used, since `system_design_flutter` lives in its own repo (submodule) and is versioned by its commit pointer.
 
 ## Version
 
@@ -112,14 +130,14 @@ Every feature's `data/mock/*` stands in for a real API. Since `domain` only depe
 Test structure mirrors `lib/src/features/`: usecase tests, repository-impl tests, and `bloc_test` coverage per Cubit (loading/loaded/error state sequences). Mocking uses [`mocktail`](https://pub.dev/packages/mocktail) with shared fakes in `test/helpers/` — no code generation needed.
 
 ```
-flutter test
+fvm dart run melos run test
 ```
 
 ## CI/CD
 
 Two GitHub Actions workflows under `.github/workflows/`:
 
-- **`ci.yml`** — on every push/PR to `main`: `flutter analyze` + `flutter test`. No secrets needed.
+- **`ci.yml`** — on every push/PR to `main`: `melos bootstrap` then `melos run analyze` + `melos run test` across all workspace packages. No secrets needed.
 - **`deploy.yml`** — manual (`workflow_dispatch`) release pipeline: restores the gitignored signing/config files from repo secrets, then runs Fastlane to build and upload to **Firebase App Distribution**. `deploy-android` is fully wired; `deploy-ios` is gated behind the `IOS_DEPLOY_ENABLED` repo variable until Apple signing secrets are configured.
 
 ### Required secrets
