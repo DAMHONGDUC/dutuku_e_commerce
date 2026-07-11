@@ -39,6 +39,38 @@ fvm flutter run --dart-define-from-file=env/dev.json
 - Xcode: 26.4
 - CocoaPods: 1.16.2
 
+
+## DB Design
+
+- https://drive.google.com/file/d/1vY04Wm6R2z69D4JhJ8cdIqszU7TTXFpA/view?usp=sharing
+
+## Screenshots
+
+<!-- Screenshots Table -->
+<table>
+  <tr>
+    <td><img src="./screenshots/0.png" width="400"></td>
+    <td><img src="./screenshots/1.png" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/2.png" width="400"></td>
+    <td><img src="./screenshots/3.png" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/4.png" width="400"></td>
+    <td><img src="./screenshots/5.png" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/6.png" width="400"></td>
+    <td><img src="./screenshots/7.png" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/8.png" width="400"></td>
+    <td></td>
+  </tr>
+</table>
+
+
 ## Architecture
 
 **Feature-based Clean Architecture**: each feature owns its own `domain`/`data`/`presentation` slice under `lib/src/features/<feature>/`; `core` holds cross-cutting building blocks; `di/injector.dart` only calls each feature's `<Feature>Di.config()`.
@@ -108,36 +140,4 @@ Two GitHub Actions workflows under `.github/workflows/`:
 | `APPLE_CERTIFICATE_BASE64` | iOS | `base64` of the distribution certificate `.p12` |
 | `APPLE_CERTIFICATE_PASSWORD` | iOS | Password for the `.p12` above |
 
-Repo variables: `FIREBASE_DISTRIBUTION_GROUPS` (default `testers`) and `IOS_DEPLOY_ENABLED` (set `true` once Apple secrets exist).
-
-To encode a binary secret: `base64 -i path/to/file | pbcopy` (macOS), then paste into the secret value.
-
-## DB Design
-
-- https://drive.google.com/file/d/1vY04Wm6R2z69D4JhJ8cdIqszU7TTXFpA/view?usp=sharing
-
-## Screenshots
-
-<!-- Screenshots Table -->
-<table>
-  <tr>
-    <td><img src="./screenshots/0.png" width="400"></td>
-    <td><img src="./screenshots/1.png" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="./screenshots/2.png" width="400"></td>
-    <td><img src="./screenshots/3.png" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="./screenshots/4.png" width="400"></td>
-    <td><img src="./screenshots/5.png" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="./screenshots/6.png" width="400"></td>
-    <td><img src="./screenshots/7.png" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="./screenshots/8.png" width="400"></td>
-    <td></td>
-  </tr>
-</table>
+Repo variables: `FIREBASE_DISTRIBUTION_GROUPS` (default `testers`) and `IOS_DEPLOY_ENABLED` (default `false`).
