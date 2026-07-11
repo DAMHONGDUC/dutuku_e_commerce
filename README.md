@@ -19,7 +19,7 @@ git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce_3
 git submodule update --init --recursive
 
 # 2. Flutter version (FVM)
-fvm install && fvm use
+fvm install && fvm use 3.38.8
 
 # 3. Dependencies & code generation
 fvm flutter pub get
@@ -27,10 +27,17 @@ fvm flutter gen-l10n
 fvm dart run build_runner build --delete-conflicting-outputs
 
 # 4. Run
-fvm flutter run
+fvm flutter run --dart-define-from-file=env/dev.json
 ```
 
-To bump the submodule later: `git submodule update --remote packages/system_design_flutter`, then commit the new pointer.
+## Version
+
+- Flutter: 3.38.8 (pinned in `.fvmrc`)
+- Dart: 3.10.7
+- Android Studio: 2024.3
+- Java: 17.0.12 LTS
+- Xcode: 26.4
+- CocoaPods: 1.16.2
 
 ## Architecture
 
@@ -104,15 +111,6 @@ Two GitHub Actions workflows under `.github/workflows/`:
 Repo variables: `FIREBASE_DISTRIBUTION_GROUPS` (default `testers`) and `IOS_DEPLOY_ENABLED` (set `true` once Apple secrets exist).
 
 To encode a binary secret: `base64 -i path/to/file | pbcopy` (macOS), then paste into the secret value.
-
-## Version
-
-- Flutter: 3.32.1
-- Dart: 3.8.1
-- Android Studio: 2024.3
-- Java: java 17.0.12 2024-07-16 LTS
-- Xcode: 16.3
-- CocoaPods: 1.16.2
 
 ## DB Design
 
