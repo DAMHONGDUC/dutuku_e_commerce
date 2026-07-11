@@ -1,0 +1,26 @@
+default_platform(:android)
+
+# Path to the Flutter project root (this Fastfile lives in android/fastlane).
+FLUTTER_ROOT = File.expand_path("../..", __dir__)
+APK_PATH = File.join(FLUTTER_ROOT, "build/app/outputs/flutter-apk/app-release.apk")
+
+platform :android do
+  desc "Build a release APK with Flutter and distribute it via Firebase App Distribution"
+  lane :firebase_distribute do
+    dart_defines = ENV["DART_DEFINE_FILE"]
+    dart_define_arg = dart_defines ? "--dart-define-from-file=#{dart_defines}" : ""
+
+    sh(
+      "cd #{FLUTTER_ROOT} && flutter build apk --release #{dart_define_arg}".strip
+    )
+
+    firebase_app_distribution(
+      app: ENV["FIREBASE_ANDROID_APP_ID"] || "1:374119896673:android:0bb8aaa8afe005df407c20",
+      groups: ENV["FIREBASE_DISTRIBUTION_GROUPS"] || "testers",
+      release_notes: ENV["RELEASE_NOTES"] || "Automated build from CI",
+      apk_path: APK_PATH,
+      # Auth is picked up automatically from either the FIREBASE_TOKEN or
+      # GOOGLE_APPLICATION_CREDENTIALS environment variable — see README.
+    )
+  end
+end

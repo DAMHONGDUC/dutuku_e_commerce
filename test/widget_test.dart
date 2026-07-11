@@ -1,30 +1,21 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:dutuku_e_commerce/src/core/resources/custom_theme_ext/app_color_theme_ext.dart';
+import 'package:dutuku_e_commerce/src/core/widgets/empty/empty_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:dutuku_e_commerce/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('EmptyView renders the given message', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        // EmptyView only reads context.colorTheme (AppColorThemeExt), so
+        // AppTextThemeExt.light() is intentionally omitted here: it calls
+        // GoogleFonts internally, which needs font assets unavailable to
+        // the test asset bundle.
+        theme: ThemeData(extensions: [AppColorThemeExt.light()]),
+        home: const Scaffold(body: EmptyView(message: 'No data available')),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('No data available'), findsOneWidget);
   });
 }
