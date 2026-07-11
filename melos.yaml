@@ -25,11 +25,11 @@ scripts:
 
   analyze:
     description: Run flutter analyze in every package.
-    run: dart run melos exec -- "flutter analyze ."
+    run: dart run melos exec --concurrency=1 -- "flutter analyze ."
 
   test:
     description: Run tests in every package that has a test/ directory.
-    run: dart run melos exec --dir-exists=test -- "flutter test"
+    run: dart run melos exec --concurrency=1 --dir-exists=test -- "flutter test"
 
   format:
     description: Format all packages.
@@ -53,7 +53,7 @@ scripts:
 
   clean:flutter:
     description: flutter clean in every package.
-    run: dart run melos exec -- "flutter clean"
+    run: dart run melos exec --concurrency=1 -- "flutter clean"
 
   clean:deep:
     description: >-
