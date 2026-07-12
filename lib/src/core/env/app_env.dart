@@ -9,13 +9,13 @@ class AppEnv {
     defaultValue: '',
   );
 
-  static const String FISEBASE_ANDROID_API_KEY = String.fromEnvironment(
-    'FISEBASE_ANDROID_API_KEY',
+  static const String FIREBASE_ANDROID_API_KEY = String.fromEnvironment(
+    'FIREBASE_ANDROID_API_KEY',
     defaultValue: '',
   );
 
-  static const String FISEBASE_ANDROID_APP_ID = String.fromEnvironment(
-    'FISEBASE_ANDROID_APP_ID',
+  static const String FIREBASE_ANDROID_APP_ID = String.fromEnvironment(
+    'FIREBASE_ANDROID_APP_ID',
     defaultValue: '',
   );
 
@@ -34,13 +34,13 @@ class AppEnv {
     defaultValue: '',
   );
 
-  static const String FISEBASE_IOS_API_KEY = String.fromEnvironment(
-    'FISEBASE_IOS_API_KEY',
+  static const String FIREBASE_IOS_API_KEY = String.fromEnvironment(
+    'FIREBASE_IOS_API_KEY',
     defaultValue: '',
   );
 
-  static const String FISEBASE_IOS_APP_ID = String.fromEnvironment(
-    'FISEBASE_IOS_APP_ID',
+  static const String FIREBASE_IOS_APP_ID = String.fromEnvironment(
+    'FIREBASE_IOS_APP_ID',
     defaultValue: '',
   );
 }

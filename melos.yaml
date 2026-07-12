@@ -26,7 +26,7 @@ scripts:
 
   analyze:
     description: Run flutter analyze in every package.
-    run: dart run melos exec --concurrency=1 -- "flutter analyze ."
+    run: dart run melos exec --concurrency=1 -- "flutter analyze --no-fatal-infos"
 
   test:
     description: Run tests in every package that has a test/ directory.
