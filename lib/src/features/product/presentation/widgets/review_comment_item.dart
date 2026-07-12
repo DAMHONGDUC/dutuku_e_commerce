@@ -41,9 +41,7 @@ class ReviewCommentItem extends StatelessWidget {
             Spacer(),
             // Date
             Text(
-              SdDateTimeHelper.dateTimeToDDMMYY(
-                DateTime.parse(review.createdAt),
-              ),
+              SdDateTimeHelper.dateTimeToDDMMYY(review.createdAt),
               style: SdTextStyle.heading12().copyWith(
                 color: context.colorTheme.textSubTitle,
               ),
