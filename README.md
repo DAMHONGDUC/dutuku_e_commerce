@@ -24,10 +24,12 @@ fvm install && fvm use 3.38.8
 fvm dart run melos run setup
 
 # 4. Run
-fvm flutter run --dart-define-from-file=env/dev.json
+fvm flutter run
 ```
 
 > Cloned without `--recurse-submodules`? Run `git submodule update --init --recursive` first — `pub get` can't resolve the `system_design_flutter` path dependency until the submodule is checked out.
+
+**Working on the design system?** `setup` checks the submodule out at its pinned commit (detached HEAD). To develop `system_design_flutter` itself, switch it to a branch first: `git -C packages/system_design_flutter checkout main`, commit & push there, then bump the pointer here (see [Melos workspace](#melos-workspace)).
 
 ## Melos workspace
 
