@@ -29,7 +29,7 @@ fvm flutter run
 
 > Cloned without `--recurse-submodules`? Run `git submodule update --init --recursive` first — `pub get` can't resolve the `system_design_flutter` path dependency until the submodule is checked out.
 
-**Working on the design system?** `setup` checks the submodule out at its pinned commit (detached HEAD). To develop `system_design_flutter` itself, switch it to a branch first: `git -C packages/system_design_flutter checkout main`, commit & push there, then bump the pointer here (see [Melos workspace](#melos-workspace)).
+**Working on the design system?** `setup` leaves the submodule on the latest `main` branch, so you can edit `packages/system_design_flutter` directly: commit & push there, then commit the updated pointer here (`git add packages/system_design_flutter`). If the pointer moved, remember to commit it so CI and other clones pick up the same design-system commit.
 
 ## Melos workspace
 
@@ -37,7 +37,7 @@ The repo is a [Melos](https://melos.invertase.dev) workspace containing the app 
 
 | Script | What it does |
 | --- | --- |
-| `melos run setup` | **one-shot setup**: submodule checkout (at the pinned commit) + deep clean + bootstrap + all codegen — run after cloning, and again after any `git pull` |
+| `melos run setup` | **one-shot setup**: submodule checkout (always on latest `main`) + deep clean + bootstrap + all codegen — run after cloning, and again after any `git pull` |
 | `melos bootstrap` | `pub get` in every package |
 | `melos run analyze` | `flutter analyze` in every package |
 | `melos run test` | `flutter test` in every package that has `test/` |
