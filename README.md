@@ -4,7 +4,7 @@ A Flutter e-commerce app, UI inspired by the [Kutuku Figma template](https://www
 
 ## Tech Stack
 
-- Flutter · Fastlane · Firebase App Distribution (CD only — in-app Firebase is temporarily disabled)
+- Flutter · Firebase · Fastlane
 - Feature-based Clean Architecture
 - Bloc/Cubit for state management
 - Melos workspace (app + `packages/*`)
@@ -12,7 +12,7 @@ A Flutter e-commerce app, UI inspired by the [Kutuku Figma template](https://www
 ## Getting Started
 
 ```bash
-git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce_3.git
+git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce.git
 fvm install
 fvm dart run melos run setup   # everything: submodules + clean + pub get + codegen
 fvm flutter run
@@ -130,8 +130,6 @@ Two GitHub Actions workflows under `.github/workflows/`:
 
 - **`ci.yml`** — on every push/PR to `main`: `melos bootstrap` then `melos run analyze` + `melos run test` across all workspace packages. No secrets needed.
 - **`deploy.yml`** — manual (`workflow_dispatch`) release pipeline: restores the gitignored signing/config files from repo secrets, then runs Fastlane to build and upload to **Firebase App Distribution**. `deploy-android` is fully wired; `deploy-ios` is gated behind the `IOS_DEPLOY_ENABLED` repo variable until Apple signing secrets are configured.
-
-> Note: in-app Firebase integration (`firebase_core`) is **temporarily disabled** — the app runs fully on mock data and needs no Firebase config to build. Firebase App Distribution above is only the delivery channel for release builds.
 
 ### Required secrets
 
