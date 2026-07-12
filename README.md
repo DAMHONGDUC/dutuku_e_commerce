@@ -11,25 +11,12 @@ A Flutter e-commerce app, UI inspired by the [Kutuku Figma template](https://www
 
 ## Getting Started
 
-The project depends on [`system_design_flutter`](https://github.com/DAMHONGDUC/system_design_flutter) as a **git submodule** at `packages/system_design_flutter` (a `pubspec.yaml` path dependency — `pub get` fails if it's not checked out), and pins the Flutter version via [FVM](https://fvm.app) (`.fvmrc`).
-
 ```bash
-# 1. Clone (submodules included)
 git clone --recurse-submodules https://github.com/DAMHONGDUC/dutuku_e_commerce_3.git
-
-# 2. Flutter version (FVM)
-fvm install && fvm use 3.38.8
-
-# 3. One-shot setup — submodules + deep clean + pub get everywhere + all codegen
-fvm dart run melos run setup
-
-# 4. Run
+fvm install
+fvm dart run melos run setup   # everything: submodules + clean + pub get + codegen
 fvm flutter run
 ```
-
-> Cloned without `--recurse-submodules`? Run `git submodule update --init --recursive` first — `pub get` can't resolve the `system_design_flutter` path dependency until the submodule is checked out.
-
-**Working on the design system?** `setup` leaves the submodule on the latest `main` branch, so you can edit `packages/system_design_flutter` directly: commit & push there, then commit the updated pointer here (`git add packages/system_design_flutter`). If the pointer moved, remember to commit it so CI and other clones pick up the same design-system commit.
 
 ## Melos workspace
 
