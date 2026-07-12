@@ -49,11 +49,14 @@ jobs:
           EOF
 
       - name: Restore dart-define env file
-        if: ${{ secrets.ENV_DART_DEFINE_JSON_BASE64 != '' }}
+        env:
+          ENV_JSON_B64: ${{ secrets.ENV_DART_DEFINE_JSON_BASE64 }}
         run: |
-          mkdir -p env
-          echo "${{ secrets.ENV_DART_DEFINE_JSON_BASE64 }}" | base64 --decode > env/dev.json
-          echo "DART_DEFINE_FILE=env/dev.json" >> "$GITHUB_ENV"
+          if [ -n "$ENV_JSON_B64" ]; then
+            mkdir -p env
+            echo "$ENV_JSON_B64" | base64 --decode > env/dev.json
+            echo "DART_DEFINE_FILE=env/dev.json" >> "$GITHUB_ENV"
+          fi
 
       - name: Restore Firebase service account
         run: |
@@ -96,11 +99,14 @@ jobs:
         run: echo "${{ secrets.IOS_GOOGLE_SERVICE_INFO_PLIST_BASE64 }}" | base64 --decode > ios/Runner/GoogleService-Info.plist
 
       - name: Restore dart-define env file
-        if: ${{ secrets.ENV_DART_DEFINE_JSON_BASE64 != '' }}
+        env:
+          ENV_JSON_B64: ${{ secrets.ENV_DART_DEFINE_JSON_BASE64 }}
         run: |
-          mkdir -p env
-          echo "${{ secrets.ENV_DART_DEFINE_JSON_BASE64 }}" | base64 --decode > env/dev.json
-          echo "DART_DEFINE_FILE=env/dev.json" >> "$GITHUB_ENV"
+          if [ -n "$ENV_JSON_B64" ]; then
+            mkdir -p env
+            echo "$ENV_JSON_B64" | base64 --decode > env/dev.json
+            echo "DART_DEFINE_FILE=env/dev.json" >> "$GITHUB_ENV"
+          fi
 
       - name: Restore Firebase service account
         run: |
