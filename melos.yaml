@@ -19,7 +19,6 @@ scripts:
       `--recurse-submodules` clone with no manual pub get.
     run: >-
       git submodule update --init --recursive &&
-      git submodule foreach --recursive "git checkout -q main && git pull -q --ff-only origin main" &&
       dart run melos run clean:deep &&
       dart run melos bootstrap &&
       dart run melos run gen:all
